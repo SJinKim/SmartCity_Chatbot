@@ -12,6 +12,8 @@ Frontend for SmartCity Chatbot created with vite https://vitejs.dev/
 2. Node.js v18.7.1:
     - How to install Node.js, nvm and npm on WSL2: 
     https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl
+3. To Use WSL with VSCode: install WSL Extension in VSCode
+   - How to: https://code.visualstudio.com/docs/remote/wsl
 
 ---
 
