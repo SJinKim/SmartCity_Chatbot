@@ -19,7 +19,7 @@ Frontend for SmartCity Chatbot created with vite https://vitejs.dev/
 
 1. create a working directory and clone repository:
     `mkdir chatbot && cd chatbot`
-    `git clone ...`
+    `git clone https://github.com/SJinKim/SmartCity_Chatbot.git`
 
 2. install node-modules:
      `npm install`
