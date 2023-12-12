@@ -1,8 +1,24 @@
 {
-    "test": [
-        {
-            "id": "124r9hsdgiubawr82341",
-            "text": "asfjnas sogfpaiusf fnsfg"
-        }
-    ]
+  "message": [
+    {
+      "message": "Hi this is the first Message",
+      "id": 1
+    },
+    {
+      "message": "Second One to test",
+      "id": 2
+    },
+    {
+      "message": "Now the button ",
+      "id": 3
+    },
+    {
+      "message": "",
+      "id": 4
+    },
+    {
+      "message": "s",
+      "id": 5
+    }
+  ]
 }
