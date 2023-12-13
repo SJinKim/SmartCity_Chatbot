@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import Prompt from './components/Prompt'
 import messageService from './services/messages'
+import Bubble from './components/Bubbles'
+
+
 
 const App = () => {
   const [newMessage, setNewMessage] = useState('')
@@ -10,7 +13,7 @@ const App = () => {
   useEffect(() => {
     messageService
       .getMessages()
-      .then(messageHistory => {
+      .then(messageHistory => { 
         setMessages(messageHistory)
       })
   }, [])
@@ -41,7 +44,9 @@ const App = () => {
   return (
     <>
       <h1>Smart City Chatbot</h1>
+     <Bubble/>
       <Prompt sendMessage={sendMessage} handleNewMessage={handleNewMessage} newMessage={newMessage} />
+     
     </>
   )
 }
