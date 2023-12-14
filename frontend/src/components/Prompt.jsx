@@ -13,7 +13,7 @@ const Prompt = (props) => {
                 bottom: '50px',
                 left: '50%',
                 width: '90%',
-                transform: 'translate(-50%, 50%)'
+                transform: 'translate(-50%, 50%)',
             }}
         >
             <Stack spacing={2} direction='row'>
@@ -24,7 +24,9 @@ const Prompt = (props) => {
                     value={props.newMessage}
                     onChange={props.handleNewMessage}
                 />
-                <Button type='submit' variant='contained'>Send</Button>
+                <Button type='submit' variant='contained'>
+                    Send
+                </Button>
             </Stack>
         </Box>
 

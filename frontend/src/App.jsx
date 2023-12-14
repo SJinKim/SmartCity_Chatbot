@@ -1,6 +1,10 @@
+import { Grid } from '@mui/material'
+
 import { useEffect, useState } from 'react'
 import Prompt from './components/Prompt'
+import UploadButton from './components/Upload'
 import messageService from './services/messages'
+
 
 const App = () => {
   const [newMessage, setNewMessage] = useState('')
@@ -38,11 +42,33 @@ const App = () => {
     }
   }
 
+  //TODO Function for sending file to backend
+  const handleNewFile = (event) => {
+    const file = event.target.files[0]
+    const formData = new FormData()
+    formData.append(
+      "Sachverhalt",
+      file,
+      file.name
+    )
+    console.log(file.name);
+    //Ask in Prompt for Confirmation with Message-Bubble and Button
+    messageService.uploadFile(formData)
+  }
+
   return (
-    <>
-      <h1>Smart City Chatbot</h1>
-      <Prompt sendMessage={sendMessage} handleNewMessage={handleNewMessage} newMessage={newMessage} />
-    </>
+    <Grid container>
+      <Grid item xs={3} sx={
+        {backgroundColor: 'green'
+      }
+      }>
+        <h1>Smart City Chatbot</h1>
+        <UploadButton handleNewFile={handleNewFile} />
+      </Grid>
+      <Grid item xs={9}>
+        <Prompt sendMessage={sendMessage} handleNewMessage={handleNewMessage} newMessage={newMessage} />
+      </Grid>
+    </Grid>
   )
 }
 
