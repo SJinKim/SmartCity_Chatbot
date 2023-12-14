@@ -7,36 +7,42 @@ const Chat_History = [
       message: "Hi, How are ya ?",
       incoming: true,
       outgoing: false,
+      timestamp: Date.now(),
     },
     {
       type: "msg",
       message: "Sit et quo optio nam vel consectetur autem.",
       incoming: false,
       outgoing: true,
+      timestamp: Date.now(),
     },
     {
       type: "msg",
       message: "Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut. Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut. Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut. Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut. Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut.",
       incoming: false,
       outgoing: true,
+      timestamp: Date.now(),
     },
     {
       type: "msg",
       message: "Illo saepe corporis non sint sed labore aliquid debitis.",
       incoming: true,
       outgoing: false,
+      timestamp: Date.now(),
     },
     {
         type: "msg",
         message: "Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut. Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut. Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut. Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut. Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut.",
         incoming: true,
         outgoing: false,
+        timestamp: Date.now(),
       },
       {
         type: "msg",
         message: "Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut. Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut. Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut. Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut. Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut.",
         incoming: false,
         outgoing: true,
+        timestamp: Date.now(),
       },
    
     {
@@ -44,6 +50,7 @@ const Chat_History = [
       message: "Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut. Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut. Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut. Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum. Corporis animi error aut et impedit est saepe. Expedita optio temporibus est porro aut. Illo saepe corporis non sint sed labore aliquid debitis. Sit et quo optio nam vel consectetur autem. Perferendis et nam similique omnis rerum quibusdam. Est sint iste voluptatum",
       incoming: false,
       outgoing: true,
+      timestamp: Date.now(),
     },
   
     {
@@ -52,6 +59,7 @@ const Chat_History = [
       message: "Yes sure, here you go.",
       incoming: true,
       outgoing: false,
+      timestamp: Date.now(),
     },
    
     {
@@ -61,9 +69,10 @@ const Chat_History = [
       message: "Yep, I can also do that",
       incoming: false,
       outgoing: true,
+      timestamp: Date.now(),
     },
   ];
 
+
 export {
-        Chat_History
-  };
+        Chat_History  };

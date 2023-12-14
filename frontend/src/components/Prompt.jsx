@@ -12,7 +12,7 @@ const Prompt = (props) => {
                 position: 'absolute',
                 bottom: '50px',
                 left: '50%',
-                width: '90%',
+                width: '90%',                
                 transform: 'translate(-50%, 50%)'
             }}
         >

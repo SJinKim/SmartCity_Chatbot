@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import Prompt from './components/Prompt'
 import messageService from './services/messages'
-import Bubble from './components/Bubbles'
+
+import DashboardLayout from './layouts/dashboard'
+
 
 
 
@@ -43,9 +45,11 @@ const App = () => {
 
   return (
     <>
-      <h1>Smart City Chatbot</h1>
-     <Bubble/>
-      <Prompt sendMessage={sendMessage} handleNewMessage={handleNewMessage} newMessage={newMessage} />
+     
+     <DashboardLayout/>
+     
+   
+    <Prompt sendMessage={sendMessage} handleNewMessage={handleNewMessage} newMessage={newMessage} />
      
     </>
   )

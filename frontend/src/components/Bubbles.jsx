@@ -3,41 +3,44 @@ import React from 'react'
 import { Chat_History } from '../services/ChatHistory'
 import { TextMsg } from './MsgTypes'
 
+
 const Bubble = () => {
     return(
-        <Box> 
+        <Box>
         <Stack spacing={3}>
             {
                 Chat_History.map((el) => {
-                    
+                   
                     switch (el.type) {
                        
                         case "msg":
                             switch (el.subtype) {
-                                
+                               
                                 case "doc":
                                     //doc msg
-                                    break; 
-                                
+                                    break;
+                               
                                 case "reply":
                                     //reply msg
-                                    break; 
+                                    break;
                                 default:
                                     // text msg
                                    return  <TextMsg  el={el}/>
-                                    
+                                   
                             }
                                 break;
-                    
+                   
                         default:
                             return <></>;
-                    } 
+                    }
                 })
             }
         </Stack>
         </Box>
     )
 
+
 }
+
 
 export default Bubble
