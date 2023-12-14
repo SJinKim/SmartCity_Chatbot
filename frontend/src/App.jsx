@@ -5,6 +5,10 @@ import Prompt from './components/Prompt'
 import UploadButton from './components/Upload'
 import messageService from './services/messages'
 
+import DashboardLayout from './layouts/dashboard'
+
+
+
 
 const App = () => {
   const [newMessage, setNewMessage] = useState('')
@@ -14,7 +18,7 @@ const App = () => {
   useEffect(() => {
     messageService
       .getMessages()
-      .then(messageHistory => {
+      .then(messageHistory => { 
         setMessages(messageHistory)
       })
   }, [])
@@ -57,18 +61,14 @@ const App = () => {
   }
 
   return (
-    <Grid container>
-      <Grid item xs={3} sx={
-        {backgroundColor: 'green'
-      }
-      }>
-        <h1>Smart City Chatbot</h1>
-        <UploadButton handleNewFile={handleNewFile} />
-      </Grid>
-      <Grid item xs={9}>
-        <Prompt sendMessage={sendMessage} handleNewMessage={handleNewMessage} newMessage={newMessage} />
-      </Grid>
-    </Grid>
+    <>
+     
+     <DashboardLayout/>
+     
+   
+    <Prompt sendMessage={sendMessage} handleNewMessage={handleNewMessage} newMessage={newMessage} />
+     
+    </>
   )
 }
 
