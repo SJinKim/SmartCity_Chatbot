@@ -4,13 +4,13 @@ import { Chat_History } from '../services/ChatHistory'
 import { TextMsg } from './MsgTypes'
 
 
-const Bubble = () => {
+const Bubble = (props) => {
     return(
         <Box>
         <Stack spacing={3}>
             {
-                Chat_History.map((el) => {
-                   
+                //Chat_History.map((el) => {
+                  props.messages.map(el => { 
                     switch (el.type) {
                        
                         case "msg":
@@ -25,7 +25,7 @@ const Bubble = () => {
                                     break;
                                 default:
                                     // text msg
-                                   return  <TextMsg  el={el}/>
+                                   return  <TextMsg key={el.id} el={el}/>
                                    
                             }
                                 break;

@@ -1,32 +1,28 @@
 {
   "message": [
     {
-      "message": "Hi this is the first Message",
+      "type": "msg",
+      "message": "Hi, How are ya ?",
+      "incoming": "true",
+      "outgoing": "false",
+      "timestamp": 1702637313257,
       "id": 1
     },
     {
-      "message": "Second One to test",
+      "type": "msg",
+      "message": "Hi",
+      "incoming": false,
+      "outgoing": true,
+      "timestamp": 1702637313257,
       "id": 2
     },
     {
-      "message": "Now the button ",
+      "type": "msg",
+      "message": "Test Message blablublafsg kfgoq goihefgpq fksef",
+      "incoming": false,
+      "outgoing": true,
+      "timestamp": 1702637567451,
       "id": 3
-    },
-    {
-      "message": "",
-      "id": 4
-    },
-    {
-      "message": "s",
-      "id": 5
-    },
-    {
-      "message": "What time?",
-      "id": 6
-    },
-    {
-      "message": "hello",
-      "id": 7
     }
   ]
 }

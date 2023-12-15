@@ -5,7 +5,7 @@ import Prompt from './components/Prompt'
 import UploadButton from './components/Upload'
 import messageService from './services/messages'
 
-import DashboardLayout from './layouts/dashboard'
+import DashboardLayout from './layouts/dashboard/index2'
 
 
 
@@ -18,7 +18,7 @@ const App = () => {
   useEffect(() => {
     messageService
       .getMessages()
-      .then(messageHistory => { 
+      .then(messageHistory => {
         setMessages(messageHistory)
       })
   }, [])
@@ -31,7 +31,11 @@ const App = () => {
     event.preventDefault()
     if (newMessage !== '') {
       const message = {
+        type: "msg",
         message: newMessage,
+        incoming: false,
+        outgoing: true,
+        timestamp: Date.now(),
         id: messages.length + 1
       }
       messageService
@@ -62,12 +66,16 @@ const App = () => {
 
   return (
     <>
-     
-     <DashboardLayout/>
-     
-   
-    <Prompt sendMessage={sendMessage} handleNewMessage={handleNewMessage} newMessage={newMessage} />
-     
+
+      < DashboardLayout
+        messages={messages}
+        sendMessage={sendMessage}
+        handleNewMessage={handleNewMessage}
+        newMessage={newMessage}
+      />
+
+
+
     </>
   )
 }
