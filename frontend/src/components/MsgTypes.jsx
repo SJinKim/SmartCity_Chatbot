@@ -1,6 +1,5 @@
-import React from "react";
-import { Box, Stack, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { Button, Box, Stack, Typography } from "@mui/material"
+import { useTheme } from "@mui/material/styles"
 
 const TextMsg = ({ el }) => {
   const theme = useTheme();
@@ -48,6 +47,10 @@ const TextMsg = ({ el }) => {
           >
             {el.message}
           </Typography>
+
+          <Button variant="contained" color="primary">
+            Senden
+          </Button>
         </Box>
       </Stack>
       <Stack

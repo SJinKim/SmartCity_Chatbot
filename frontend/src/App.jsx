@@ -1,12 +1,6 @@
-import { Grid } from '@mui/material'
-
 import { useEffect, useState } from 'react'
-import Prompt from './components/Prompt'
-import UploadButton from './components/Upload'
 import messageService from './services/messages'
-
 import DashboardLayout from './layouts/dashboard/index2'
-
 
 
 
@@ -21,6 +15,7 @@ const App = () => {
       .then(messageHistory => {
         setMessages(messageHistory)
       })
+      
   }, [])
 
   const handleNewMessage = (event) => {
@@ -59,23 +54,26 @@ const App = () => {
       file,
       file.name
     )
-    console.log(file.name);
-    //Ask in Prompt for Confirmation with Message-Bubble and Button
-    messageService.uploadFile(formData)
+    const conMsg = {
+      type: "msg",
+      message: `Möchten Sie die Datei ${file.name} hochladen?`,
+      incoming: false,
+      outgoing: true,
+      timestamp: Date.now(),
+      id: 999999999999999
+    }
+    setMessages(messages.concat(conMsg))
   }
 
   return (
     <>
-
       < DashboardLayout
         messages={messages}
         sendMessage={sendMessage}
         handleNewMessage={handleNewMessage}
         newMessage={newMessage}
+        handleNewFile={handleNewFile}
       />
-
-
-
     </>
   )
 }

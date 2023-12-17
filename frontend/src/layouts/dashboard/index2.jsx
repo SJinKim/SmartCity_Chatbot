@@ -1,13 +1,11 @@
-import { Box, Stack, Grid } from "@mui/material"
+import { Box, Stack, Grid, Button } from "@mui/material"
 import { Outlet } from "react-router-dom"
 import Bubble from "../../components/Bubbles"
 import Prompt from '../../components/Prompt'
-import Button from '@mui/material/Button'
+import Upload from '../../components/Upload'
 
 
 const DashboardLayout = (props) => {
-
-
     return (
         <Box sx={{
             flexGrow: 1,
@@ -18,13 +16,17 @@ const DashboardLayout = (props) => {
                         backgroundColor: "green",
                         height: "98vh",
                     }}>
-                        <Button variant="contained" color="primary">
-                            Anleitung
-                        </Button>
+                        <Stack spacing={2}>
+                            <Button variant="contained" color="primary">
+                                Anleitung
+                            </Button>
+
+                            <Upload handleNewFile={props.handleNewFile} />
+                        </Stack>
                     </Box>
                 </Grid>
                 <Grid item xs={10.5}>
-                    <Stack>
+                    <Stack >
                         <Box sx={{
                             position: "relative",
                             height: "80vh",
@@ -40,7 +42,11 @@ const DashboardLayout = (props) => {
                             bottom: "40px",
                             width: '87%',
                         }}>
-                            <Prompt sendMessage={props.sendMessage} handleNewMessage={props.handleNewMessage} newMessage={props.newMessage} />
+                            <Prompt
+                                sendMessage={props.sendMessage}
+                                handleNewMessage={props.handleNewMessage}
+                                newMessage={props.newMessage}
+                            />
                         </Box>
                     </Stack>
                 </Grid>
