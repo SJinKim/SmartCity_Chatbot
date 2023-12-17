@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react'
 import messageService from './services/messages'
-import DashboardLayout from './layouts/dashboard/index2'
-
-
+import DashboardLayout from './layouts/dashboard/dashboard'
 
 const App = () => {
   const [newMessage, setNewMessage] = useState('')
   const [messages, setMessages] = useState([])
 
-  //Only for Development with json-server (to get message History in db.json)
   useEffect(() => {
+    //Only for Development with json-server (to get message History from db.json)
     messageService
       .getMessages()
       .then(messageHistory => {
         setMessages(messageHistory)
       })
-      
   }, [])
 
   const handleNewMessage = (event) => {
@@ -28,10 +25,10 @@ const App = () => {
       const message = {
         type: "msg",
         message: newMessage,
-        incoming: false,
-        outgoing: true,
+        incoming: true,
+        outgoing: false,
         timestamp: Date.now(),
-        id: messages.length + 1
+        id: messages.length
       }
       messageService
         .sendMessage(message)
@@ -55,14 +52,21 @@ const App = () => {
       file.name
     )
     const conMsg = {
-      type: "msg",
+      type: "msg-static",
       message: `Möchten Sie die Datei ${file.name} hochladen?`,
       incoming: false,
       outgoing: true,
       timestamp: Date.now(),
-      id: 999999999999999
+      id: messages.length
     }
-    setMessages(messages.concat(conMsg))
+    //Only for Development with json-server (to get message History from db.json)
+    messageService
+    .sendMessage(conMsg)
+    .then(returnedMessage => {
+      setMessages(messages.concat(returnedMessage))
+    })
+
+
   }
 
   return (

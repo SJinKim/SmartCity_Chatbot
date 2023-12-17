@@ -6,7 +6,7 @@
       "incoming": true,
       "outgoing": false,
       "timestamp": 1702637313257,
-      "id": 1
+      "id": 0
     },
     {
       "type": "msg",
@@ -14,7 +14,7 @@
       "incoming": false,
       "outgoing": true,
       "timestamp": 1702646439769,
-      "id": 2
+      "id": 1
     },
     {
       "type": "msg",
@@ -22,7 +22,7 @@
       "incoming": false,
       "outgoing": true,
       "timestamp": 1702646738317,
-      "id": 3
+      "id": 2
     },
     {
       "type": "msg",
@@ -30,7 +30,7 @@
       "incoming": false,
       "outgoing": true,
       "timestamp": 1702646744662,
-      "id": 4
+      "id": 3
     },
     {
       "type": "msg",
@@ -38,47 +38,7 @@
       "incoming": false,
       "outgoing": true,
       "timestamp": 1702646746587,
-      "id": 5
-    },
-    {
-      "type": "msg",
-      "message": "hi",
-      "incoming": false,
-      "outgoing": true,
-      "timestamp": 1702650193540,
-      "id": 6
-    },
-    {
-      "type": "msg",
-      "message": "hello",
-      "incoming": false,
-      "outgoing": true,
-      "timestamp": 1702650198443,
-      "id": 7
-    },
-    {
-      "type": "msg",
-      "message": "hi",
-      "incoming": false,
-      "outgoing": true,
-      "timestamp": 1702650347434,
-      "id": 8
-    },
-    {
-      "type": "msg",
-      "message": "Tom",
-      "incoming": false,
-      "outgoing": true,
-      "timestamp": 1702650353998,
-      "id": 9
-    },
-    {
-      "type": "msg",
-      "message": "Messag",
-      "incoming": false,
-      "outgoing": true,
-      "timestamp": 1702650371778,
-      "id": 10
+      "id": 4
     }
   ]
 }

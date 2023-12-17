@@ -1,5 +1,6 @@
-import { Button, Box, Stack, Typography } from "@mui/material"
+import { Box, Stack, Typography } from "@mui/material"
 import { useTheme } from "@mui/material/styles"
+import PropTypes from 'prop-types'
 
 const TextMsg = ({ el }) => {
   const theme = useTheme();
@@ -47,10 +48,6 @@ const TextMsg = ({ el }) => {
           >
             {el.message}
           </Typography>
-
-          <Button variant="contained" color="primary">
-            Senden
-          </Button>
         </Box>
       </Stack>
       <Stack
@@ -65,7 +62,12 @@ const TextMsg = ({ el }) => {
         </Typography>
       </Stack>
     </Box>
-  );
-};
+  )
+}
+
+TextMsg.propTypes = {
+  el: PropTypes.object.isRequired,
+
+}
 
 export { TextMsg };

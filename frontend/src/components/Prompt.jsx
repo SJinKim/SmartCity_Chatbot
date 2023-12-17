@@ -1,16 +1,13 @@
 import { Button, TextField, Box, Stack } from '@mui/material'
-
+import PropTypes from 'prop-types'
 
 const Prompt = (props) => {
-
     return (
-
         <Box
             component='form'
             onSubmit={props.sendMessage}
             sx={{
-                position: 'absolute',
-                bottom: '50px',
+                position: 'relative',
                 left: '50%',
                 width: '90%',
                 transform: 'translate(-50%, 50%)',
@@ -29,8 +26,13 @@ const Prompt = (props) => {
                 </Button>
             </Stack>
         </Box>
-
     )
+}
+
+Prompt.propTypes = {
+    sendMessage: PropTypes.func.isRequired,
+    newMessage: PropTypes.string.isRequired,
+    handleNewMessage: PropTypes.func.isRequired
 }
 
 export default Prompt

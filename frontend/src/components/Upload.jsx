@@ -1,4 +1,5 @@
 import { Button } from '@mui/material'
+import PropTypes from 'prop-types'
 
 const UploadButton = (props) => {
     return (
@@ -23,6 +24,10 @@ const UploadButton = (props) => {
             </Button>
         </>
     )
+}
+
+UploadButton.propTypes = {
+    handleNewFile: PropTypes.func.isRequired
 }
 
 export default UploadButton
