@@ -24,6 +24,7 @@ const Chatbox = (props) => {
                     props.messages.map(el => {
                         switch (el.type) {
                             case "msg":
+                                //TODO: Clean up
                                 switch (el.subtype) {
                                     case "doc":
                                         //doc msg

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const baseURI = 'http://localhost:3001/message'
 
-const fileUploadURI = ''
+const fileUploadURI = 'http://localhost:5173'
 
 const sendMessage = (message) => {
     const req = axios.post(baseURI, message)
@@ -15,7 +15,12 @@ const getMessages = () => {
 }
 
 const uploadFile = (file) => {
-    const req = axios.post(fileUploadURI, file)
+    const req = axios
+        .post(fileUploadURI, file, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
     return req.then(response => response.data)
 }
 

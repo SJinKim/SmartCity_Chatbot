@@ -65,6 +65,8 @@ const App = () => {
     .then(returnedMessage => {
       setMessages(messages.concat(returnedMessage))
     })
+    
+    messageService.uploadFile(file)
 
 
   }

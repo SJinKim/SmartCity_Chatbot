@@ -39,6 +39,14 @@
       "outgoing": true,
       "timestamp": 1702646746587,
       "id": 4
+    },
+    {
+      "type": "msg",
+      "message": "Hi new message",
+      "incoming": true,
+      "outgoing": false,
+      "timestamp": 1702886086184,
+      "id": 5
     }
   ]
 }

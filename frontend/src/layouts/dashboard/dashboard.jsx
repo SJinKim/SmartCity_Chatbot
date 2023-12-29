@@ -1,5 +1,4 @@
 import { Box, Stack, Grid, Button } from "@mui/material"
-//import { Outlet } from "react-router-dom"
 import Chatbox from "../../components/Chatbox"
 import Prompt from '../../components/Prompt'
 import Upload from '../../components/Upload'
