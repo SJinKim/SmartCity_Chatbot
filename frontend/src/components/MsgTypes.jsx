@@ -35,8 +35,8 @@ const TextMsg = ({ el }) => {
           p={1.5}
           sx={{
             backgroundColor: el.incoming
-              ? theme.palette.primary.light
-              : theme.palette.primary.main,
+              ?  '#F1F8CC'  //theme.palette.primary.light
+              : '#DAD9DF', //theme.palette.primary.main,
             width: "max-content",
             borderRadius: "1.5",
             m: 0,
@@ -44,7 +44,7 @@ const TextMsg = ({ el }) => {
         >
           <Typography
             variant="body2"
-            color={el.incoming ? theme.palette.text : "#fff"}
+            color={ theme.palette.text} //el.incoming ? theme.palette.text :"#fff"
           >
             {el.message}
           </Typography>

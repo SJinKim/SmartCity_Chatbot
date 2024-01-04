@@ -17,11 +17,24 @@ const Prompt = (props) => {
                 <TextField
                     fullWidth
                     id='prompt'
-                    label='prompt'
+                    placeholder="Ihre Nachricht an SmartCity Chatbot..."
                     value={props.newMessage}
                     onChange={props.handleNewMessage}
+                    sx={{
+                        '& .MuiOutlinedInput-root': {
+                          '&.Mui-focused fieldset': {
+                            borderColor: '#3B4159', // Custom focus color
+                          },
+                        },
+                      }}
                 />
-                <Button type='submit' variant='contained'>
+                <Button type='submit' variant='contained' sx={{
+                    bgcolor: '#3B4159',
+                    color: 'white',
+                    '&:hover': {
+                        bgcolor: 'rgba(59, 65, 89, 0.8)' // A slightly lighter color on hover
+                    }
+                }}>
                     Send
                 </Button>
             </Stack>
