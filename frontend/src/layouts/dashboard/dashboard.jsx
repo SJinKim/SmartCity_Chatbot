@@ -3,6 +3,7 @@ import { Box, Stack, Grid, Button } from "@mui/material"
 import Chatbox from "../../components/Chatbox"
 import Prompt from '../../components/Prompt'
 import Upload from '../../components/Upload'
+import Download from "../../components/Download"
 import PropTypes from 'prop-types'
 
 const DashboardLayout = (props) => {
@@ -23,6 +24,7 @@ const DashboardLayout = (props) => {
                             </Button>
 
                             <Upload handleNewFile={props.handleNewFile} />
+                            <Download handleFileDownload={props.handleFileDownload} />
                         </Stack>
                     </Box>
                 </Grid>
@@ -48,7 +50,8 @@ DashboardLayout.propTypes = {
     messages: PropTypes.array.isRequired,
     sendMessage: PropTypes.func.isRequired,
     newMessage: PropTypes.string.isRequired,
-    handleNewMessage: PropTypes.func.isRequired
+    handleNewMessage: PropTypes.func.isRequired,
+    handleFileDownload: PropTypes.func.isRequired
 }
 
 

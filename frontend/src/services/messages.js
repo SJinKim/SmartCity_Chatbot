@@ -1,8 +1,10 @@
 import axios from 'axios'
 
-const baseURI = 'http://localhost:3001/message'
+const baseURI = '/api/message'
 
-const fileUploadURI = ''
+const fileUploadURI = '/api/upload'
+
+const fileDownloadURI = '/api/files'
 
 const sendMessage = (message) => {
     const req = axios.post(baseURI, message)
@@ -14,10 +16,16 @@ const getMessages = () => {
     return req.then(response => response.data)
 }
 
-const uploadFile = (file) => {
-    const req = axios.post(fileUploadURI, file)
-    return req.then(response => response.data)
+const uploadFile = async (file) => {
+    const response = await axios.post(fileUploadURI, file)
+    return response.data
+}
+
+const downloadFile = async (filename) => {
+    const response = await axios.get(`${fileDownloadURI}/${filename}`,
+    {responseType: 'blob'})
+    return response.data
 }
 
 
-export default { sendMessage, getMessages, uploadFile }
+export default { sendMessage, getMessages, uploadFile, downloadFile }

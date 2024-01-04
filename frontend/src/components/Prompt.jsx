@@ -20,6 +20,7 @@ const Prompt = (props) => {
                     label='prompt'
                     value={props.newMessage}
                     onChange={props.handleNewMessage}
+                    autoComplete='off'
                 />
                 <Button type='submit' variant='contained'>
                     Send

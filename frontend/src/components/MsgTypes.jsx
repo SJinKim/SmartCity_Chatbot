@@ -45,8 +45,9 @@ const TextMsg = ({ el }) => {
           <Typography
             variant="body2"
             color={el.incoming ? theme.palette.text : "#fff"}
+            style={{whiteSpace: 'pre-line'}}
           >
-            {el.message}
+              {el.message}
           </Typography>
         </Box>
       </Stack>

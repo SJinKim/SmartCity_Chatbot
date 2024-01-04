@@ -24,18 +24,7 @@ const Chatbox = (props) => {
                     props.messages.map(el => {
                         switch (el.type) {
                             case "msg":
-                                switch (el.subtype) {
-                                    case "doc":
-                                        //doc msg
-                                        break;
-                                    case "reply":
-                                        //reply msg
-                                        break;
-                                    default:
-                                        // text msg
-                                        return <TextMsg key={el.id} el={el} />
-                                }
-                                break;
+                                return <TextMsg key={el.id} el={el} />
                             case "msg-static":
                                 return <TextMsg key={el.id} el={el} />
                             default:
