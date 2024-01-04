@@ -55,7 +55,7 @@ const App = () => {
   const handleFileDownload = async (event) => {
     event.preventDefault()
     try {
-      const response = await messageService.downloadFile('sachverhalt.pdf')
+      const response = await messageService.downloadFile('Bescheidvorlage.pdf')
       const file = new Blob(
         [response],
         { type: 'application/pdf' })
@@ -74,6 +74,10 @@ const App = () => {
     }
   }
 
+  const handleClick = (event) => {
+    event.preventDefault()
+  }
+
   return (
     <>
       < DashboardLayout
@@ -83,6 +87,7 @@ const App = () => {
         newMessage={newMessage}
         handleNewFile={handleNewFile}
         handleFileDownload={handleFileDownload}
+        handleClick={handleClick}
       />
     </>
   )
