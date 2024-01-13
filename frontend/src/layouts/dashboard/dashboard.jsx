@@ -1,4 +1,4 @@
-import { Box, Stack, Grid, Button, Typography } from "@mui/material"
+import { Box, Stack, Grid, Button, Typography, createTheme, ThemeProvider } from "@mui/material"
 import Chatbox from "../../components/Chatbox"
 import Prompt from '../../components/Prompt'
 import Upload from '../../components/Upload'
@@ -6,32 +6,19 @@ import Download from "../../components/Download"
 import PropTypes from 'prop-types'
 import { useTheme } from '@mui/material/styles'
 import NewChatButton from "../../components/NewChat"
-//import Images from "../../../images/ui!.png"
 
-const DashboardLayout = (props) => {
 
-    const theme = useTheme();
+function DashboardLayout(props) {
 
-    const handleAnleitungButtonClick = () => {
-        const anleitungMessage = {
-            type: "msg-static",
-            message: "Anleitung: here is how to use the chat",
-            incoming: false,
-            outgoing: true,
-            timestamp: Date.now(),
-            id: props.messages.length
-        };
-
-        props.sendMessage(anleitungMessage);
-    };
-
+    const theme = useTheme()
     return (
         <Box sx={{
+            p: 0, m: 0,
             flexGrow: 1,
             height: '97vh', display: 'flex',
             overflow: 'hidden'
         }}>
-            <Grid container spacing={0}>
+            <Grid container spacing={0} sx={{ height: '100%' }}>
                 <Grid item xs={1.5}
                     sx={{
                         display: 'flex',
@@ -49,16 +36,9 @@ const DashboardLayout = (props) => {
                         justifyContent: 'center',
                     }}>
                         {/* the logo comes here! */}
-                        <img src="../../../images/ui!.png" alt="Logo" style={{ maxHeight: '40%', maxWidth: '40%' }} />
-                        <Typography
-                            sx={{
-                                color: 'white',
-                                marginLeft: theme.spacing(1), // Add some spacing between the logo and text
-                                fontSize: '0.875rem', // Adjust font size as needed
-                                whiteSpace: 'nowrap' // Prevent wrapping to a new line
-                            }}>
-                            urban software institute
-                        </Typography>
+                        <img src="../../../images/logo-ui.png" alt="Logo" style={{ maxHeight: '100%', maxWidth: '100%' }} />
+
+
                     </Box>
                     {/* Top content */}
                     <Box sx={{
@@ -84,7 +64,7 @@ const DashboardLayout = (props) => {
                         <Upload handleNewFile={props.handleNewFile} />
                         <Download handleFileDownload={props.handleFileDownload} />
                         <Button variant="contained" color="primary"
-                            onClick={handleAnleitungButtonClick}
+                             onClick={props.handleAnleitungButtonClick} // Use the function from props
                             sx={{
                                 bgcolor: '#3B4159',
                                 color: 'white',
@@ -104,18 +84,16 @@ const DashboardLayout = (props) => {
                         sx={{ height: '100vh', overflow: 'auto' }}
                     >
                         <Chatbox
-                            messages={props.messages}
-                        />
+                            messages={props.messages} />
                         <Prompt
                             sendMessage={props.sendMessage}
                             handleNewMessage={props.handleNewMessage}
-                            newMessage={props.newMessage}
-                        />
+                            newMessage={props.newMessage} />
                     </Stack>
                 </Grid>
             </Grid>
         </Box>
-    );
+    )
 
 
 }
