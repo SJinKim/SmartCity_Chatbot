@@ -104,8 +104,7 @@ else:
         docstore = InMemoryDocstore({str(i): chunk for i, chunk in enumerate(split_documents)})
         index_to_docstore_id = {i: str(i) for i in range(len(split_documents))}
         distance_strategy = DistanceStrategy.COSINE
-        vectorstore_faiss = FAISS(embedding_function=embedding_func, index=index, docstore=docstore,
-                                  index_to_docstore_id=index_to_docstore_id, distance_strategy=distance_strategy)
+        vectorstore_faiss = FAISS(embedding_function=embedding_func, index=index, docstore=docstore,index_to_docstore_id=index_to_docstore_id, distance_strategy=distance_strategy)
         vectorstore_faiss.add_documents(split_documents)
         return vectorstore_faiss
 
@@ -147,7 +146,7 @@ while True:
     with tqdm(total=1, desc="Antwort-Generierung") as pbar:
         response_comb = chain.run(input_documents=results_comb, question=query)
 
-         # Zusatz: Antwort übersetzen & formattieren
+        # Zusatz: Antwort übersetzen & formattieren
         translator = GoogleTranslator(source='auto', target='german')
         trans_result = translator.translate(response_comb)
         sentences = nltk.sent_tokenize(trans_result)

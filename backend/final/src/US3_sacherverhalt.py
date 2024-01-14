@@ -51,7 +51,8 @@ def load_document_from_url(url):
     doc = url_loader.load()
     return doc
 
-# Beispielaufruf der Funktion für docx od. pdf
+# Beispielaufruf der Funktion für docx od. pdf 
+# hier muss sachverhalt rein
 file_path = r"D:\# Projects\SmartCity_Chatbot\Demo\Sachverhalt.docx"
 # Dateinamen aus Dateipfad extrahieren
 file_name = os.path.basename(file_path)
