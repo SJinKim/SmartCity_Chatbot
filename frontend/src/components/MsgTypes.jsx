@@ -34,11 +34,11 @@ const TextMsg = ({ el }) => {
         <Box
           p={1.5}
           sx={{
-            backgroundColor: el.incoming
+            bgcolor: el.incoming
               ?  '#F1F8CC'  //theme.palette.primary.light
               : '#DAD9DF', //theme.palette.primary.main,
             width: "max-content",
-            borderRadius: "1.5",
+            borderRadius: "10px",
             m: 0,
           }}
         >

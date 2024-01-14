@@ -1,4 +1,5 @@
-import { Button, TextField, Box, Stack } from '@mui/material'
+import { Button, TextField, Box, Stack, InputAdornment } from '@mui/material'
+import SendIcon from '@mui/icons-material/Send';
 import PropTypes from 'prop-types'
 
 const Prompt = (props) => {
@@ -23,21 +24,32 @@ const Prompt = (props) => {
                     autoComplete='off'
                     sx={{
                         '& .MuiOutlinedInput-root': {
-                          '&.Mui-focused fieldset': {
-                            borderColor: '#3B4159', // Custom focus color
-                          },
+                            '&.Mui-focused fieldset': {
+                                borderColor: '#3B4159', // Custom focus color
+                            },
+                            borderRadius: '25px'
                         },
-                      }}
+                    }}
+                    InputProps={{
+                        endAdornment:
+                            <InputAdornment position="end">
+                                <SendIcon position='end' />
+                            </InputAdornment>,
+                    }}
                 />
-                <Button type='submit' variant='contained' sx={{
+                {/** 
+                 * <Button type='submit' variant='contained' sx={{
                     bgcolor: '#3B4159',
                     color: 'white',
                     '&:hover': {
                         bgcolor: 'rgba(59, 65, 89, 0.8)' // A slightly lighter color on hover
-                    }
+                    },
+                    borderRadius: '25px'
                 }}>
                     Send
                 </Button>
+                */}
+
             </Stack>
         </Box>
     )
