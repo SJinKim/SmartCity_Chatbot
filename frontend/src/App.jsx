@@ -1,15 +1,38 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import messageService from './services/messages'
 import DashboardLayout from './layouts/dashboard/dashboard'
-import chatWebsocket from './services/chatWebsocket'
 
-const socket = chatWebsocket.createSocket()
+const socket = new WebSocket("ws://localhost:8000/api/chat")
 
 const App = () => {
   const [newMessage, setNewMessage] = useState('')
   const [messages, setMessages] = useState([])
+  const [chatHistory, setChatHistory] = useState([])
+  const [chatId, setChatId] = useState(1)
+  const [openChats, setOpenChats] = useState([1])
+  const [isTyping, setIsTyping] = useState(false)
 
-  chatWebsocket.onMessage(socket, setMessages, setNewMessage, messages)
+  useEffect(() => {
+    setChatHistory(messages.filter(msg => {
+      if (msg.chatId === chatId)
+        return msg
+    }))
+  }, [chatId, messages])
+
+  socket.onmessage = (event) => {
+    const message = {
+      type: "msg",
+      message: event.data,
+      incoming: false,
+      outgoing: true,
+      timestamp: Date.now(),
+      id: messages.length,
+      chatId: chatId
+    }
+    setMessages(messages.concat(message))
+    setNewMessage('')
+    setIsTyping(false)
+  }
 
   const handleNewMessage = (event) => {
     setNewMessage(event.target.value)
@@ -24,11 +47,13 @@ const App = () => {
         incoming: true,
         outgoing: false,
         timestamp: Date.now(),
-        id: messages.length
+        id: messages.length,
+        chatId: chatId
       }
       socket.send(JSON.stringify(message.message))
       setMessages(messages.concat(message))
       setNewMessage('')
+      setIsTyping(true)
     }
   }
 
@@ -47,7 +72,8 @@ const App = () => {
       incoming: false,
       outgoing: true,
       timestamp: Date.now(),
-      id: messages.length
+      id: messages.length,
+      chatId: chatId
     }
     setMessages(messages.concat(conMsg))
   }
@@ -68,26 +94,45 @@ const App = () => {
         incoming: false,
         outgoing: true,
         timestamp: Date.now(),
-        id: messages.length
+        id: messages.length,
+        chatId: chatId
       }
       setMessages(messages.concat(conMsg))
     }
   }
 
-  const handleClick = (event) => {
-    event.preventDefault()
+  const handleNewTab = (id) => {
+    setChatId(id)
+    setOpenChats(openChats.concat(id))
+  }
+
+  // TODO
+  const handleTabDelete = (id) => {
+    setMessages(messages.filter(msg => {
+      if (msg.chatId !== id)
+        return msg
+    }))
+    const chats = openChats.filter(chat => {
+      if (chat !== id)
+        return chat
+    })
+    setOpenChats(chats)
+    setChatId(chats.sort((a, b) => { a > b ? -1 : 1 })[chats.length - 1])
   }
 
   return (
     <>
       < DashboardLayout
-        messages={messages}
+        messages={chatHistory}
         sendMessage={sendMessage}
         handleNewMessage={handleNewMessage}
         newMessage={newMessage}
         handleNewFile={handleNewFile}
         handleFileDownload={handleFileDownload}
-        handleClick={handleClick}
+        handleNewTab={handleNewTab}
+        handleTabDelete={handleTabDelete}
+        chatId={chatId}
+        isTyping={isTyping}
       />
     </>
   )

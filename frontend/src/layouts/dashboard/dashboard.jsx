@@ -10,7 +10,7 @@ import NewChatButton from "../../components/NewChat"
 
 const DashboardLayout = (props) => {
 
-    const theme = useTheme();
+    const theme = useTheme()
 
     const handleAnleitungButtonClick = () => {
         const anleitungMessage = {
@@ -20,19 +20,21 @@ const DashboardLayout = (props) => {
             outgoing: true,
             timestamp: Date.now(),
             id: props.messages.length
-        };
+        }
 
-        props.sendMessage(anleitungMessage);
-    };
+        props.sendMessage(anleitungMessage)
+    }
 
     return (
         <Box sx={{
+            margin: 0,
             flexGrow: 1,
-            height: '97vh', display: 'flex',
+            height: '100vh', display: 'flex',
             overflow: 'hidden'
         }}>
             <Grid container spacing={0}>
-                <Grid item xs={1.5}
+                {/** This is the Menu Container -> Refactor in new Dashboard Component? */}
+                <Grid item xs={1.8}
                     sx={{
                         display: 'flex',
                         flexDirection: 'column', // Stack children vertically
@@ -68,8 +70,10 @@ const DashboardLayout = (props) => {
                     }}>
                         <Stack spacing={2} sx={{ mt: 0.5, p: 2 }}>
                             {/* Add top content here, like other buttons or list items */}
-                            <NewChatButton handleClick={props.handleClick} />
-
+                            <NewChatButton
+                                handleNewTab={props.handleNewTab}
+                                handleTabDelete={props.handleTabDelete}
+                            />
                         </Stack>
                     </Box>
                     {/* Spacer to push the bottom content down */}
@@ -99,12 +103,14 @@ const DashboardLayout = (props) => {
 
                     </Stack>
                 </Grid>
-                <Grid item xs={10.5}>
+                <Grid item xs={10.2}>
                     <Stack
-                        sx={{ height: '100vh', overflow: 'auto' }}
+                        sx={{ height: '92vh' }}
                     >
                         <Chatbox
                             messages={props.messages}
+                            chatId={props.chatId}
+                            isTyping={props.isTyping}
                         />
                         <Prompt
                             sendMessage={props.sendMessage}
@@ -115,9 +121,7 @@ const DashboardLayout = (props) => {
                 </Grid>
             </Grid>
         </Box>
-    );
-
-
+    )
 }
 
 DashboardLayout.propTypes = {
@@ -127,7 +131,10 @@ DashboardLayout.propTypes = {
     newMessage: PropTypes.string.isRequired,
     handleNewMessage: PropTypes.func.isRequired,
     handleFileDownload: PropTypes.func.isRequired,
-    handleClick: PropTypes.func.isRequired
+    handleNewTab: PropTypes.func.isRequired,
+    handleTabDelete: PropTypes.func.isRequired,
+    chatId: PropTypes.number,
+    isTyping: PropTypes.bool.isRequired
 }
 
 

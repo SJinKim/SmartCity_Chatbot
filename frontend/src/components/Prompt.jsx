@@ -17,7 +17,7 @@ const Prompt = (props) => {
                 <TextField
                     fullWidth
                     id='prompt'
-                    placeholder="Ihre Nachricht an SmartCity Chatbot..."
+                    placeholder="Ihre Nachricht an Smart City Chatbot..."
                     value={props.newMessage}
                     onChange={props.handleNewMessage}
                     autoComplete='off'
