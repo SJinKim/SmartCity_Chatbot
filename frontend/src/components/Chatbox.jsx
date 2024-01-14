@@ -57,8 +57,7 @@ const Chatbox = (props) => {
         <Stack spacing={3} ref={chatbox}>
           {props.messages.map(el => {
             return <TextMsg key={el.id} el={el} />
-          }
-          )}
+          })}
           {typingIndicator()}
         </Stack>
       </Box>

@@ -1,4 +1,4 @@
-import { Box, Stack, Grid, Button, Typography } from "@mui/material"
+import { Box, Stack, Grid, Button } from "@mui/material"
 import Chatbox from "../../components/Chatbox"
 import Prompt from '../../components/Prompt'
 import Upload from '../../components/Upload'
@@ -6,25 +6,11 @@ import Download from "../../components/Download"
 import PropTypes from 'prop-types'
 import { useTheme } from '@mui/material/styles'
 import NewChatButton from "../../components/NewChat"
-//import Images from "../../../images/ui!.png"
 
-const DashboardLayout = (props) => {
+
+function DashboardLayout(props) {
 
     const theme = useTheme()
-
-    const handleAnleitungButtonClick = () => {
-        const anleitungMessage = {
-            type: "msg-static",
-            message: "Anleitung: here is how to use the chat",
-            incoming: false,
-            outgoing: true,
-            timestamp: Date.now(),
-            id: props.messages.length
-        }
-
-        props.sendMessage(anleitungMessage)
-    }
-
     return (
         <Box sx={{
             margin: 0,
@@ -51,16 +37,9 @@ const DashboardLayout = (props) => {
                         justifyContent: 'center',
                     }}>
                         {/* the logo comes here! */}
-                        <img src="../../../images/ui!.png" alt="Logo" style={{ maxHeight: '40%', maxWidth: '40%' }} />
-                        <Typography
-                            sx={{
-                                color: 'white',
-                                marginLeft: theme.spacing(1), // Add some spacing between the logo and text
-                                fontSize: '0.875rem', // Adjust font size as needed
-                                whiteSpace: 'nowrap' // Prevent wrapping to a new line
-                            }}>
-                            urban software institute
-                        </Typography>
+                        <img src="../../../images/logo-ui.png" alt="Logo" style={{ maxHeight: '100%', maxWidth: '100%' }} />
+
+
                     </Box>
                     {/* Top content */}
                     <Box sx={{
@@ -88,7 +67,7 @@ const DashboardLayout = (props) => {
                         <Upload handleNewFile={props.handleNewFile} />
                         <Download handleFileDownload={props.handleFileDownload} />
                         <Button variant="contained" color="primary"
-                            onClick={handleAnleitungButtonClick}
+                             onClick={props.handleAnleitungButtonClick} // Use the function from props
                             sx={{
                                 bgcolor: '#3B4159',
                                 color: 'white',
@@ -115,8 +94,7 @@ const DashboardLayout = (props) => {
                         <Prompt
                             sendMessage={props.sendMessage}
                             handleNewMessage={props.handleNewMessage}
-                            newMessage={props.newMessage}
-                        />
+                            newMessage={props.newMessage} />
                     </Stack>
                 </Grid>
             </Grid>
@@ -134,7 +112,8 @@ DashboardLayout.propTypes = {
     handleNewTab: PropTypes.func.isRequired,
     handleTabDelete: PropTypes.func.isRequired,
     chatId: PropTypes.number,
-    isTyping: PropTypes.bool.isRequired
+    isTyping: PropTypes.bool.isRequired,
+    handleAnleitungButtonClick: PropTypes.func.isRequired
 }
 
 

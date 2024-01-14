@@ -78,6 +78,20 @@ const App = () => {
     setMessages(messages.concat(conMsg))
   }
 
+  const handleAnleitungButtonClick = () => {
+    const anleitungMessage = {
+      type: "msg-static",
+      message: "In diesem Chat können Sie Fragen zu Ihrem Bescheid stellen.\nDer Chat wird Ihnen den entsprechenden Bescheid zusenden. Sie haben die Möglichkeit, den Bescheid durch Klicken auf den Button 'Herunterladen' herunterzuladen. Zusätzlich können Sie eine Datei hochladen, indem Sie auf den Button 'Hochladen' klicken. Der Chat verwendet diese Datei, um den entsprechenden Bescheid zu finden.Um mehrere Chats zu öffnen, klicken Sie auf den Button 'Neuer Chat'.",
+        incoming: false,
+      outgoing: true,
+      timestamp: Date.now(),
+      id: messages.length,
+      chatId: chatId
+    };
+    // Directly use setMessages to add the new message
+    setMessages(messages.concat(anleitungMessage));
+  };
+
   const handleFileDownload = async (event) => {
     event.preventDefault()
     try {
@@ -120,6 +134,8 @@ const App = () => {
     setChatId(chats.sort((a, b) => { a > b ? -1 : 1 })[chats.length - 1])
   }
 
+  //TODO Wenn alle Chats Zu -> Start Screen UI Logo? -> Websocket close()
+  //TODO Neues Socket für jedes Chat Tab?
   return (
     <>
       < DashboardLayout
@@ -133,6 +149,7 @@ const App = () => {
         handleTabDelete={handleTabDelete}
         chatId={chatId}
         isTyping={isTyping}
+        handleAnleitungButtonClick={handleAnleitungButtonClick} // Pass the function as a prop
       />
     </>
   )
