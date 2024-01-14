@@ -1,0 +1,13 @@
+.yaml
+node_module
+Scripts
+Lib
+Include
+pycache
+pyvenv.cfg
+config.yaml
+.env
+share
+.venv*
+.txt
+venv*
