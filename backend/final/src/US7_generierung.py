@@ -11,6 +11,8 @@ def strToDocx(resource,output_path) -> None:
     doc = docx.Document() 
     para = doc.add_paragraph().add_run(resource) 
     doc.save(output_path)
+    
+#strToPdf
 
 def erstelleGutachten(sachverhalt, speicherpfad)->str:
     #Nutzt funktion aus US-5 und den verarbeitenden Sachverhalt zum Erstellung einer Anfrage an das llm-model
