@@ -67,8 +67,6 @@ async def websocket_endpoint(websocket: WebSocket):
     #load yaml file
     with open('config.yaml') as file:
         config = yaml.safe_load(file)
-
-    erstelleBescheid(sachverhalt="", prüfungsergebnis=erstelleGutachten(sachverhalt="", gutachten_path="downloadFiles"), bescheid_path="downloadFiles", prod_str=False)
     try:
         while True:
             message = await websocket.receive_text()
