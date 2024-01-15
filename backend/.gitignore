@@ -5,7 +5,6 @@ Lib
 Include
 pycache
 pyvenv.cfg
-config.yaml
 .env
 share
 .venv*

@@ -59,6 +59,15 @@ def strToPdf(resource: str, output_path:str) -> None:
     document.save(output_path)
 
 def erstelleGutachten(sachverhalt, gutachten_path)->str:
+    """ein Gutachten wird als docx und pdf file format erstellt. Es wird im gutachten_path abgelegt.
+
+    Args:
+        sachverhalt (docx, pdf): sachverhalt file
+        gutachten_path (str): path wo das gutachten abgelegt wird
+
+    Returns:
+        str: das Gutachten in str
+    """
     #Nutzt funktion aus US-5 und den verarbeitenden Sachverhalt zum Erstellung einer Anfrage an das llm-model
     gutachten_query=gutachtentemplate(sachverhalt=sachverhalt)
     #Nutzt funktion aus US-1 zum Generieren einer Antwort für die Anfrage von einem Gutachten
@@ -68,8 +77,18 @@ def erstelleGutachten(sachverhalt, gutachten_path)->str:
     strToPdf(resource=gutachten_response,output_path=gutachten_path)
     return gutachten_response 
 
-def erstelleBescheid(sachverhalt, prüfungsergebnis, bescheid_path)->str:
-    bescheid_query = bescheidTemplate(sachverhalt=sachverhalt,prüfungsergebnis = prüfungsergebnis)
+def erstelleBescheid(sachverhalt, gutachten_result, bescheid_path)->str:
+    """ein Bescheid wird als docx und pdf file Format erstellt. Es wird im gutachten_path abgelegt.
+
+    Args:
+        sachverhalt (docx, pdf): Sachverhalt file
+        gutachten_result (str): return vom erstelleGutachten function
+        bescheid_path (_type_): wo der Bescheid abgelegt wird
+
+    Returns:
+        str: den Bescheid in str
+    """
+    bescheid_query = bescheidTemplate(sachverhalt=sachverhalt,gutachten_result = gutachten_result)
     bescheid_response = qa_chain(query = bescheid_query)
     strToDocx(resource=bescheid_response,output_path=bescheid_path)    
     strToPdf(resource=bescheid_response,output_path=bescheid_path)
@@ -82,6 +101,6 @@ def erstelleBescheid(sachverhalt, prüfungsergebnis, bescheid_path)->str:
 #ergebnis testen
 if test:
     gutachten_response = erstelleGutachten(sachverhalt=gefragterSachverhalt,speicherpfad=gutachten_path)
-    erstelleBescheid(sachverhalt=gefragterSachverhalt,prüfungsergebnis=gutachten_response,speicherpfad=bescheid_path)
+    erstelleBescheid(sachverhalt=gefragterSachverhalt,gutachten_result=gutachten_response,speicherpfad=bescheid_path)
 else:
     pass
