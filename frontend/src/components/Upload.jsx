@@ -1,6 +1,5 @@
 import { Button } from '@mui/material'
 import PropTypes from 'prop-types'
-import { ThemeConsumer } from 'styled-components'
 
 const UploadButton = (props) => {
     return (
