@@ -4,12 +4,6 @@ on:
   push:
     branches:
       - US_F5
-    
-    workflow_dispatch:
-      inputs:
-        commit_sha:
-          description: "SHA of the commit"
-          required: true
 
 jobs:
   lint_build_pipeline:
@@ -18,8 +12,6 @@ jobs:
     steps:
       - name: checkout cepository
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.inputs.commit_sha }}
 
       - name: setup node
         uses: actions/setup-node@v4
