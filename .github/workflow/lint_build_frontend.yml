@@ -1,0 +1,45 @@
+name: lint and build frontend      
+
+on:
+  push:
+    branches:
+      - US_F5
+    
+    workflow_dispatch:
+      inputs:
+        commit_sha:
+          description: "SHA of the commit"
+          required: true
+
+jobs:
+  lint_build_pipeline:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: checkout cepository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.commit_sha }}
+
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: install dependencies
+        run: |
+            cd frontend
+            npm install
+          
+      - name: check style
+        run: |
+            cd frontend
+            npm run lint
+          
+      - name: build frontend
+        run: |
+            cd frontend
+            npm run build
+
+
+        
