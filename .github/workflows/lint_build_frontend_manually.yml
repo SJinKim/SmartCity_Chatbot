@@ -1,14 +1,10 @@
 name: lint and build frontend on dispatch      
 
 on:
-  push:
-    branches:
-      - US_F5
-  
   workflow_dispatch:
     inputs:
       commit_sha:
-        description: 'SHA of the commit'
+        description: 'SHA of the commit to build'
         required: true
 
 jobs:
