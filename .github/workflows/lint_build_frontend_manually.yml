@@ -4,12 +4,12 @@ on:
   push:
     branches:
       - US_F5
-    
+  
   workflow_dispatch:
     inputs:
-     commit_sha:
-      description: "SHA of the commit"
-      required: true
+      commit_sha:
+        description: 'SHA of the commit'
+        required: true
 
 jobs:
   lint_build_pipeline:
