@@ -3,7 +3,8 @@ name: lint and build frontend
 on:
   push:
     branches:
-      - US_F5
+      - frontend
+      - main
 
 jobs:
   lint_build_pipeline:
