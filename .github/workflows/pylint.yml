@@ -3,7 +3,8 @@ name: Pylint
 on:
     push:
         branches:
-            - pylintTest
+            - backend
+            - main
 
 jobs:
     lint_backend:
