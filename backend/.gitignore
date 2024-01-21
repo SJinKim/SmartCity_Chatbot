@@ -3,10 +3,11 @@ node_module
 Scripts
 Lib
 Include
-pycache
+__pycache__
 pyvenv.cfg
 .env
 share
 .venv*
 .txt
 venv*
+.v1
