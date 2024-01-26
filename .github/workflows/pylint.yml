@@ -3,7 +3,7 @@ name: Pylint
 on:
     push:
         branches:
-            - backend
+            - max
             - main
 
 jobs:

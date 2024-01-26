@@ -1,3 +1,8 @@
+"""_summary_
+
+    Returns:
+        _type_: _description_
+"""
 import os
 
 def init_client_and_embeddings():
