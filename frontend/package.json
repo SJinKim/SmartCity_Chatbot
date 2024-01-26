@@ -9,7 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "server": "json-server -p 3001 --watch db.json",
-    "build:deploy": "npm run build && rm -r ../backend/dist && cp ./dist ../backend/"
+    "build:deploy": "npm run build && rm -r ../backend/dist && cp -r ./dist ../backend/"
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
