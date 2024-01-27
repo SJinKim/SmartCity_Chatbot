@@ -3,27 +3,13 @@ from fastapi import FastAPI, UploadFile, File, WebSocket
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
-from openai import OpenAI
 
 import yaml
 
-from US7_generierung import erstelleBescheid, erstelleGutachten, write_path_to
-from US1_loadQA_AzureChat import qa_chain
+from internal.US7_generierung import erstelleBescheid, erstelleGutachten, write_path_to
+from internal.US1_loadQA_AzureChat import qa_chain
 
 load_dotenv()
-
-#Simple method to get ai answer -> just for development
-def get_ai_answer(user_message):
-    client = OpenAI()
-    completion = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "You are a professor for computer science"},
-            {"role": "user", "content": user_message}
-        ]
-    )
-    content = completion.choices[0].message.content
-    return content
 
 app = FastAPI()
 
@@ -65,7 +51,7 @@ def upload_file(file: UploadFile = File(...)):
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
     #load yaml file
-    with open('config.yaml') as file:
+    with open('./internal/config.yaml') as file:
         config = yaml.safe_load(file)
     try:
         while True:
@@ -78,7 +64,8 @@ async def websocket_endpoint(websocket: WebSocket):
                 break
             # TODO call the correct method for chatbot
             # Allgemeine Fragen
-            response = qa_chain(query=message)
+            response = "string"
+            # qa_chain(query=message)
             await websocket.send_text(response)
     except Exception as e:
         print(f"WebSocket error: {e}")
