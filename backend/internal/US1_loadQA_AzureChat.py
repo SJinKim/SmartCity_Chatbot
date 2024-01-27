@@ -6,7 +6,7 @@ from tqdm import tqdm
 import concurrent.futures
 from dotenv import load_dotenv
 from deep_translator import GoogleTranslator
-from langchain_community.chat_models import AzureChatOpenAI
+from langchain_openai import AzureChatOpenAI
 from langchain_community.embeddings import AzureOpenAIEmbeddings
 from langchain_community.docstore import InMemoryDocstore
 from langchain.text_splitter import Document, RecursiveCharacterTextSplitter
