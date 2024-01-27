@@ -2,26 +2,25 @@
 import aspose.pdf as ap
 import docx
 
-from US1_loadQA_AzureChat import qa_chain,load_file
-from US1_RetrievalQA_AzureChat import re_qa_chain
-from US6_bescheidtemplate import bescheidTemplate
-from US5_gutachtentemplate import gutachtentemplate
+from internal.US1_loadQA_AzureChat import qa_chain,load_file
+from internal.US6_bescheidtemplate import bescheidTemplate
+from internal.US5_gutachtentemplate import gutachtentemplate
 
 
 import yaml
 
-with open('config.yaml', 'r') as f:
+with open('./internal/config.yaml', 'r') as f:
     config = yaml.safe_load(f)
 
 print(f'current sachverhalt path: {config["current_sv_path"]}')
 
 def write_path_to(key, item):
-    with open('config.yaml', 'r') as file:
+    with open('./internal/config.yaml', 'r') as file:
         config = yaml.safe_load(file)
         config[f'{key}'] = f'{item}'
     print('path was modified in yaml file.')
 
-test = True
+test = False
 
 if test:
     #Dieser ist ein zu verarbeitender Sachverhalt, der später durch den url-link vom frontend ersetzt werden sollte.
@@ -31,8 +30,8 @@ if test:
     bescheid_path= "../output_docs/Beischeid.docx"
     # Systempfad, wo die Docx-Datei vom Bescheid geschrieben und gespeichert werden soll
     bescheid_path= "../output_docs/Beischeid.docx"
-else:
-    gefragterSachverhalt = load_file(config["current_sv_path"][0].page_content)
+#else:
+    #gefragterSachverhalt = load_file(config["current_sv_path"])[0].page_content
 
 
 def strToDocx(resource: str, output_path:str) -> None:
@@ -78,7 +77,7 @@ def erstelleGutachten(sachverhalt, gutachten_path)->str:
     gutachten_response = qa_chain(query=gutachten_query)
     #schreibt die Antwort vom llm-model in die Datei an dem gegebenen pfad
     strToDocx(resource=gutachten_response,output_path=gutachten_path)
-    strToPdf(resource=gutachten_response,output_path=gutachten_path)
+    #strToPdf(resource=gutachten_response,output_path=gutachten_path)
     return gutachten_response 
 
 def erstelleBescheid(sachverhalt, gutachten_result, bescheid_path)->str:
@@ -92,21 +91,10 @@ def erstelleBescheid(sachverhalt, gutachten_result, bescheid_path)->str:
     Returns:
         str: den Bescheid in str
     """
-    bescheid_query = bescheidTemplate(sachverhalt=sachverhalt,gutachten_result = gutachten_result)
+    bescheid_query = bescheidTemplate(sachverhalt=sachverhalt,prüfungsergebnis=gutachten_result)
     bescheid_response = qa_chain(query = bescheid_query)
     strToDocx(resource=bescheid_response,output_path=bescheid_path)    
-    strToPdf(resource=bescheid_response,output_path=bescheid_path)
+    #strToPdf(resource=bescheid_response,output_path=bescheid_path)
     #return f'Bescheid wurde in {bescheid_path} abgelegt!'
     write_path_to(key='erstellt', item=True)
-
     return bescheid_response
-
-
-#ergebnis testen
-if test:
-    
-    gutachten_response = erstelleGutachten(sachverhalt=gefragterSachverhalt, gutachten_path=gutachten_path)
-    print('Hello')
-    # erstelleBescheid(sachverhalt=gefragterSachverhalt,gutachten_result=gutachten_response,speicherpfad=bescheid_path)
-else:
-    pass

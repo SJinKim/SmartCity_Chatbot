@@ -1,4 +1,5 @@
-current_sv_path: ''
+current_sv_path: './input_docs/Sachverhalt1.docx'
 gutachten_path_saved: ''
 bescheid_path_saved: ''
 erstellt: False
+message_str: ''

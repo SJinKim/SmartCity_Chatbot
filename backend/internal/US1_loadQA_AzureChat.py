@@ -5,9 +5,8 @@ import nltk
 from tqdm import tqdm
 import concurrent.futures
 from dotenv import load_dotenv
-from deep_translator import GoogleTranslator
 from langchain_openai import AzureChatOpenAI
-from langchain_community.embeddings import AzureOpenAIEmbeddings
+from langchain_openai import AzureOpenAIEmbeddings
 from langchain_community.docstore import InMemoryDocstore
 from langchain.text_splitter import Document, RecursiveCharacterTextSplitter
 from langchain_community.document_loaders.unstructured import UnstructuredFileLoader
@@ -60,16 +59,9 @@ def qa_chain(query) -> Any :
         return document
 
     # Prüfung, ob gespeicherter Vectorstore existiert
-    if os.path.exists("data_recursive"):
+    if os.path.exists("./internal/data_recursive"):
         # Ja: gespeicherter Vectorestore wird geladen
-        loaded_faiss_vectorstore = FAISS.load_local("data_recursive", embeddings)
-
-        # Optional: Indexe im gespeicherten Vectorestore prüfen
-        index_path = os.path.join("data_recursive", "index.faiss")
-        path_name = os.path.basename(r"/Demo/data_recursive")
-        index = faiss.read_index(index_path)
-        anzahl_indexe = index.ntotal
-        #print(f"< {anzahl_indexe} > Indexe in FAISS-Vectorestore < {path_name} >")
+        loaded_faiss_vectorstore = FAISS.load_local("./internal/data_recursive", embeddings)
     else:
         # Sonst: Dokumente aus geg. Ordnerpfad werden parallel geladen (mit Fortschrittsbalken)
         with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -81,7 +73,7 @@ def qa_chain(query) -> Any :
                 docs.extend(doc)
                 progress_bar.update(1)
             progress_bar.close()
-        print(f"Anzahl der hochgeladenen Dateien < {len(docs)} > aus Ordner < {folder_name} >")
+        #print(f"Anzahl der hochgeladenen Dateien < {len(docs)} > aus Ordner < {folder_name} >")
 
 
         # Funktion: Aufteilen der Dokumente in Chunks mit Fortschrittbalken
@@ -99,12 +91,12 @@ def qa_chain(query) -> Any :
                     split_documents.extend(child_chunks)
                 progress.update(1)
             progress.close()
-            print(f"Anzahl der aufgeteilten Chunks < {len(split_documents)} > mit max. Chunk-Größe < {max_chunk} >")
+            #print(f"Anzahl der aufgeteilten Chunks < {len(split_documents)} > mit max. Chunk-Größe < {max_chunk} >")
             return split_documents, child_splitter
 
         split_docs, child_splitter = create_text_splitter(docs)
-        print(f"Anzahl der aufgeteilten Chunks: {len(split_docs)}")  # Test
-        print(f"Größe der Chunks (min_chunk): {child_splitter._chunk_size}")  # Test
+        #print(f"Anzahl der aufgeteilten Chunks: {len(split_docs)}")  # Test
+        #print(f"Größe der Chunks (min_chunk): {child_splitter._chunk_size}")  # Test
 
         # Funktion: Vectorstores erstellen durch Embedding der Dokumenten-Chunks
         def create_faiss_index(embedding_func, split_documents):
@@ -118,7 +110,7 @@ def qa_chain(query) -> Any :
             return vectorstore_faiss
 
         faiss_vectorstore = create_faiss_index(embeddings, split_docs)
-        print("Index created")  # Test
+        #print("Index created")  # Test
 
 
         # Funktion: Lokales Speichern des erstellten Vectorstores, um als Index zu nutzen
@@ -132,7 +124,7 @@ def qa_chain(query) -> Any :
         print("Index loaded")  # Test
         # Anzahl der Chunk-IDs im Index prüfen
         num_chunk_ids = loaded_faiss_vectorstore.index_to_docstore_id
-        print(f"< {len(num_chunk_ids)} > Chunk-IDs wurden im erstellen FAISS-Vectorstore gespeichert")
+        #print(f"< {len(num_chunk_ids)} > Chunk-IDs wurden im erstellen FAISS-Vectorstore gespeichert")
 
 
     # QA-Chain-Prozess:
@@ -150,12 +142,11 @@ def qa_chain(query) -> Any :
     results_similar = loaded_faiss_vectorstore.similarity_search(query)
     results_mmr = loaded_faiss_vectorstore.max_marginal_relevance_search(query)
     results_comb = results_similar + results_mmr
-    print(results_comb)
 
     # 3. Antwortgenerierung aus Frage-Antwort-System (mit Fortschrittsbalken)
     with tqdm(total=1, desc="Antwort-Generierung") as pbar:
-        response_comb = chain.run(input_documents=results_comb, question=query,)
-        return response_comb
+        response_comb = chain.invoke({"input_documents": results_comb, "question": query}, return_only_outputs=True)
+        return str(response_comb['output_text'])
 
 """         # Zusatz: Antwort übersetzen & formattieren
         translator = GoogleTranslator(source='auto', target='german')

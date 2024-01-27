@@ -135,8 +135,8 @@ while True:
         sentences = nltk.sent_tokenize(trans_result)
         format_response = '\n\n'.join(sentences)
         output = f"[Frage] {query}\n\n[Antwort] {format_response}"
-        print(output)
-        print("--------------------")
+        #print(output)
+        #print("--------------------")
         pbar.update(1)
 
 
@@ -145,10 +145,10 @@ def unique_chunk_ids(chunks, chunk_id):
     for specific_chunk_index in chunk_id:
         if specific_chunk_index < len(chunks):
             specific_chunk = chunks[specific_chunk_index]
-            print(f"{specific_chunk_index + 1}. Chunk-ID < {id(chunk_id)} >")
-            print(specific_chunk.page_content)
-            print("--------------------")
+            #print(f"{specific_chunk_index + 1}. Chunk-ID < {id(chunk_id)} >")
+            #print(specific_chunk.page_content)
+            #print("--------------------")
         else:
             valid_indices = ", ".join(str(i) for i in range(len(chunks)))
-            print(f"Ungültige Chunk-ID! Bitte wähle einen gültigen Index aus < {valid_indices} >.")
+            #print(f"Ungültige Chunk-ID! Bitte wähle einen gültigen Index aus < {valid_indices} >.")
 #unique_chunk_ids(doc_split, [0, 1])
