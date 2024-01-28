@@ -18,6 +18,11 @@ jobs:
               with: 
                 python-version: 3.10.12
             
+            - name: create venv
+              run: |
+                cd backend
+                python3 -m venv venv
+                source venv/bin/activate
             - name: install dependencies
               run: |
                 cd backend
