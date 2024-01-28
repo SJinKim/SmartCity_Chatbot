@@ -29,4 +29,5 @@ jobs:
             - name: lint python code
               run: |
                 cd backend
+                source venv/bin/activate
                 pylint $(git ls-files '*.py')
