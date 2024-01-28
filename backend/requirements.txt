@@ -16,7 +16,6 @@ chardet==5.2.0
 charset-normalizer==3.3.2
 click==8.1.7
 coloredlogs==15.0.1
-'command-not-found==0.3'
 contourpy==1.2.0
 cryptography==42.0.1
 cycler==0.12.1
