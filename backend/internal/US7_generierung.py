@@ -9,29 +9,15 @@ from internal.US5_gutachtentemplate import gutachtentemplate
 
 import yaml
 
-with open('./internal/config.yaml', 'r') as f:
-    config = yaml.safe_load(f)
-
-print(f'current sachverhalt path: {config["current_sv_path"]}')
 
 def write_path_to(key, item):
-    with open('./internal/config.yaml', 'r') as file:
-        config = yaml.safe_load(file)
-        config[f'{key}'] = f'{item}'
-    print('path was modified in yaml file.')
+    with open('./internal/config.yaml') as file:
+        config = yaml.safe_load(file)    
+    
+    config[key] = item
 
-test = False
-
-if test:
-    #Dieser ist ein zu verarbeitender Sachverhalt, der später durch den url-link vom frontend ersetzt werden sollte.
-    gefragterSachverhalt = load_file("../input_docs/Sachverhalt2.docx")[0].page_content
-    # Systempfad, wo die Docx-Datei vom Gutachten geschrieben und gespeichert werden soll
-    gutachten_path= "../output_docs/Gutachten.docx"
-    bescheid_path= "../output_docs/Beischeid.docx"
-    # Systempfad, wo die Docx-Datei vom Bescheid geschrieben und gespeichert werden soll
-    bescheid_path= "../output_docs/Beischeid.docx"
-#else:
-    #gefragterSachverhalt = load_file(config["current_sv_path"])[0].page_content
+    with open('./internal/config.yaml', 'w') as file:
+        yaml.dump(config, file)
 
 
 def strToDocx(resource: str, output_path:str) -> None:
@@ -95,6 +81,10 @@ def erstelleBescheid(sachverhalt, gutachten_result, bescheid_path)->str:
     bescheid_response = qa_chain(query = bescheid_query)
     strToDocx(resource=bescheid_response,output_path=bescheid_path)    
     #strToPdf(resource=bescheid_response,output_path=bescheid_path)
-    #return f'Bescheid wurde in {bescheid_path} abgelegt!'
-    write_path_to(key='erstellt', item=True)
     return bescheid_response
+
+def erstelleBescheidBackground(filePath: str):
+        gutachten = erstelleGutachten(sachverhalt=load_file(filePath), gutachten_path="./output_docs/Gutachten.docx")
+        message_str = erstelleBescheid(sachverhalt=load_file(filePath), gutachten_result=gutachten, bescheid_path="./output_docs/Bescheid.docx")
+        write_path_to(key='message_str', item=message_str)
+        write_path_to(key='erstellt', item=True)

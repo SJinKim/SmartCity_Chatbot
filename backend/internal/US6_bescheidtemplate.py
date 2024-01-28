@@ -1,9 +1,5 @@
-from typing import List
-from docx import Document
 from langchain.prompts.pipeline import PipelinePromptTemplate
 from langchain.prompts.prompt import PromptTemplate
-from dotenv import load_dotenv
-from langchain_community.document_loaders.unstructured import UnstructuredFileLoader
 from internal.US1_loadQA_AzureChat import load_file
 
 def bescheidTemplate(sachverhalt:str,prüfungsergebnis) -> PipelinePromptTemplate:   

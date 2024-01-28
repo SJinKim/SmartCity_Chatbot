@@ -1,0 +1,334 @@
+************* Module internal.US1_RetrievalQA_AzureChat
+internal/US1_RetrievalQA_AzureChat.py:70:0: C0301: Line too long (115/100) (line-too-long)
+internal/US1_RetrievalQA_AzureChat.py:70:0: C0325: Unnecessary parens after '=' keyword (superfluous-parens)
+internal/US1_RetrievalQA_AzureChat.py:86:0: C0301: Line too long (112/100) (line-too-long)
+internal/US1_RetrievalQA_AzureChat.py:95:0: C0301: Line too long (116/100) (line-too-long)
+internal/US1_RetrievalQA_AzureChat.py:108:0: C0301: Line too long (104/100) (line-too-long)
+internal/US1_RetrievalQA_AzureChat.py:109:0: C0301: Line too long (115/100) (line-too-long)
+internal/US1_RetrievalQA_AzureChat.py:127:0: C0301: Line too long (102/100) (line-too-long)
+internal/US1_RetrievalQA_AzureChat.py:131:0: C0301: Line too long (112/100) (line-too-long)
+internal/US1_RetrievalQA_AzureChat.py:132:0: C0301: Line too long (109/100) (line-too-long)
+internal/US1_RetrievalQA_AzureChat.py:133:0: C0301: Line too long (111/100) (line-too-long)
+internal/US1_RetrievalQA_AzureChat.py:134:0: C0301: Line too long (139/100) (line-too-long)
+internal/US1_RetrievalQA_AzureChat.py:135:0: C0301: Line too long (113/100) (line-too-long)
+internal/US1_RetrievalQA_AzureChat.py:140:0: C0301: Line too long (117/100) (line-too-long)
+internal/US1_RetrievalQA_AzureChat.py:146:0: C0301: Line too long (125/100) (line-too-long)
+internal/US1_RetrievalQA_AzureChat.py:151:0: C0303: Trailing whitespace (trailing-whitespace)
+internal/US1_RetrievalQA_AzureChat.py:152:0: C0301: Line too long (155/100) (line-too-long)
+internal/US1_RetrievalQA_AzureChat.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/US1_RetrievalQA_AzureChat.py:1:0: C0103: Module name "US1_RetrievalQA_AzureChat" doesn't conform to snake_case naming style (invalid-name)
+internal/US1_RetrievalQA_AzureChat.py:18:0: C0116: Missing function or method docstring (missing-function-docstring)
+internal/US1_RetrievalQA_AzureChat.py:18:0: R0914: Too many local variables (38/15) (too-many-locals)
+internal/US1_RetrievalQA_AzureChat.py:100:49: W0212: Access to a protected member _chunk_size of a client class (protected-access)
+internal/US1_RetrievalQA_AzureChat.py:140:4: W0105: String statement has no effect (pointless-string-statement)
+internal/US1_RetrievalQA_AzureChat.py:18:0: R0915: Too many statements (78/50) (too-many-statements)
+internal/US1_RetrievalQA_AzureChat.py:61:8: W0612: Unused variable 'path_name' (unused-variable)
+internal/US1_RetrievalQA_AzureChat.py:63:8: W0612: Unused variable 'anzahl_indexe' (unused-variable)
+internal/US1_RetrievalQA_AzureChat.py:6:0: C0411: standard import "import concurrent.futures" should be placed before "import faiss" (wrong-import-order)
+internal/US1_RetrievalQA_AzureChat.py:11:0: C0412: Imports from package langchain_community are not grouped (ungrouped-imports)
+internal/US1_RetrievalQA_AzureChat.py:13:0: C0412: Imports from package langchain_community are not grouped (ungrouped-imports)
+internal/US1_RetrievalQA_AzureChat.py:16:0: C0412: Imports from package langchain are not grouped (ungrouped-imports)
+************* Module internal.US1_loadQA_AzureChat
+internal/US1_loadQA_AzureChat.py:69:0: C0301: Line too long (115/100) (line-too-long)
+internal/US1_loadQA_AzureChat.py:69:0: C0325: Unnecessary parens after '=' keyword (superfluous-parens)
+internal/US1_loadQA_AzureChat.py:85:0: C0301: Line too long (112/100) (line-too-long)
+internal/US1_loadQA_AzureChat.py:94:0: C0301: Line too long (117/100) (line-too-long)
+internal/US1_loadQA_AzureChat.py:107:0: C0301: Line too long (104/100) (line-too-long)
+internal/US1_loadQA_AzureChat.py:108:0: C0301: Line too long (115/100) (line-too-long)
+internal/US1_loadQA_AzureChat.py:127:0: C0301: Line too long (103/100) (line-too-long)
+internal/US1_loadQA_AzureChat.py:135:0: C0301: Line too long (114/100) (line-too-long)
+internal/US1_loadQA_AzureChat.py:141:0: C0301: Line too long (125/100) (line-too-long)
+internal/US1_loadQA_AzureChat.py:148:0: C0301: Line too long (116/100) (line-too-long)
+internal/US1_loadQA_AzureChat.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/US1_loadQA_AzureChat.py:1:0: C0103: Module name "US1_loadQA_AzureChat" doesn't conform to snake_case naming style (invalid-name)
+internal/US1_loadQA_AzureChat.py:18:0: C0116: Missing function or method docstring (missing-function-docstring)
+internal/US1_loadQA_AzureChat.py:25:0: C0116: Missing function or method docstring (missing-function-docstring)
+internal/US1_loadQA_AzureChat.py:25:0: R0914: Too many local variables (28/15) (too-many-locals)
+internal/US1_loadQA_AzureChat.py:133:4: W0105: String statement has no effect (pointless-string-statement)
+internal/US1_loadQA_AzureChat.py:25:0: R0915: Too many statements (56/50) (too-many-statements)
+internal/US1_loadQA_AzureChat.py:97:20: W0612: Unused variable 'child_splitter' (unused-variable)
+internal/US1_loadQA_AzureChat.py:126:8: W0612: Unused variable 'num_chunk_ids' (unused-variable)
+internal/US1_loadQA_AzureChat.py:147:54: W0612: Unused variable 'pbar' (unused-variable)
+internal/US1_loadQA_AzureChat.py:151:0: W0105: String statement has no effect (pointless-string-statement)
+internal/US1_loadQA_AzureChat.py:6:0: C0411: standard import "import concurrent.futures" should be placed before "import faiss" (wrong-import-order)
+internal/US1_loadQA_AzureChat.py:16:0: C0411: standard import "from typing import Any, List" should be placed before "import faiss" (wrong-import-order)
+internal/US1_loadQA_AzureChat.py:12:0: C0412: Imports from package langchain_community are not grouped (ungrouped-imports)
+internal/US1_loadQA_AzureChat.py:15:0: C0412: Imports from package langchain are not grouped (ungrouped-imports)
+************* Module internal.US3_sacherverhalt
+internal/US3_sacherverhalt.py:10:0: C0301: Line too long (115/100) (line-too-long)
+internal/US3_sacherverhalt.py:13:0: C0301: Line too long (110/100) (line-too-long)
+internal/US3_sacherverhalt.py:54:46: C0303: Trailing whitespace (trailing-whitespace)
+internal/US3_sacherverhalt.py:85:0: C0301: Line too long (102/100) (line-too-long)
+internal/US3_sacherverhalt.py:86:0: C0301: Line too long (246/100) (line-too-long)
+internal/US3_sacherverhalt.py:87:0: C0301: Line too long (287/100) (line-too-long)
+internal/US3_sacherverhalt.py:97:0: C0301: Line too long (287/100) (line-too-long)
+internal/US3_sacherverhalt.py:98:0: C0301: Line too long (334/100) (line-too-long)
+internal/US3_sacherverhalt.py:99:0: C0301: Line too long (194/100) (line-too-long)
+internal/US3_sacherverhalt.py:110:0: C0301: Line too long (104/100) (line-too-long)
+internal/US3_sacherverhalt.py:114:0: C0301: Line too long (110/100) (line-too-long)
+internal/US3_sacherverhalt.py:122:0: C0301: Line too long (101/100) (line-too-long)
+internal/US3_sacherverhalt.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/US3_sacherverhalt.py:1:0: C0103: Module name "US3_sacherverhalt" doesn't conform to snake_case naming style (invalid-name)
+internal/US3_sacherverhalt.py:10:0: E0611: No name 'UnstructuredWordDocumentLoader' in module 'langchain.document_loaders' (no-name-in-module)
+internal/US3_sacherverhalt.py:10:0: E0611: No name 'UnstructuredPDFLoader' in module 'langchain.document_loaders' (no-name-in-module)
+internal/US3_sacherverhalt.py:10:0: E0611: No name 'UnstructuredURLLoader' in module 'langchain.document_loaders' (no-name-in-module)
+internal/US3_sacherverhalt.py:37:0: C0116: Missing function or method docstring (missing-function-docstring)
+internal/US3_sacherverhalt.py:37:18: W0621: Redefining name 'file_path' from outer scope (line 56) (redefined-outer-name)
+internal/US3_sacherverhalt.py:41:8: W0621: Redefining name 'doc' from outer scope (line 60) (redefined-outer-name)
+internal/US3_sacherverhalt.py:49:0: C0116: Missing function or method docstring (missing-function-docstring)
+internal/US3_sacherverhalt.py:49:27: W0621: Redefining name 'url' from outer scope (line 63) (redefined-outer-name)
+internal/US3_sacherverhalt.py:51:4: W0621: Redefining name 'doc' from outer scope (line 60) (redefined-outer-name)
+internal/US3_sacherverhalt.py:56:0: C0103: Constant name "file_path" doesn't conform to UPPER_CASE naming style (invalid-name)
+internal/US3_sacherverhalt.py:63:0: C0103: Constant name "url" doesn't conform to UPPER_CASE naming style (invalid-name)
+internal/US3_sacherverhalt.py:71:12: R1721: Unnecessary use of a comprehension, use list(range(len(doc_split))) instead. (unnecessary-comprehension)
+internal/US3_sacherverhalt.py:79:0: C0116: Missing function or method docstring (missing-function-docstring)
+internal/US3_sacherverhalt.py:84:20: W1308: Duplicate string formatting argument 'prompt', consider passing as named argument (duplicate-string-formatting-argument)
+internal/US3_sacherverhalt.py:85:8: C0209: Formatting a regular string which could be an f-string (consider-using-f-string)
+internal/US3_sacherverhalt.py:136:8: C0103: Constant name "format_response" doesn't conform to UPPER_CASE naming style (invalid-name)
+internal/US3_sacherverhalt.py:144:0: C0116: Missing function or method docstring (missing-function-docstring)
+internal/US3_sacherverhalt.py:147:12: W0612: Unused variable 'specific_chunk' (unused-variable)
+internal/US3_sacherverhalt.py:152:12: W0612: Unused variable 'valid_indices' (unused-variable)
+internal/US3_sacherverhalt.py:13:0: C0412: Imports from package langchain_core are not grouped (ungrouped-imports)
+internal/US3_sacherverhalt.py:13:0: W0611: Unused SystemMessagePromptTemplate imported from langchain_core.prompts (unused-import)
+internal/US3_sacherverhalt.py:13:0: W0611: Unused HumanMessagePromptTemplate imported from langchain_core.prompts (unused-import)
+internal/US3_sacherverhalt.py:13:0: W0611: Unused ChatPromptTemplate imported from langchain_core.prompts (unused-import)
+************* Module internal.US5_gutachtentemplate
+internal/US5_gutachtentemplate.py:5:43: C0303: Trailing whitespace (trailing-whitespace)
+internal/US5_gutachtentemplate.py:11:0: C0303: Trailing whitespace (trailing-whitespace)
+internal/US5_gutachtentemplate.py:14:0: C0301: Line too long (128/100) (line-too-long)
+internal/US5_gutachtentemplate.py:20:11: C0303: Trailing whitespace (trailing-whitespace)
+internal/US5_gutachtentemplate.py:27:0: C0303: Trailing whitespace (trailing-whitespace)
+internal/US5_gutachtentemplate.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/US5_gutachtentemplate.py:1:0: C0103: Module name "US5_gutachtentemplate" doesn't conform to snake_case naming style (invalid-name)
+internal/US5_gutachtentemplate.py:5:0: C0112: Empty function docstring (empty-docstring)
+internal/US5_gutachtentemplate.py:3:0: C0411: third party import "from langchain.prompts import PromptTemplate" should be placed before "from internal.US1_loadQA_AzureChat import load_file" (wrong-import-order)
+************* Module internal.US6_bescheidtemplate
+internal/US6_bescheidtemplate.py:5:81: C0303: Trailing whitespace (trailing-whitespace)
+internal/US6_bescheidtemplate.py:6:0: C0303: Trailing whitespace (trailing-whitespace)
+internal/US6_bescheidtemplate.py:9:0: C0303: Trailing whitespace (trailing-whitespace)
+internal/US6_bescheidtemplate.py:12:0: C0301: Line too long (122/100) (line-too-long)
+internal/US6_bescheidtemplate.py:14:0: C0301: Line too long (118/100) (line-too-long)
+internal/US6_bescheidtemplate.py:17:0: C0301: Line too long (111/100) (line-too-long)
+internal/US6_bescheidtemplate.py:19:0: C0301: Line too long (111/100) (line-too-long)
+internal/US6_bescheidtemplate.py:37:0: C0305: Trailing newlines (trailing-newlines)
+internal/US6_bescheidtemplate.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/US6_bescheidtemplate.py:1:0: C0103: Module name "US6_bescheidtemplate" doesn't conform to snake_case naming style (invalid-name)
+internal/US6_bescheidtemplate.py:5:0: C0116: Missing function or method docstring (missing-function-docstring)
+internal/US6_bescheidtemplate.py:5:0: C0103: Function name "bescheidTemplate" doesn't conform to snake_case naming style (invalid-name)
+internal/US6_bescheidtemplate.py:5:37: C2401: Argument name "prüfungsergebnis" contains a non-ASCII character, consider renaming it. (non-ascii-name)
+internal/US6_bescheidtemplate.py:34:8: C2401: Argument name "sachverhaltsprüfung" contains a non-ASCII character, consider renaming it. (non-ascii-name)
+internal/US6_bescheidtemplate.py:7:4: W0612: Unused variable 'regeln' (unused-variable)
+************* Module internal.US7_generierung
+internal/US7_generierung.py:15:37: C0303: Trailing whitespace (trailing-whitespace)
+internal/US7_generierung.py:16:0: C0303: Trailing whitespace (trailing-whitespace)
+internal/US7_generierung.py:27:25: C0303: Trailing whitespace (trailing-whitespace)
+internal/US7_generierung.py:28:41: C0303: Trailing whitespace (trailing-whitespace)
+internal/US7_generierung.py:30:0: C0303: Trailing whitespace (trailing-whitespace)
+internal/US7_generierung.py:60:0: C0301: Line too long (109/100) (line-too-long)
+internal/US7_generierung.py:67:29: C0303: Trailing whitespace (trailing-whitespace)
+internal/US7_generierung.py:82:67: C0303: Trailing whitespace (trailing-whitespace)
+internal/US7_generierung.py:87:0: C0301: Line too long (117/100) (line-too-long)
+internal/US7_generierung.py:87:0: W0311: Bad indentation. Found 8 spaces, expected 4 (bad-indentation)
+internal/US7_generierung.py:88:0: C0301: Line too long (144/100) (line-too-long)
+internal/US7_generierung.py:88:0: W0311: Bad indentation. Found 8 spaces, expected 4 (bad-indentation)
+internal/US7_generierung.py:89:0: W0311: Bad indentation. Found 8 spaces, expected 4 (bad-indentation)
+internal/US7_generierung.py:90:0: W0311: Bad indentation. Found 8 spaces, expected 4 (bad-indentation)
+internal/US7_generierung.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/US7_generierung.py:1:0: C0103: Module name "US7_generierung" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:13:0: C0116: Missing function or method docstring (missing-function-docstring)
+internal/US7_generierung.py:14:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+internal/US7_generierung.py:19:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+internal/US7_generierung.py:23:0: C0103: Function name "strToDocx" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:31:0: C0103: Function name "strToPdf" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:40:15: E1120: No value for argument 'input' in constructor call (no-value-for-parameter)
+internal/US7_generierung.py:40:15: E1120: No value for argument 'options' in constructor call (no-value-for-parameter)
+internal/US7_generierung.py:50:0: C0103: Function name "erstelleGutachten" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:69:0: C0103: Function name "erstelleBescheid" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:80:62: C2401: Argument name "prüfungsergebnis" contains a non-ASCII character, consider renaming it. (non-ascii-name)
+internal/US7_generierung.py:86:0: C0116: Missing function or method docstring (missing-function-docstring)
+internal/US7_generierung.py:86:0: C0103: Function name "erstelleBescheidBackground" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:86:31: C0103: Argument name "filePath" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:10:0: C0411: third party import "import yaml" should be placed before "from internal.US1_loadQA_AzureChat import qa_chain, load_file" (wrong-import-order)
+************* Module internal.helperFunctions
+internal/helperFunctions.py:10:0: C0303: Trailing whitespace (trailing-whitespace)
+internal/helperFunctions.py:1:0: C0103: Module name "helperFunctions" doesn't conform to snake_case naming style (invalid-name)
+internal/helperFunctions.py:8:0: C0116: Missing function or method docstring (missing-function-docstring)
+internal/helperFunctions.py:9:4: C0415: Import outside toplevel (dotenv.load_dotenv) (import-outside-toplevel)
+internal/helperFunctions.py:11:4: C0415: Import outside toplevel (langchain.chat_models.AzureChatOpenAI) (import-outside-toplevel)
+internal/helperFunctions.py:11:4: E0611: No name 'AzureChatOpenAI' in module 'langchain.chat_models' (no-name-in-module)
+internal/helperFunctions.py:12:4: C0415: Import outside toplevel (langchain.embeddings.AzureOpenAIEmbeddings) (import-outside-toplevel)
+internal/helperFunctions.py:12:4: E0611: No name 'AzureOpenAIEmbeddings' in module 'langchain.embeddings' (no-name-in-module)
+internal/helperFunctions.py:19:4: W0612: Unused variable 'llm_client' (unused-variable)
+internal/helperFunctions.py:33:0: C0116: Missing function or method docstring (missing-function-docstring)
+internal/helperFunctions.py:33:21: C0103: Argument name "folderPath" doesn't conform to snake_case naming style (invalid-name)
+internal/helperFunctions.py:35:4: C0103: Variable name "folderName" doesn't conform to snake_case naming style (invalid-name)
+internal/helperFunctions.py:35:4: W0612: Unused variable 'folderName' (unused-variable)
+internal/helperFunctions.py:38:0: C0116: Missing function or method docstring (missing-function-docstring)
+internal/helperFunctions.py:39:4: C0415: Import outside toplevel (langchain_community.document_loaders.unstructured.UnstructuredFileLoader) (import-outside-toplevel)
+************* Module main
+main.py:34:0: C0303: Trailing whitespace (trailing-whitespace)
+main.py:38:0: C0303: Trailing whitespace (trailing-whitespace)
+main.py:43:0: C0301: Line too long (188/100) (line-too-long)
+main.py:59:0: C0303: Trailing whitespace (trailing-whitespace)
+main.py:64:50: C0303: Trailing whitespace (trailing-whitespace)
+main.py:66:0: C0303: Trailing whitespace (trailing-whitespace)
+main.py:76:0: C0303: Trailing whitespace (trailing-whitespace)
+main.py:83:35: C0303: Trailing whitespace (trailing-whitespace)
+main.py:93:0: C0305: Trailing newlines (trailing-newlines)
+main.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+main.py:33:0: C0116: Missing function or method docstring (missing-function-docstring)
+main.py:33:57: C0103: Argument name "Sachverhalt" doesn't conform to snake_case naming style (invalid-name)
+main.py:35:4: C0103: Variable name "filePath" doesn't conform to snake_case naming style (invalid-name)
+main.py:51:0: C0116: Missing function or method docstring (missing-function-docstring)
+main.py:77:11: W0718: Catching too general exception Exception (broad-exception-caught)
+main.py:70:21: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+main.py:68:12: W0612: Unused variable 'e' (unused-variable)
+main.py:1:0: R0801: Similar lines in 2 files
+==internal.US1_loadQA_AzureChat:[26:44]
+==internal.helperFunctions:[14:30]
+    load_dotenv()
+    os.environ["AZURE_OPENAI_API_KEY"] = os.getenv("AZURE_OPENAI_KEY")
+    os.environ["AZURE_OPENAI_ENDPOINT"] = os.getenv("AZURE_OPENAI_ENDPOINT")
+    # LLM-Instanz initialisieren
+    llm_client = AzureChatOpenAI(
+        openai_api_version="2023-10-01-preview",
+        azure_deployment="ui-gpt-35-turbo",
+        temperature=0.1
+    )
+    # Embedding-Instanz initialisieren
+    embeddings = AzureOpenAIEmbeddings(
+        azure_deployment="ui-text-embedding-ada-002",
+        model="text-embedding-ada-002",
+        api_key=os.getenv("AZURE_OPENAI_KEY"),
+        openai_api_version="2023-10-01-preview"
+    )
+
+    # Zusatz: Sprachressourcen laden (falls noch nicht heruntergeladen) (duplicate-code)
+main.py:1:0: R0801: Similar lines in 2 files
+==internal.US1_RetrievalQA_AzureChat:[80:94]
+==internal.US1_loadQA_AzureChat:[79:94]
+        def create_text_splitter(documents, max_chunk=2000, min_chunk=400):
+            parent_splitter = RecursiveCharacterTextSplitter(chunk_size=max_chunk)
+            child_splitter = RecursiveCharacterTextSplitter(chunk_size=min_chunk)
+            split_documents = []
+            progress = tqdm(total=len(documents),
+                            desc=f"{len(documents)} Dokumente werden in Chunk-Größe < {max_chunk} > aufgeteilt")
+            for document in documents:
+                doc = Document(page_content=document.page_content)
+                parent_chunks = parent_splitter.split_documents([doc])
+                for parent_chunk in parent_chunks:
+                    child_chunks = child_splitter.split_documents([parent_chunk])
+                    split_documents.extend(child_chunks)
+                progress.update(1)
+            progress.close() (duplicate-code)
+main.py:1:0: R0801: Similar lines in 2 files
+==internal.US1_RetrievalQA_AzureChat:[102:113]
+==internal.US1_loadQA_AzureChat:[101:116]
+        def create_faiss_index(embedding_func, split_documents):
+            index = faiss.IndexFlatL2(1536)  # System-Dimension: 1536
+            docstore = InMemoryDocstore({str(i): chunk for i, chunk in enumerate(split_documents)})
+            index_to_docstore_id = {i: str(i) for i in range(len(split_documents))}
+            distance_strategy = DistanceStrategy.COSINE
+            vectorstore_faiss = FAISS(embedding_function=embedding_func, index=index, docstore=docstore,
+                                    index_to_docstore_id=index_to_docstore_id, distance_strategy=distance_strategy)
+            vectorstore_faiss.add_documents(split_documents)
+            return vectorstore_faiss
+
+        faiss_vectorstore = create_faiss_index(embeddings, split_docs)
+        #print("Index created")  # Test
+
+
+        # Funktion: Lokales Speichern des erstellten Vectorstores, um als Index zu nutzen (duplicate-code)
+main.py:1:0: R0801: Similar lines in 2 files
+==internal.US1_RetrievalQA_AzureChat:[67:76]
+==internal.US1_loadQA_AzureChat:[66:79]
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            total_files = len(folder_path)
+            progress_bar = tqdm(total=total_files, desc=(f"Dokumente aus Ordner < {folder_name} > werden geladen"))
+            futures = [executor.submit(load_document, file_path) for file_path in folder_path]
+            for future in concurrent.futures.as_completed(futures):
+                doc = future.result()
+                docs.extend(doc)
+                progress_bar.update(1)
+            progress_bar.close() (duplicate-code)
+main.py:1:0: R0801: Similar lines in 2 files
+==internal.US1_RetrievalQA_AzureChat:[27:41]
+==internal.US1_loadQA_AzureChat:[34:48]
+    )
+    # Embedding-Instanz initialisieren
+    embeddings = AzureOpenAIEmbeddings(
+        azure_deployment="ui-text-embedding-ada-002",
+        model="text-embedding-ada-002",
+        api_key=os.getenv("AZURE_OPENAI_KEY"),
+        openai_api_version="2023-10-01-preview"
+    )
+
+    # Zusatz: Sprachressourcen laden (falls noch nicht heruntergeladen)
+    if not nltk.data.find('tokenizers/punkt'):
+        nltk.download('punkt') # muss nur 1 Mal ausgeführt werden
+
+    # Ordnerpfad zum Hochladen (duplicate-code)
+main.py:1:0: R0801: Similar lines in 2 files
+==internal.US1_RetrievalQA_AzureChat:[27:37]
+==internal.helperFunctions:[22:30]
+    )
+    # Embedding-Instanz initialisieren
+    embeddings = AzureOpenAIEmbeddings(
+        azure_deployment="ui-text-embedding-ada-002",
+        model="text-embedding-ada-002",
+        api_key=os.getenv("AZURE_OPENAI_KEY"),
+        openai_api_version="2023-10-01-preview"
+    )
+
+    # Zusatz: Sprachressourcen laden (falls noch nicht heruntergeladen) (duplicate-code)
+main.py:1:0: R0801: Similar lines in 2 files
+==internal.US1_RetrievalQA_AzureChat:[117:126]
+==internal.US1_loadQA_AzureChat:[116:131]
+        def save_index(vector_store, filename):
+            vector_store.save_local(filename)
+        save_index(faiss_vectorstore, "data_recursive")
+        print("Index saved")  # Test
+        # gespeicherten Index laden
+        loaded_faiss_vectorstore = FAISS.load_local("data_recursive", embeddings)
+        print("Index loaded")  # Test
+        # Anzahl der Chunk-IDs im Index prüfen
+        num_chunk_ids = loaded_faiss_vectorstore.index_to_docstore_id (duplicate-code)
+main.py:1:0: R0801: Similar lines in 2 files
+==internal.US3_sacherverhalt:[15:24]
+==internal.helperFunctions:[14:21]
+    load_dotenv()
+    os.environ["AZURE_OPENAI_API_KEY"] = os.getenv("AZURE_OPENAI_KEY")
+    os.environ["AZURE_OPENAI_ENDPOINT"] = os.getenv("AZURE_OPENAI_ENDPOINT")
+    # LLM-Instanz initialisieren
+    llm_client = AzureChatOpenAI(
+        openai_api_version="2023-10-01-preview",
+        azure_deployment="ui-gpt-35-turbo", (duplicate-code)
+main.py:1:0: R0801: Similar lines in 2 files
+==internal.US1_RetrievalQA_AzureChat:[42:54]
+==internal.US1_loadQA_AzureChat:[49:61]
+    folder_path = glob.glob(os.path.join(folder, "*"))
+    folder_name = os.path.basename(folder)
+    # leere Liste für geladene Dokumente
+    docs = []
+
+    # Funktion: Dokument aus bestimmten Dateipfad laden
+    def load_document(file_path):
+        loader = UnstructuredFileLoader(file_path)
+        document = loader.load()
+        return document
+
+    # Prüfung, ob gespeicherter Vectorstore existiert (duplicate-code)
+main.py:1:0: R0801: Similar lines in 2 files
+==internal.US1_RetrievalQA_AzureChat:[19:26]
+==internal.US1_loadQA_AzureChat:[26:33]
+    load_dotenv()
+    os.environ["AZURE_OPENAI_API_KEY"] = os.getenv("AZURE_OPENAI_KEY")
+    os.environ["AZURE_OPENAI_ENDPOINT"] = os.getenv("AZURE_OPENAI_ENDPOINT")
+    # LLM-Instanz initialisieren
+    llm_client = AzureChatOpenAI(
+        openai_api_version="2023-10-01-preview",
+        azure_deployment="ui-gpt-35-turbo", (duplicate-code)
+
+------------------------------------------------------------------
+Your code has been rated at 4.42/10 (previous run: 4.42/10, +0.00)
+

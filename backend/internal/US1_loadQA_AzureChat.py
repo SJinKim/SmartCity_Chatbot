@@ -129,7 +129,7 @@ def qa_chain(query) -> Any :
 
     # QA-Chain-Prozess:
     # 1.
-    chain = load_qa_chain(llm=llm_client, chain_type="stuff", verbose=True)
+    chain = load_qa_chain(llm=llm_client, chain_type="stuff", verbose=False)
     """ while True:
         # 2. Nutzeranfrage eingeben
         query = input("Zu was haben Sie eine Frage?\nWenn nicht kann über < exit > der Chat geschlossen werden. ")

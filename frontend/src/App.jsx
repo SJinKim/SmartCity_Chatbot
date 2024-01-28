@@ -76,6 +76,7 @@ const App = () => {
       chatId: chatId
     }
     setMessages(messages.concat(conMsg))
+    setIsTyping(true)
   }
 
   const handleAnleitungButtonClick = () => {
