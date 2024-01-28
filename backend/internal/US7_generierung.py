@@ -1,5 +1,5 @@
 
-import aspose.pdf as ap
+import aspose.pdf as ap #fpdf2
 import docx
 
 from internal.US1_loadQA_AzureChat import qa_chain,load_file
