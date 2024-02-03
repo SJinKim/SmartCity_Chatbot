@@ -7,9 +7,12 @@
 1. Linux - Testet with Ubuntu 22.04:
     - for example with WSL2: https://learn.microsoft.com/en-us/windows/wsl/install
 2. Python 3.10.12 -> already installed on ubuntu 22.04
+3. run `sudo apt update` and `sudo apt upgrade` before creating a venv
+4. run `sudo apt install python3.10-venv`
+5. run `apt install python3-pip`
 
 ## get started:
-open linux terminal:
+open linux terminal (wsl):
 
 1. cd to directory where to install the project: `cd <your-home-dir-name>`
 2. clone repository: `git clone https://github.com/SJinKim/SmartCity_Chatbot.git`
