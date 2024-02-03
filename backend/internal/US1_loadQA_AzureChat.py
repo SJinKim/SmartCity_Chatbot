@@ -148,6 +148,7 @@ def qa_chain(query) -> Any :
         response_comb = chain.invoke({"input_documents": results_comb, "question": query}, return_only_outputs=True)
         return str(response_comb['output_text'])
 
+    # TODO Bescheid nachbearbeiten: If abzweigung mit yaml variable -> chain.invoke({input_documents: liste mit Bescheid dazu})???
 """         # Zusatz: Antwort übersetzen & formattieren
         translator = GoogleTranslator(source='auto', target='german')
         trans_result = translator.translate(response_comb)

@@ -11,7 +11,7 @@ def gutachtentemplate(sachverhalt) -> str :
     
     prompt_template = PromptTemplate.from_template(
         """ Du bist ein nützlicher Assistent für Mitarbeiter der Stadtverwaltung und hilfst dabei, 
-                    anhand der Gutachtensvorlage einen ausfürliches und sachliches Gutachten für einen Sachverhalt zu verfassen.
+            anhand der Gutachtensvorlage einen ausfürliches und sachliches Gutachten für einen Sachverhalt zu verfassen.
             Gutachtenvorlage lautet : {gutachtensvorlage}
             Ein Beispiel für das Gutachten sieht wie folgt aus: {beispiel_gutachten}                               
             Hier ist der zu analysierende und zu verarbeitende Sachverhalt : {sachverhalt}
