@@ -17,7 +17,7 @@ open linux terminal (wsl): Python Version 3.10.12
 
 1. cd to directory where to install the project: `cd <your-home-dir-name>`
 2. clone repository: `git clone https://github.com/SJinKim/SmartCity_Chatbot.git`
-if error, run `git config --system core.protectNTFS false` in cmd/admin
+- if error, run `git config --system core.protectNTFS false` in cmd/admin
 3. cd in to Project: `cd SmartCity_Chatbot`
 4. cd in backend folder: `cd backend`
 5. create virtual environment: `python3 -m venv <venv-dir-name>`
@@ -32,7 +32,7 @@ open windows terminal (powershell): Python Version 3.11.7
 
 1. cd to directory where to install the project: `cd <your-home-dir-name>`
 2. clone repository: `git clone https://github.com/SJinKim/SmartCity_Chatbot.git`
-if error, run `git config --system core.protectNTFS false` in cmd/admin
+- if error, run `git config --system core.protectNTFS false` in cmd/admin
 3. cd in to Project: `cd SmartCity_Chatbot`
 4. cd in backend folder: `cd backend`
 5. create virtual environment: `python -m venv <venv-dir-name>`
