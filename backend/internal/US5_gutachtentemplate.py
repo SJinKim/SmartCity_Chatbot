@@ -4,7 +4,7 @@ from langchain.prompts import PromptTemplate
 
 
 
-def gutachtentemplate(sachverhalt) -> str : 
+def gutachtenTemplate(sachverhalt) -> str : 
     """ 
     
     """
