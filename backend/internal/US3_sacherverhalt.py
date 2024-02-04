@@ -119,5 +119,4 @@ def execute_qa_chain(message):
     trans_result = translator.translate(response)
     sentences = nltk.sent_tokenize(trans_result)
     format_response = '\n\n'.join(sentences)
-    #output = f"[Frage] {message}\n\n[Antwort] {format_response}"
     return format_response
