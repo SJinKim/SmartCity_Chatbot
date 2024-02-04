@@ -1,13 +1,15 @@
-from internal.US1_loadQA_AzureChat import load_file
+from internal.US3_sacherverhalt import load_document
 
 from langchain.prompts import PromptTemplate
+
+
 
 def gutachtentemplate(sachverhalt) -> str : 
     """ 
     
     """
-    vorlage = load_file("./input_docs/Gutachtentemplate.docx")[0].page_content
-    beispiel_gutachten = load_file("./input_docs/Gutachten1.docx")[0].page_content
+    vorlage = load_document("./input_docs/Gutachtentemplate.docx")[0].page_content
+    beispiel_gutachten = load_document("./input_docs/Gutachten1.docx")[0].page_content
     
     prompt_template = PromptTemplate.from_template(
         """ Du bist ein nützlicher Assistent für Mitarbeiter der Stadtverwaltung und hilfst dabei, 

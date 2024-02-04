@@ -1,17 +1,18 @@
-import asyncio
+from internal.US3_sacherverhalt import execute_qa_chain
+from internal.US7_generierung import write_path_to, erstelleBescheidBackground
+
+import os
+import yaml
 import shutil
-from fastapi import BackgroundTasks, FastAPI, UploadFile, File, WebSocket
+import asyncio
+from dotenv import load_dotenv
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-from dotenv import load_dotenv
+from fastapi import BackgroundTasks, FastAPI, UploadFile, File, WebSocket
 
-import yaml
 
-from internal.US7_generierung import write_path_to, erstelleBescheidBackground
-from internal.US1_loadQA_AzureChat import qa_chain
 
 load_dotenv()
-
 app = FastAPI()
 
 origins = [
@@ -40,7 +41,7 @@ async def upload_file(background_tasks: BackgroundTasks, Sachverhalt: UploadFile
         'file': Sachverhalt.filename,
         'content': Sachverhalt.content_type,
         'path': filePath,
-        'message': f"Sie haben die Datei {Sachverhalt.filename} erfolgreich hochgeladen. Im nächsten Schritt wird Ihnen ein vorläufiger Bescheid erstellt. Dies kann einige Minuten dauern."
+        'message': f"Ihre Datei {Sachverhalt.filename} erfolgreich hochgeladen. Im nächsten Schritt wird Ihnen ein vorläufiger Bescheid erstellt. Dies kann einige Minuten dauern."
     }
     background_tasks.add_task(erstelleBescheidBackground, filePath)
     return response
@@ -55,13 +56,13 @@ async def websocket_endpoint(websocket: WebSocket):
     try:
         while True:
             try:
-                message = await asyncio.wait_for(websocket.receive_text(), timeout=2)
+                query = await asyncio.wait_for(websocket.receive_text(), timeout=2)
                 
                 # Check for termination command
-                if message.lower() == "exit":
+                if query.lower() == "exit":
                     break
                 # Process received Message
-                response = qa_chain(query=message)                                        
+                response = execute_qa_chain(message=query)                                    
                 await websocket.send_text(response)
      
             # When no Message received, check if server wants to send a message

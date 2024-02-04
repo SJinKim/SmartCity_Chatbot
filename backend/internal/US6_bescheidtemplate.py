@@ -1,11 +1,13 @@
+from internal.US3_sacherverhalt import load_document
+
 from langchain.prompts.pipeline import PipelinePromptTemplate
 from langchain.prompts.prompt import PromptTemplate
-from internal.US1_loadQA_AzureChat import load_file
+
+
 
 def bescheidTemplate(sachverhalt:str,prüfungsergebnis) -> PipelinePromptTemplate:   
- 
-    regeln = load_file("./input_docs/regeln.docx")
-    beispiel_bescheid = load_file("./input_docs/Bescheid1.docx")
+    regeln = load_document("./input_docs/regeln.docx")
+    beispiel_bescheid = load_document("./input_docs/Bescheid1.docx")
     
     full_template = PromptTemplate.from_template(
         """"
@@ -20,7 +22,7 @@ def bescheidTemplate(sachverhalt:str,prüfungsergebnis) -> PipelinePromptTemplat
         Sachverhaltsprüfung : {sachverhaltsprüfung}
         Format: 
             Der zu erstellende Bescheid umfasst fünf Abschnitte:
-            1.  Einleitung 
+            1. Einleitung 
             2. Tenor (Entscheidungsformel)
             3. Begründung
             4. Rechtsbehelfsbelehrung
