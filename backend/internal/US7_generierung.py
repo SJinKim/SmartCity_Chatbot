@@ -54,7 +54,7 @@ def erstelleGutachten(sachverhalt, gutachten_path)->str:
         str: das Gutachten in str
     """
     #Nutzt funktion aus US-5 und den verarbeitenden Sachverhalt zum Erstellung einer Anfrage an das llm-model
-    gutachten_query=gutachtentemplate(sachverhalt=sachverhalt)
+    gutachten_query=gutachtenTemplate(sachverhalt=sachverhalt)
     #Nutzt funktion aus US-1 zum Generieren einer Antwort für die Anfrage von einem Gutachten
     gutachten_response = execute_qa_chain(message=gutachten_query)
     #schreibt die Antwort vom llm-model in die Datei an dem gegebenen pfad
