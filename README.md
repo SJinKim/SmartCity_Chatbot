@@ -39,7 +39,7 @@ Starting the Project in Dev Mode (Without Docker)
 
 ### Getting Started
 
-Open the **Linux terminal** (WSL)
+#### **Linux terminal** (WSL)
 
 1. Navigate to the directory where you want to install the project: `cd <your-home-directory>`
 2. Clone the repository: `git clone https://github.com/SJinKim/SmartCity_Chatbot.git`
@@ -54,7 +54,7 @@ Open the **Linux terminal** (WSL)
 10. Open your browser / to stop: `Ctrl+C`
 11. Clear the pip cache (if needed): `pip3 cache purge`
 
-Open the **Windows terminal** (PowerShell)
+#### **Windows terminal** (PowerShell)
 
 1. Navigate to the directory where you want to install the project: `cd <your-home-directory>`
 2. Clone the repository: `git clone https://github.com/SJinKim/SmartCity_Chatbot.git`
