@@ -12,7 +12,7 @@
 4. Install `python3.10-venv` with `sudo apt install python3.10-venv`.
 5. Install `python3-pip` with `apt install python3-pip`.
 
-### Getting Started:
+### Getting Started
 
 Open the Linux terminal (WSL) with Python version 3.10.12.
 
