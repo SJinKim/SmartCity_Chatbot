@@ -23,7 +23,7 @@ This chatbot uses AI to generate legal notices (`Bescheid`) from legal documents
 ## Installation 
 
 *bsp für Design-Inspiration*
-```bash
+```
 Starting the Project in Dev Mode (Without Docker)
 ```
 
