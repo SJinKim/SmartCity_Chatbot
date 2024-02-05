@@ -1,6 +1,7 @@
 # Smart-City-Chatbot (LegalBot) 📝➜📚🤖➜📄
 
 *kurze Introduction: evtl. mit Screenshot vom Aufbau und GIF als kurzes Preview*
+
 A helpful AI Chatbot assistant for german legal inquiries. 
 
 This repository contains the code for a chatbot that generates an official notice (`Bescheid`) based on the legal document (`Sachverhalt`) uploaded by the user. The chatbot leverages stored legal statutes from a database (using `LangChain`) including state and federal laws (`Landesgesetze` and `Bundesgesetze`) and utilizes the OpenAi's LLM model (`GPT 3.5`) for text generation.
@@ -126,6 +127,6 @@ Please make sure to update tests as appropriate.
 
 ## Created By (Contact)
 
-This project was created by Team 13 [Discord-Server](*möglicher Einladungslink verlinken für zukünftiges Feedback, wenn jemand contributed*) of the "Practical Lab for Bachelors" of [TUDa](https://www.informatik.tu-darmstadt.de/fb20/index.en.jsp).
+This project was created by Team 13 of the "Practical Lab for Bachelors" of [TUDa](https://www.informatik.tu-darmstadt.de/fb20/index.en.jsp). To ask questions, give feedback or suggestions on our project,[![join our Discord server!](https://invidget.switchblade.xyz/2FB8wDG%29)](http://discord.gg/)
 
-*Github-Badges mit DP of members vllt in unterschiedliche Farben für Frontend und Backend*
+*Badges mit DP of members mit Github-Link vllt in unterschiedliche Farben für Frontend und Backend*
