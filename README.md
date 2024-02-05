@@ -111,7 +111,7 @@ There are two ways to use the chatbot.
 - `React`
 - Libaries: `MUI` and `HTML`
 
-## Contributing
+## Contributing (Open Source)
 
 *bsp für Inspiration*
 
