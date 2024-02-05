@@ -127,7 +127,7 @@ Please make sure to update tests as appropriate.
 
 ## Created By (Contact)
 
-© 2024 Team 13 of the "Practical Lab for Bachelors" of [TUDa](https://www.informatik.tu-darmstadt.de/fb20/index.en.jsp). 
+© 2024 Team 13: xxx of the "Practical Lab for Bachelors" of [TUDa](https://www.informatik.tu-darmstadt.de/fb20/index.en.jsp). 
 
 To ask questions, give feedback or suggestions on our project, [![join our Discord server!](https://invidget.switchblade.xyz/2FB8wDG%29)](http://discord.gg/)
 
