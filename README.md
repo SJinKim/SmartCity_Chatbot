@@ -126,6 +126,6 @@ Please make sure to update tests as appropriate.
 
 ## Created By (Contact)
 
-This project was created by Team 13 of the "Practical Lab for Bachelors" of [TUDa](https://www.informatik.tu-darmstadt.de/fb20/index.en.jsp).
+This project was created by Team 13 [Discord-Server](möglicher Einladungslink) of the "Practical Lab for Bachelors" of [TUDa](https://www.informatik.tu-darmstadt.de/fb20/index.en.jsp).
 
 *Github-Badges of members vllt in unterschiedliche Farben für Frontend und Backend*
