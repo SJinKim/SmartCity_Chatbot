@@ -10,7 +10,7 @@ This repository contains the code for a chatbot that generates an official notic
 🖊️  **Legal Assistance**: 
 The chatbot is context-aware and can answer questions based on the uploaded legal document (`Sachverhalt`) using the LLM model (`GPT 3.5`)
 
-🖊️  **`Bescheid`-Generation**: 
+🖊️  **Notice-Generation**: 
 The chatbot analyzes the uploaded legal document (in `DOCX` and `PDF`) and automatically generates a draft of the legal notice (`Bescheid`).
 
 🖊️  **Manual Download**: 
