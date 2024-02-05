@@ -7,7 +7,7 @@
 1. **Linux** - Tested with Ubuntu 22.04:
    - For example, using WSL2: Installation Guide
    - If you encounter error code 0x80370102, run `wsl --set-default-version 1` in cmd/Admin-mode.
-2. **Python 3.10.12** - Already installed on Ubuntu 22.04.
+   - Python 3.10.12 is already installed on Ubuntu 22.04.
 3. Run `sudo apt update` and `sudo apt upgrade` before creating a virtual environment.
 4. Install `python3.10-venv` with `sudo apt install python3.10-venv`.
 5. Install `python3-pip` with `apt install python3-pip`.
