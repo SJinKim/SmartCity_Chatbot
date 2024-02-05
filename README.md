@@ -80,26 +80,27 @@ foobar.pluralize('word')
 ```
 
 *bsp*
+
 There are two ways to use the chatbot.
 
-1. Web-Interface:
-    - Open your browser and go to `http://localhost:5000`.
-    - Enter your legal question in the chat window or upload your case file.
-    - The chatbot responds with context-relevant information and generates a suitable notice draft from the case.
-2. API-Endpoints:
-    - Send a POST request to `http://localhost:5000/api/question` with the following parameters:
-        - `question`: a string containing your legal question
-        - `file`: an optional file containing your case details
-    - The chatbot returns a JSON response with the following fields:
-        - `status`: a string indicating the success or failure of the request
-        - `answer`: a string containing the chatbot's answer to your question
-        - `notice`: a string containing the chatbot's notice draft for your case
+### Web-Interface
+- Open your browser and go to `http://localhost:5000`.
+- Enter your legal question in the chat window or upload your case file.
+- The chatbot responds with context-relevant information and generates a suitable notice draft from the case.
+### API-Endpoints
+- Send a POST request to `http://localhost:5000/api/question` with the following parameters:
+    - `question`: a string containing your legal question
+    - `file`: an optional file containing your case details
+- The chatbot returns a JSON response with the following fields:
+    - `status`: a string indicating the success or failure of the request
+    - `answer`: a string containing the chatbot's answer to your question
+    - `notice`: a string containing the chatbot's notice draft for your case
 
 ## Dependencies
 
 ### Backend
 
-- `Python 3.10.12` (Linux) and `3.11.7` (Windows).
+- `Python 3.10.12` (Linux) and `3.11.7` (Windows)
 - LLM Model (`GPT 3.5 turbo`)
 - Libraries: `OpenAi` and `LangChain`
 - ...
@@ -113,6 +114,7 @@ There are two ways to use the chatbot.
 ## Contributing
 
 *bsp für Inspiration*
+
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
 
@@ -126,4 +128,4 @@ Please make sure to update tests as appropriate.
 
 This project was created by Team 13 of the "Practical Lab for Bachelors" of [TUDa](https://www.informatik.tu-darmstadt.de/fb20/index.en.jsp).
 
-- *Github-Badges of members vllt in unterschiedliche Farben für Frontend und Backend*
+*Github-Badges of members vllt in unterschiedliche Farben für Frontend und Backend*
