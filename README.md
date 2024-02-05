@@ -128,4 +128,4 @@ Please make sure to update tests as appropriate.
 
 This project was created by Team 13 [Discord-Server](*möglicher Einladungslink verlinken für zukünftiges Feedback, wenn jemand contributed*) of the "Practical Lab for Bachelors" of [TUDa](https://www.informatik.tu-darmstadt.de/fb20/index.en.jsp).
 
-*Github-Badges of members vllt in unterschiedliche Farben für Frontend und Backend*
+*Github-Badges mit DP of members vllt in unterschiedliche Farben für Frontend und Backend*
