@@ -127,6 +127,8 @@ Please make sure to update tests as appropriate.
 
 ## Created By (Contact)
 
-This project was created by © 2024 Team 13 of the "Practical Lab for Bachelors" of [TUDa](https://www.informatik.tu-darmstadt.de/fb20/index.en.jsp). To ask questions, give feedback or suggestions on our project, [![join our Discord server!](https://invidget.switchblade.xyz/2FB8wDG%29)](http://discord.gg/)
+© 2024 Team 13 of the "Practical Lab for Bachelors" of [TUDa](https://www.informatik.tu-darmstadt.de/fb20/index.en.jsp). 
+
+To ask questions, give feedback or suggestions on our project, [![join our Discord server!](https://invidget.switchblade.xyz/2FB8wDG%29)](http://discord.gg/)
 
 *Badges mit DP of members mit Github-Link vllt in unterschiedliche Farben für Frontend und Backend*
