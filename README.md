@@ -1,45 +1,47 @@
-# SmartCity_Chatbot
+# SmartCity Chatbot
 
-## How to install and start project in developement mode (without docker) 
+## Installation and Starting the Project in Dev Mode (Without Docker)
 
-## prerequisites
+### Prerequisites
 
-1. Linux - Testet with Ubuntu 22.04:
-- for example with WSL2: https://learn.microsoft.com/en-us/windows/wsl/install
-- if Error 0x80370102, run `wsl --set-default-version 1` in cmd/admin
-2. Python 3.10.12 -> already installed on ubuntu 22.04
-3. run `sudo apt update` and `sudo apt upgrade` before creating a venv
-4. run `sudo apt install python3.10-venv`
-5. run `apt install python3-pip`
+1. **Linux** - Tested with Ubuntu 22.04:
+   - For example, using WSL2: Installation Guide
+   - If you encounter error code 0x80370102, run `wsl --set-default-version 1` in cmd/Administrator mode.
+2. **Python 3.10.12** - Already installed on Ubuntu 22.04.
+3. Run `sudo apt update` and `sudo apt upgrade` before creating a virtual environment.
+4. Install `python3.10-venv` with `sudo apt install python3.10-venv`.
+5. Install `python3-pip` with `apt install python3-pip`.
 
-## get started:
-open linux terminal (wsl): Python Version 3.10.12
+### Getting Started:
 
-1. cd to directory where to install the project: `cd <your-home-dir-name>`
-2. clone repository: `git clone https://github.com/SJinKim/SmartCity_Chatbot.git`
-- if error, run `git config --system core.protectNTFS false` in cmd/admin
-3. cd in to Project: `cd SmartCity_Chatbot`
-4. cd in backend folder: `cd backend`
-5. create virtual environment: `python3 -m venv <venv-dir-name>`
-6. activate venv: `source <venv-dir-name>/bin/activate`
-7. install requirements: `pip3 install -r requirements.txt`
-8. place the .env file (File with the openai api keys) in the backend folder 
-9. start project: `uvicorn main:app --reload`
-10. open browser / to close: `Strg+c`
-11. clear pip cache (if needed): `pip3 cache purge`
+Open the Linux terminal (WSL) with Python version 3.10.12.
 
-open windows terminal (powershell): Python Version 3.11.7
+1. Navigate to the directory where you want to install the project: `cd <your-home-directory>`
+2. Clone the repository: `git clone https://github.com/SJinKim/SmartCity_Chatbot.git`
+   - If you encounter an error, run `git config --system core.protectNTFS false` in cmd/Administrator mode.
+3. Change to the project directory: `cd SmartCity_Chatbot`
+4. Navigate to the backend folder: `cd backend`
+5. Create a virtual environment: `python3 -m venv <venv-directory-name>`
+6. Activate the virtual environment: `source <venv-directory-name>/bin/activate`
+7. Install the required packages: `pip3 install -r requirements.txt`
+8. Place the `.env` file (containing the OpenAI API keys) in the backend folder.
+9. Start the project: `uvicorn main:app --reload`
+10. Open your browser / to stop: `Ctrl+C`
+11. Clear the pip cache (if needed): `pip3 cache purge`
 
-1. cd to directory where to install the project: `cd <your-home-dir-name>`
-2. clone repository: `git clone https://github.com/SJinKim/SmartCity_Chatbot.git`
-- if error, run `git config --system core.protectNTFS false` in cmd/admin
-3. cd in to Project: `cd SmartCity_Chatbot`
-4. cd in backend folder: `cd backend`
-5. create virtual environment: `python -m venv <venv-dir-name>`
-6. activate venv: `source <venv-dir-name>/Scripts/Activate.ps1`
-7. install requirements: `pip install -r requirements.txt`
-8. place the .env file (File with the openai api keys) in the backend folder 
-9. start project: `uvicorn main:app --reload`
-10. open browser / to close: `Strg+c`
-11. clear pip cache (if needed): `pip cache purge`
+Open the Windows terminal (PowerShell) with Python version 3.11.7.
+
+1. Navigate to the directory where you want to install the project: `cd <your-home-directory>`
+2. Clone the repository: `git clone https://github.com/SJinKim/SmartCity_Chatbot.git`
+   - If you encounter an error, run `git config --system core.protectNTFS false` in cmd/Administrator mode.
+3. Change to the project directory: `cd SmartCity_Chatbot`
+4. Navigate to the backend folder: `cd backend`
+5. Create a virtual environment: `python -m venv <venv-directory-name>`
+6. Activate the virtual environment: `source <venv-directory-name>/Scripts/Activate.ps1`
+7. Install the required packages: `pip install -r requirements.txt`
+8. Place the `.env` file (containing the OpenAI API keys) in the backend folder.
+9. Start the project: `uvicorn main:app --reload`
+10. Open your browser / to stop: `Ctrl+C`
+11. Clear the pip cache (if needed): `pip cache purge`
+
 
