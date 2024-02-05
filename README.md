@@ -129,6 +129,6 @@ Please make sure to update tests as appropriate.
 
 © 2024 Team 13 (xx, xx) of the "Practical Lab for Bachelors" of TUDa for [*AG*](https://www.google.de). 
 
-To ask questions, give feedback or suggestions on our project, [![join our Discord server!](https://invidget.switchblade.xyz/2FB8wDG%29)](http://discord.gg/)
+To ask questions, give feedback or suggestions on this project, [![join our Discord server!](https://invidget.switchblade.xyz/2FB8wDG%29)](http://discord.gg/)
 
 *Badges mit DP of members mit Github-Link vllt in unterschiedliche Farben für Frontend und Backend*
