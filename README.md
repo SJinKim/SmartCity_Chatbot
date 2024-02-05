@@ -1,4 +1,4 @@
-# Smart-City-Chatbot: LegalBot 📄➜📚🤖➜📝
+# Smart-City-Chatbot (LegalBot) 📄➜📚🤖➜📝
 
 *kurze Introduction: evtl. mit Screenshot vom Aufbau und GIF als kurzes Preview*
 A helpful AI Chatbot assistant for german legal inquiries. 
