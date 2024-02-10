@@ -14,6 +14,7 @@ def loadData(data_path,embeddings,indexName):
     if os.path.exists("./"+indexName):
         # Ja: gespeicherter Vectorestore wird geladen
         loaded_faiss_vectorstore = FAISS.load_local("./"+indexName, embeddings)
+        print("Index available and successfully loaded")
     else:
         docs = parallelUpload(data_path, docs)
         split_docs, child_splitter = create_text_splitter(docs)
