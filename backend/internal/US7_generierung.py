@@ -1,6 +1,6 @@
-from internal.US3_sacherverhalt import execute_qa_chain, load_document
-from internal.US5_gutachtentemplate import gutachtenTemplate
-from internal.US6_bescheidtemplate import bescheidTemplate
+from US3_sacherverhalt import qa_chain, load_document
+from US5_gutachtentemplate import gutachtentemplate
+from US6_bescheidtemplate import bescheidTemplate
 
 import os
 import yaml
@@ -10,12 +10,12 @@ import PyPDF2
 
 
 def write_path_to(key, item):
-    with open('./internal/config.yaml') as file:
+    with open('./config.yaml') as file:
         config = yaml.safe_load(file)    
     
     config[key] = item
 
-    with open('./internal/config.yaml', 'w') as file:
+    with open('./config.yaml', 'w') as file:
         yaml.dump(config, file)
 
 
@@ -54,9 +54,9 @@ def erstelleGutachten(sachverhalt, gutachten_path)->str:
         str: das Gutachten in str
     """
     #Nutzt funktion aus US-5 und den verarbeitenden Sachverhalt zum Erstellung einer Anfrage an das llm-model
-    gutachten_query=gutachtenTemplate(sachverhalt=sachverhalt)
+    gutachten_query=gutachtentemplate(sachverhalt=sachverhalt)
     #Nutzt funktion aus US-1 zum Generieren einer Antwort für die Anfrage von einem Gutachten
-    gutachten_response = execute_qa_chain(message=gutachten_query)
+    gutachten_response = qa_chain(message=gutachten_query)
     #schreibt die Antwort vom llm-model in die Datei an dem gegebenen pfad
     strToDocx(resource=gutachten_response,output_path=gutachten_path)
     #strToPdf(resource=gutachten_response,output_path=gutachten_path)
@@ -74,7 +74,7 @@ def erstelleBescheid(sachverhalt, gutachten_result, bescheid_path)->str:
         str: den Bescheid in str
     """
     bescheid_query = bescheidTemplate(sachverhalt=sachverhalt,prüfungsergebnis=gutachten_result)
-    bescheid_response = execute_qa_chain(message=bescheid_query)
+    bescheid_response = qa_chain(message=bescheid_query)
     strToDocx(resource=bescheid_response,output_path=bescheid_path)    
     #strToPdf(resource=bescheid_response,output_path=bescheid_path)
     return bescheid_response
@@ -84,8 +84,7 @@ def erstelleBescheidBackground(filePath: str):
     gutachten_name = "Gutachten." + os.path.splitext(file_name)[0] + ".docx"
     bescheid_name = "Bescheid." + os.path.splitext(file_name)[0] + ".docx"
 
-    gutachten = erstelleGutachten(sachverhalt=load_document(filePath), gutachten_path=f"./output_docs/{gutachten_name}")
-    message_str = erstelleBescheid(sachverhalt=load_document(filePath), gutachten_result=gutachten, bescheid_path=f"./output_docs/{bescheid_name}")
+    gutachten = erstelleGutachten(sachverhalt=load_document(filePath), gutachten_path=f"../output_docs/{gutachten_name}")
+    message_str = erstelleBescheid(sachverhalt=load_document(filePath), gutachten_result=gutachten, bescheid_path=f"../output_docs/{bescheid_name}")
     write_path_to(key='message_str', item=message_str)
     write_path_to(key='erstellt', item=True)
-

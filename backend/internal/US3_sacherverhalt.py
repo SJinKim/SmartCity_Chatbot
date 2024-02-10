@@ -1,22 +1,29 @@
-from internal.US1_loadData import init_embeddings
+#from US1_loadData import init_embeddings # for Backend-Test
+from backend.internal.US1_loadData import init_embeddings
 
 import os
 import nltk
 from dotenv import load_dotenv
 from deep_translator import GoogleTranslator
+from langchain_openai import AzureChatOpenAI
 from langchain_core.messages import HumanMessage
 from langchain_community.vectorstores.faiss import FAISS
 from langchain.text_splitter import CharacterTextSplitter
-from langchain_openai import AzureChatOpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain_community.document_loaders import UnstructuredWordDocumentLoader, UnstructuredPDFLoader
 
 
 
-# nltk-Sprachressourcen laden (falls noch nicht heruntergeladen)
+""" Checks and downloads the punkt tokenizer from NLTK if necessary.
+"""
 if not nltk.data.find('tokenizers/punkt'):
-    nltk.download('punkt') # muss nur 1 Mal geladen werden
-    
+    nltk.download('punkt') 
+ 
+""" Retrieves and validates Azure OpenAI API credentials from loaded environment variables.
+
+Raises:
+    ValueError: If either the API key or endpoint is not found in the environment.
+"""
 load_dotenv()
 api_key = os.getenv("AZURE_OPENAI_KEY")
 if not api_key:
@@ -26,8 +33,14 @@ if not azure_endpoint:
     raise ValueError("< API Endpoint > nicht gefunden!")
 
 
-
-def init_llm():        
+def init_llm():
+    """ Initializes and returns a AzureChatOpenAI language model instance.
+    
+    Args:   None
+    
+    Returns:
+        AzureOpenAIEmbeddings: An instance of the AzureChatOpenAI language model.
+    """        
     return AzureChatOpenAI(
         azure_deployment=os.getenv("AZURE_OPENAI_DEPLOYMENT"),
         openai_api_version=os.getenv("AZURE_OPENAI_VERSION"),
@@ -38,7 +51,18 @@ def init_llm():
 llm_client = init_llm()
 embeddings = init_embeddings()
 
+
 def load_document(file_path):
+    """ Loads a document from a file, supporting PDF and DOCX formats.
+
+    Args:
+        file_path: The path to the document file.
+
+    Returns:    The loaded document object.
+
+    Raises:
+        ValueError: If the file format is not supported.
+    """
     file_extension = file_path.split(".")[-1].lower()
     if file_extension == "pdf":
         pdf_loader = UnstructuredPDFLoader(file_path)
@@ -50,22 +74,37 @@ def load_document(file_path):
         raise ValueError("Ungültige Dateiendung. Nur < .pdf > und < .docx > werden unterstützt!")
     return doc
 
-# Textdatei (docx od. pdf) hochladen 
-file_path = r"./input_docs/Sachverhalt1.docx"
-file_name = os.path.basename(file_path)
-doc = load_document(file_path)
-# Dokument in Chunks aufteilen
-text_splitter = CharacterTextSplitter(chunk_size=1500, chunk_overlap=200)
-doc_split = text_splitter.split_documents(doc)
+
+def split_documents(doc, chunk_size=1500, chunk_overlap=200):
+    """ Splits a document into overlapping chunks using a CharacterTextSplitter.
+
+    Args:
+        doc: The document to split.
+        chunk_size: The desired size of each chunk (default: 1500).
+        chunk_overlap: The overlap between chunks (default: 200).
+
+    Returns:    A list of overlapping chunks from the document.
+    """
+    text_splitter = CharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
+    chunks = text_splitter.split_documents(doc)
+    return chunks
 
 
-# Zusatz-Funktion: Verfeinerung der Nutzeranfrage zur Generierung detaillierter Suchanfrage
+# evtl. Chatverlauf mitintegrieren durch yaml string
 def refine_query(prompt):
-    # Fehlerbehandlung: wenn Anfrage ungültig ist
+    """ Refines a user query to generate a more detailed search query.
+
+    Args:
+        prompt: The initial user query.
+
+    Returns:    A refined query as string.
+
+    Raises:
+        ValueError: If the prompt is empty or invalid.
+    """
     if not prompt:
         raise ValueError(f"< {prompt} > ist eine ungültige Anfrage. Bitte gebe erneut ein!")
     
-    # Prompt-Template: Generierung verfeinerter Suchanfrage, um Nutzeranfrage zu verbessern
     refine_prompt = (
         """Generiere eine verfeinerte Nutzeranfrage '{}', um die Suchergebnisse präziser zu gestalten.
         Die Verfeinerung der Nutzeranfrage '{}' dient dazu, die Suchanfrage zu optimieren, indem zusätzliche Informationen hinzugefügt werden. Dies kann z. B. durch die Angabe von Kontexten, Suchbegriffen, Synonyme oder semantische Ähnlichkeiten.
@@ -91,32 +130,79 @@ def refine_query(prompt):
     return refined
 
 
-# Funktion: QA-Kette (Frage-Antwort-Kette)
-def execute_qa_chain(message):
-    global doc_split, embeddings, llm_client
 
-    # Kette & Index initialisieren
+def qa_chain_context(message, document_split):
+    """ Performs a question-answering (QA) chain on a given message using retrieved doc chunks and the local saved vectorestore.
+
+    Args:
+        message (str): The user's input message or query/prompt.
+        document_split (list): A list of smaller text segments from a loaded document.
+
+    Returns:
+        str: The generated response/answer, translated to German and formatted with line breaks for readability.
+    """
+    global embeddings, llm_client
+    
     chain = load_qa_chain(llm=llm_client, chain_type="stuff", verbose=True)
-    loaded_faiss_vectorstore = FAISS.load_local(folder_path="./internal/data_recursive", embeddings=embeddings)
-
-    # Dokumente für die Kette filtern
-    doc_split_filtered = [doc for doc in doc_split if message in doc.page_content]
-
-    # Verfeinerung der Nutzeranfrage durchgeführt
+    data_index = os.path.join(os.path.dirname(__file__), "data_recursive")
+    loaded_data = FAISS.load_local(folder_path=data_index, embeddings=embeddings, index_name="data_recursive")
+    
     refined_query = refine_query(message)
 
-    # Ähnlichkeitssuche auf gespeicherten Vectorstore basierend auf verfeinerter Nutzeranfrage
-    similar = loaded_faiss_vectorstore.similarity_search(query=refined_query)
-    mmr = loaded_faiss_vectorstore.max_marginal_relevance_search(query=refined_query)
-    # Beide Ähnlichkeitssuchen auf Vectorstore mit Text-Chunks kombinieren
-    filtered = similar + mmr + doc_split_filtered
+    similar = loaded_data.similarity_search(query=refined_query)
+    mmr = loaded_data.max_marginal_relevance_search(query=refined_query)
+    filtered = similar + mmr + document_split
 
-    # Antwortgenerierung aus Frage-Antwort-System
     response = chain.run(input_documents=filtered, question=message)
 
-    # Antwort übersetzen & Textoutput formatieren
     translator = GoogleTranslator(source='auto', target='german')
     trans_result = translator.translate(response)
     sentences = nltk.sent_tokenize(trans_result)
     format_response = '\n\n'.join(sentences)
     return format_response
+
+
+#def qa_chain(message, index): mit Chatverlauf index
+def qa_chain(message):
+    """
+    Generates a response to a user query using a question-answering (QA) chain and the local saved vectorestore.
+
+    Args:
+        message (str): The user's input message or query/prompt.
+
+    Returns:
+        str: The generated response/answer, translated to German and formatted with line breaks for readability.
+    """    
+    global embeddings, llm_client
+    
+    chain = load_qa_chain(llm=llm_client, chain_type="stuff", verbose=True)
+    data_index = os.path.join(os.path.dirname(__file__), "data_recursive")
+    loaded_data = FAISS.load_local(folder_path=data_index, embeddings=embeddings, index_name="data_recursive")
+    # Chatverlauf-index
+    
+    refined_query = refine_query(message)
+
+    similar = loaded_data.similarity_search(query=refined_query)
+    mmr = loaded_data.max_marginal_relevance_search(query=refined_query)
+    filtered = similar + mmr
+    
+    response = chain.run(input_documents=filtered, question=message)
+
+    translator = GoogleTranslator(source='auto', target='german')
+    trans_result = translator.translate(response)
+    sentences = nltk.sent_tokenize(trans_result)
+    format_response = '\n\n'.join(sentences)
+    return format_response
+
+
+
+# Test
+"""
+file_path = r"D:/# Projects/SmartCity_VSC/SmartCity_Chatbot/backend/input_docs/Sachverhalt2.docx"
+file_name = os.path.basename(file_path)
+doc = load_document(file_path)
+doc_split = split_documents(doc)
+prompt = input("Frage: ")
+result = qa_chain_context(message=prompt, document_split=doc_split)
+print(f"Antwort: {result}")
+"""
