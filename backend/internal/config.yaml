@@ -1,48 +1,29 @@
-erstellt: false
-message_str: "Landratsamt Ortenaukreis\n\nHerrn Franz Konrad\nSachbearbeiter\n\nReparatur\
-  \ Ihres Fachwerkhauses in Neuried, Lange Stra\xDFe 12\n\nSehr geehrter Herr Konrad,\n\
-  \nes ergeht folgender Bescheid:\n\n1.\n\nSie sind als Eigent\xFCmer des Fachwerkhauses\
-  \ in Neuried, Lange Stra\xDFe 12, verpflichtet, das Dach mit Biberschwanz-Dachziegeln\
-  \ zu reparieren.\n\n2.\n\nWir ordnen die sofortige Vollziehung dieser Ma\xDFnahme\
-  \ an.\n\nBegr\xFCndung:\n\nDas Fachwerkhaus ist ein Kulturdenkmal im Sinne von \xA7\
-  \ 2 Abs.\n\n1 DSchG.\n\nEs besteht ein \xF6ffentliches Erhaltungsinteresse aus heimatgeschichtlichen\
-  \ Gr\xFCnden.\n\nDas Haus stammt aus dem Jahr 1865 und hat die f\xFCr die damalige\
-  \ Bauweise charakteristischen Wetterd\xE4cher sowie die typischen, vorragenden Balkenk\xF6\
-  pfe an den Erdgeschossbalken und ist mit den seinerzeit \xFCblichen Biberschwanz-Dachziegeln\
-  \ gedeckt.\n\nDurch einen Sturm wurden ca.\n\n50 Biberschwanz-Dachziegel abgedeckt.\n\
-  \nDas Kulturdenkmal ist gef\xE4hrdet, da durch das beeintr\xE4chtigte Erscheinungsbild\
-  \ bereits ein Schaden entstanden ist.\n\nDie Reparaturanordnung st\xFCtzt sich auf\
-  \ \xA7 7 Abs.\n\n1 Satz 1 DSchG.\n\nDanach k\xF6nnen wir Ma\xDFnahmen anordnen,\
-  \ wenn ein Kulturdenkmal gef\xE4hrdet ist.\n\nSie sind verpflichtet, die Reparatur\
-  \ durchzuf\xFChren.\n\nDas ergibt sich aus \xA7 7 PolG, da Sie Eigent\xFCmer des\
-  \ Fachwerkhauses sind, von dem eine Gef\xE4hrdung des Denkmals ausgeht.\n\nEbenfalls\
-  \ nach denselben Vorschriften verpflichtet, ist Ihr Bruder Georg Konrad, da dieser\
-  \ ebenfalls Eigent\xFCmer ist.\n\nAls Forstrat sind Sie leistungsf\xE4higer als\
-  \ Ihr Bruder Georg und sind deshalb verpflichtet, die Kosten zu tragen.\n\nDie Anordnung\
-  \ das Dach mit Biberschwanz-Dachziegeln zu reparieren ist angemessen, um die Ansehnlichkeit\
-  \ des Denkmals wiederherzustellen.\n\nDiese Anordnung ist auch erforderlich, da\
-  \ es kein milderes gleichgeeignetes Mittel gibt.\n\nEthanitplatten w\xE4ren zwar\
-  \ kosteng\xFCnstiger, k\xF6nnten aber nicht die Ansehnlichkeit wiederherstellen.\n\
-  \nSchlie\xDFlich ist die Reparaturanordnung auch angemessen.\n\nIhr Nachteil steht\
-  \ nicht au\xDFer Verh\xE4ltnis zu den Vorteilen f\xFCr die Allgemeinheit.\n\nDas\
-  \ Interesse am Erhalt des Denkmals gewichtet durch Art.\n\n3 C Landes Verfassung\
-  \ \xFCberwiegt Ihr Interesse bez\xFCglich finanzieller Belastung und der Eigentumsrechte\
-  \ gewichtet durch Art.\n\n14 GG.\n\nDie Durchf\xFChrung der Ma\xDFnahme ist Ihnen\
-  \ auch ohne die Mitwirkung Ihres Bruders Georg m\xF6glich, wodurch keine privatrechtliche\
-  \ Unm\xF6glichkeit besteht.\n\nAls Rechtsgrundlage f\xFCr die Anordnung dient \xA7\
-  \ 80 Abs.\n\n2 Satz 1 Nr.\n\n4.\n\nLandesverwaltungsverfahrensgesetz.\n\nDie sofortige\
-  \ Vollziehung der Reparaturanordnung kann angeordnet werden, wenn ein besonderes\
-  \ \xF6ffentliches Interesse an der baldigen Realisierung der Reparaturanordnung\
-  \ besteht und dieses Ihr Interesse an der aufschiebenden Wirkung seines Rechtsbehelfs\
-  \ \xFCbersteigt.\n\nEin \xF6ffentliches Interesse besteht darin, dass ohne eine\
-  \ Reparatur Regenwasser in das Haus eindringt, welches das Haus besch\xE4digt.\n\
-  \nDurch das Eindringen des Regenwassers kann es zu Schimmelbildung kommen und die\
-  \ Reparaturkosten werden sich demnach mit der Zeit erh\xF6hen.\n\nIn Ihrem Interesse\
-  \ steht Ihre finanzielle Lage, welche sich allerding bei einer Verz\xF6gerung von\
-  \ Reparaturarbeiten, verschlechtern w\xFCrde.\n\nRechtsbehelfsbelehrung:\n\nGegen\
-  \ die Dachdeckungsanordnung k\xF6nnen Sie innerhalb eines Monats nach Bekanntgabe\
-  \ bei dem Landratsamt Ortenaukreis, Badstra\xDFe 22, 77652 Offenburg Widerspruch\
-  \ einlegen.\n\n(\xA737 (6) LVwVfG (\xA770 VwGO))\n\nGegen die Anordnung der sofortigen\
-  \ Vollziehung k\xF6nnen Sie den Antrag auf Wiederherstellung der aufschiebenden\
-  \ Wirkung beim Verwaltungsgericht Freiburg, Herbstburgerstra\xDFe 115, 79104 Freiburg\
-  \ stellen.\n\n(\xA7 80 Abs.\n\n5 VwGO)\n\nMit freundlichen Gr\xFC\xDFen\n\n[Unterschrift]"
+erstellt: true
+message_str: "Einleitung:\nSehr geehrter Herr Graeter,\n\nSie haben einen Antrag auf\
+  \ Erlaubnis zur Betreibung einer Musikkneipe in den leer stehenden R\xE4umen der\
+  \ ehemaligen Gastst\xE4tte \"Walfisch\" in der Hauptstra\xDFe in Kehl gestellt.\n\
+  \nBei der Durchsicht der Unterlagen wurden jedoch M\xE4ngel festgestellt, die eine\
+  \ Erlaubniserteilung fraglich machen.\n\nTenor:\nDie Stadt Kehl versagt Ihnen gem\xE4\
+  \xDF \xA7 5 GastG die Erlaubnis zur Betreibung einer Musikkneipe in den R\xE4umlichkeiten\
+  \ der ehemaligen Gastst\xE4tte \"Walfisch\" in der Hauptstra\xDFe in Kehl.\n\nBegr\xFC\
+  ndung:\nGem\xE4\xDF \xA7 2 GastG besteht eine Erlaubnispflicht f\xFCr die Betreibung\
+  \ einer Musikkneipe, in der Speisen und Getr\xE4nke serviert werden.\n\nBei der\
+  \ Pr\xFCfung Ihres Antrags wurden jedoch M\xE4ngel festgestellt, die eine Erlaubniserteilung\
+  \ nicht rechtfertigen.\n\nZum einen fehlt die Bescheinigung \xFCber lebensmittelrechtliche\
+  \ Kenntnisse, die gem\xE4\xDF \xA7 4 Abs.\n\n1 Nr.\n\n3 GastG eine Voraussetzung\
+  \ f\xFCr die Erlaubniserteilung darstellt.\n\nZum anderen erf\xFCllen die Herrentoiletten\
+  \ nicht die bauordnungsrechtlichen Anforderungen gem\xE4\xDF \xA7 3 Abs.\n\n1 GastG.\n\
+  \nEs m\xFCssen nach entsprechenden Kapazit\xE4tsberechnungen drei Urinale vorhanden\
+  \ sein, jedoch wurden bei der Besichtigung der R\xE4umlichkeiten nur zwei Urinale\
+  \ registriert.\n\nDes Weiteren ist zu bef\xFCrchten, dass es aufgrund der Betreibung\
+  \ einer Musikkneipe zu L\xE4rmbel\xE4stigungen in der Umgebung kommen wird, was\
+  \ gem\xE4\xDF \xA7 5 Abs.\n\n1 Nr.\n\n2 GastG ein Versagungsgrund darstellt.\n\n\
+  Die Stadt Kehl hat gem\xE4\xDF \xA7 5 GastG ein Ermessen, das nach \xA7 40 LVwVfG\
+  \ ausge\xFCbt wird.\n\nDie Erlaubnis kann versagt werden, wenn die Voraussetzungen\
+  \ des \xA7 4 GastG nicht erf\xFCllt sind.\n\nDie Stadt Kehl hat aufgrund der genannten\
+  \ M\xE4ngel und Versagungsgr\xFCnde von ihrem Ermessen Gebrauch gemacht und die\
+  \ Erlaubnis versagt.\n\nRechtsbehelfsbelehrung:\nGegen diesen Bescheid k\xF6nnen\
+  \ Sie innerhalb eines Monats nach Bekanntgabe Widerspruch einlegen (\xA7 70 VwGO).\n\
+  \nDer Widerspruch ist schriftlich oder zur Niederschrift bei der Stadt Kehl, Hauptstra\xDF\
+  e 1, 77694 Kehl, einzulegen.\n\nUnterschrift mit Gru\xDFformel:\nMit freundlichen\
+  \ Gr\xFC\xDFen\n[Unterschrift]"
