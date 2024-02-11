@@ -3,15 +3,15 @@ import glob,os
 from internal.US10_ConversationalRetrievalChain import interactiveBot
 from internal.US10_interaktiontemplate import interaktion_prompt
 from internal.US1_load_document import load_document
+from internal.US1_loadData import loadData
 from internal.US10_retriever import db
-from internal.US7_generierung import erstelleBescheidBackground
 import nltk
 def test(user_query):
 
 
-    original_bescheid =load_document("../output_docs/Bescheid.Sachverhalt2.docx")
+    original_bescheid =load_document("./output_docs/Bescheid.Sachverhalt2.docx")
 
-    folder_path = "../interaktion"
+    folder_path = "./interaktion"
     retriever = db(folder_path)
 
     query = interaktion_prompt(user_query,original_bescheid)

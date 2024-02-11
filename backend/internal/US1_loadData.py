@@ -13,7 +13,7 @@ def loadData(data_path,embeddings,indexName):
     # Prüfung, ob gespeicherter Vectorstore existiert
     if os.path.exists("./"+indexName):
         # Ja: gespeicherter Vectorestore wird geladen
-        loaded_faiss_vectorstore = FAISS.load_local("./"+indexName, embeddings)
+        loaded_faiss_vectorstore = FAISS.load_local("./internal/"+indexName, embeddings)
         print("Index available and successfully loaded")
     else:
         docs = parallelUpload(data_path, docs)

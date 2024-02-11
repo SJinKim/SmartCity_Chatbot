@@ -16,7 +16,7 @@ def bescheidTemplate(sachverhalt:str,prüfungsergebnis) -> PipelinePromptTemplat
         PipelinePromptTemplate: A template containing instructions and placeholders for generating an official notice (Bescheid).
     """
    
-    beispiel_bescheid = load_document("../vorlage/beispiel_bescheid.docx")
+    beispiel_bescheid = load_document("./vorlage/beispiel_bescheid.docx")
     
     full_template = PromptTemplate.from_template(
         """"

@@ -5,17 +5,17 @@ from internal.US6_bescheidtemplate import bescheidTemplate
 import os
 import yaml
 import docx
-import PyPDF2
+#import PyPDF2
 
 
 
 def write_path_to(key, item):
-    with open('./config.yaml') as file:
+    with open('./internal/config.yaml') as file:
         config = yaml.safe_load(file)    
     
     config[key] = item
 
-    with open('./config.yaml', 'w') as file:
+    with open('./internal/config.yaml', 'w') as file:
         yaml.dump(config, file)
 
 
@@ -84,8 +84,8 @@ def erstelleBescheidBackground(filePath: str):
     gutachten_name = "Gutachten." + os.path.splitext(file_name)[0] + ".docx"
     bescheid_name = "Bescheid." + os.path.splitext(file_name)[0] + ".docx"
 
-    gutachten = erstelleGutachten(sachverhalt=load_document(filePath), gutachten_path=f"../output_docs/{gutachten_name}")
-    message_str = erstelleBescheid(sachverhalt=load_document(filePath), gutachten_result=gutachten, bescheid_path=f"../output_docs/{bescheid_name}")
+    gutachten = erstelleGutachten(sachverhalt=load_document(filePath), gutachten_path=f"./output_docs/{gutachten_name}")
+    message_str = erstelleBescheid(sachverhalt=load_document(filePath), gutachten_result=gutachten, bescheid_path=f"./output_docs/{bescheid_name}")
    
     print(f'lenge von Message: {len(message_str)}')
     

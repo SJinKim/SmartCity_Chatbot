@@ -64,7 +64,7 @@ async def websocket_endpoint(websocket: WebSocket):
                     break
                 # Process received Message
                 #response = execute_qa_chain(message=query)         
-                response = test(message=query)                          
+                response = test(query)                          
                 await websocket.send_text(response)
      
             # When no Message received, check if server wants to send a message
@@ -93,4 +93,4 @@ app.mount('/images', StaticFiles(directory='images'), name='images')
 app.mount("/", StaticFiles(directory="dist/", html=True), name="dist")
 
 
-
+test('hallo')
