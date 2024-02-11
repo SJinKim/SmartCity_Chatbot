@@ -1,4 +1,4 @@
-from backend.internal.US1_loadData import init_embeddings
+from US1_loadData import init_embeddings
 from US3_sacherverhalt import qa_chain, load_document, split_documents, qa_chain_context
 from US5_gutachtentemplate import gutachtentemplate
 from US6_bescheidtemplate import bescheidTemplate

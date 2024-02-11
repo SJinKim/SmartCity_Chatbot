@@ -1,5 +1,5 @@
 #from US3_sacherverhalt import load_document # for Backend test
-from US3_sacherverhalt import load_document
+from internal.US3_sacherverhalt import load_document
 
 from langchain.prompts import PromptTemplate
 

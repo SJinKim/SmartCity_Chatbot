@@ -1,6 +1,6 @@
 import os
 from dotenv import find_dotenv, load_dotenv 
-from US1_embbeding import init_embeddings
+from internal.US1_embbeding import init_embeddings
 from langchain_openai import AzureChatOpenAI
 from langchain.memory import ConversationBufferMemory
 

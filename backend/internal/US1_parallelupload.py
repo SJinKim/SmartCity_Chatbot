@@ -1,6 +1,6 @@
 
 import concurrent.futures
-from US1_load_document import load_document
+from internal.US1_load_document import load_document
 
 
 # Sonst: Dokumente aus geg. Ordnerpfad werden parallel geladen (mit Fortschrittsbalken)

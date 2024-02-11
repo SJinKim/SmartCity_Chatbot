@@ -1,6 +1,6 @@
-from US3_sacherverhalt import qa_chain, load_document
-from US5_gutachtentemplate import gutachtentemplate
-from US6_bescheidtemplate import bescheidTemplate
+from internal.US3_sacherverhalt import qa_chain, load_document
+from internal.US5_gutachtentemplate import gutachtentemplate
+from internal.US6_bescheidtemplate import bescheidTemplate
 
 import os
 import yaml
@@ -86,5 +86,8 @@ def erstelleBescheidBackground(filePath: str):
 
     gutachten = erstelleGutachten(sachverhalt=load_document(filePath), gutachten_path=f"../output_docs/{gutachten_name}")
     message_str = erstelleBescheid(sachverhalt=load_document(filePath), gutachten_result=gutachten, bescheid_path=f"../output_docs/{bescheid_name}")
+   
+    print(f'lenge von Message: {len(message_str)}')
+    
     write_path_to(key='message_str', item=message_str)
     write_path_to(key='erstellt', item=True)

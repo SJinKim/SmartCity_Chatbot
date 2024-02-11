@@ -1,9 +1,9 @@
 import os
 from typing import Any, List
 from langchain_community.vectorstores.faiss import FAISS
-from US1_splitter import create_text_splitter
-from US1_parallelupload import parallelUpload
-from US1_create_faissindex import create_faiss_index
+from internal.US1_splitter import create_text_splitter
+from internal.US1_parallelupload import parallelUpload
+from internal.US1_create_faissindex import create_faiss_index
 
 def loadData(data_path,embeddings,indexName):
     

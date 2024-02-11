@@ -1,6 +1,6 @@
 import os,glob
-from US1_loadData import loadData
-from US10_initialLLM import initial
+from internal.US1_loadData import loadData
+from internal.US10_initialLLM import initial
 from langchain_community.vectorstores.faiss import FAISS
 
 def db(folder)->FAISS:

@@ -1,6 +1,7 @@
-from internal.US3_sacherverhalt import execute_qa_chain
+#from US3_sacherverhalt import execute_qa_chain
 from internal.US7_generierung import write_path_to, erstelleBescheidBackground
-
+from internal.US10_dbtest import test
+from internal.US10_initialLLM import * 
 import os
 import yaml
 import shutil
@@ -62,7 +63,8 @@ async def websocket_endpoint(websocket: WebSocket):
                 if query.lower() == "exit":
                     break
                 # Process received Message
-                response = execute_qa_chain(message=query)                                    
+                #response = execute_qa_chain(message=query)         
+                response = test(message=query)                          
                 await websocket.send_text(response)
      
             # When no Message received, check if server wants to send a message

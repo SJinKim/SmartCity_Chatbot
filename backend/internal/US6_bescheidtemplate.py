@@ -1,5 +1,5 @@
 #from US3_sacherverhalt import load_document # for Backend-Test
-from US3_sacherverhalt import load_document
+from internal.US3_sacherverhalt import load_document
 
 from langchain.prompts.pipeline import PipelinePromptTemplate
 from langchain.prompts.prompt import PromptTemplate

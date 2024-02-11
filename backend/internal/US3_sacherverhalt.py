@@ -1,6 +1,6 @@
 #from US1_loadData import init_embeddings # for Backend-Test
-from US10_initialLLM import initial
-
+from  internal.US10_initialLLM import * 
+from internal.US1_embbeding import *
 import os
 import nltk
 from dotenv import load_dotenv
