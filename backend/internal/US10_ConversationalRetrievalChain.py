@@ -1,5 +1,4 @@
-import os
-import glob
+
 from langchain.chains import ConversationalRetrievalChain
 from US10_initialLLM import initial
 from US10_retriever import db

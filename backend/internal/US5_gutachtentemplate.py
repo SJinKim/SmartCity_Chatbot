@@ -14,8 +14,8 @@ def gutachtentemplate(sachverhalt) -> str :
     Returns:
         str: The generated expert opinion (Gutachten).
     """
-    vorlage = load_document("../input_docs/Gutachtentemplate.docx")[0].page_content
-    beispiel_gutachten = load_document("../input_docs/Gutachten1.docx")[0].page_content
+    vorlage = load_document("../vorlage/Gutachtentemplate.docx")[0].page_content
+    beispiel_gutachten = load_document("../vorlage/beispiel_gutachten.docx")[0].page_content
     
     prompt_template = PromptTemplate.from_template(
         """ Du bist ein nützlicher Assistent für juristische Mitarbeiter der Stadtverwaltung und hilfst dabei, 

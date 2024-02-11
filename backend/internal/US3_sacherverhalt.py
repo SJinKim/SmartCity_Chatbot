@@ -1,5 +1,5 @@
 #from US1_loadData import init_embeddings # for Backend-Test
-from backend.internal.US1_loadData import init_embeddings
+from US10_initialLLM import initial
 
 import os
 import nltk
@@ -49,7 +49,7 @@ def init_llm():
     )
    
 llm_client = init_llm()
-embeddings = init_embeddings()
+embeddings = initial()[1]
 
 
 def load_document(file_path):
