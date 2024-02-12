@@ -91,6 +91,3 @@ app.mount('/images', StaticFiles(directory='images'), name='images')
 
 # Path for the React-App
 app.mount("/", StaticFiles(directory="dist/", html=True), name="dist")
-
-
-test('hallo')
