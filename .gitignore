@@ -13,3 +13,4 @@ venv*
 v1
 .venv
 .python-version*
+req*

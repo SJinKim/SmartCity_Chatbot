@@ -1,14 +1,15 @@
 
 from langchain.prompts.prompt import PromptTemplate
 
-def interaktion_prompt(user_query,original_bescheid):
+def interaktion_prompt(user_query:str, original_bescheid:str):
     prompt_template = PromptTemplate.from_template(
         """ Du bist Sachbearbeiter und Verfasser eines juristischen Bescheids.
-            Anhand einen Sachverhalt wird ein originaler Bescheid wie folgendes generiert. 
+            Anhand eines Sachverhalts wird ein originaler Bescheid wie folgender generiert. 
             original_bescheid : {bescheid}
-            Auf Basis von Fragen oder Kommentare von den Benutzer solltest du diesen Bescheid erneut verfassen.
+            Passe den originalen Bescheid anhand der Änderungswünsche an. 
+            Diese Anpassung soll immer den Format des originalen Bescheides beibehalten und somit den vollständigen Bescheid erstellen.
             Änderungswünsche vom Benutzer : {query}
-            Der neue Text : 
+            Der neue original_bescheid : 
         """ 
     )
     messages = prompt_template.format(

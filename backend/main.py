@@ -1,5 +1,5 @@
 #from US3_sacherverhalt import execute_qa_chain
-from internal.US7_generierung import write_path_to, erstelleBescheidBackground
+from internal.US7_generierung import write_path_to, erstelleBescheidBackground, add_to_path
 from internal.US10_dbtest import test
 from internal.US10_initialLLM import * 
 import os
@@ -63,9 +63,17 @@ async def websocket_endpoint(websocket: WebSocket):
                 if query.lower() == "exit":
                     break
                 # Process received Message
-                #response = execute_qa_chain(message=query)         
-                response = test(query)                          
+                # response = execute_qa_chain(message=query)
+
+
+                chatHistory = add_to_path(key='chatHist', item=query)
+
+                response = test(query, chatHistory)                          
                 await websocket.send_text(response)
+                # add response to yaml
+                write_path_to(key='message_str', item=response)
+                new = add_to_path(key='chatHist', item=response)
+                print(new)
      
             # When no Message received, check if server wants to send a message
             except asyncio.TimeoutError as e:
@@ -79,8 +87,14 @@ async def websocket_endpoint(websocket: WebSocket):
                                                 
     except Exception as e:
         print(f"WebSocket error: {e}")
+        write_path_to(key='message_str', item='')
+        write_path_to(key='chatHist', item=['init'])
     finally:
         await websocket.close()
+        write_path_to(key='message_str', item='')
+        write_path_to(key='chatHist', item=['init'])
+        print('connection closed and message deleted')
+        
 
 
 # Path to the file to be downloaded 

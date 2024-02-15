@@ -157,9 +157,7 @@ def qa_chain_context(message, document_split):
 
     translator = GoogleTranslator(source='auto', target='german')
     trans_result = translator.translate(response)
-    sentences = nltk.sent_tokenize(trans_result)
-    format_response = '\n\n'.join(sentences)
-    return format_response
+    return trans_result
 
 
 #def qa_chain(message, index): mit Chatverlauf index

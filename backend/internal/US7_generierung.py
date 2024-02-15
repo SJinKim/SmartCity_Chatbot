@@ -7,8 +7,6 @@ import yaml
 import docx
 #import PyPDF2
 
-
-
 def write_path_to(key, item):
     with open('./internal/config.yaml') as file:
         config = yaml.safe_load(file)    
@@ -17,6 +15,27 @@ def write_path_to(key, item):
 
     with open('./internal/config.yaml', 'w') as file:
         yaml.dump(config, file)
+
+def add_to_path(key: str, item: str) -> tuple:
+    with open('./internal/config.yaml', 'r') as f:
+        config = yaml.safe_load(f)
+    # print('start writing into yaml')
+    currentChatHist = config[key]
+
+    print(type(currentChatHist))
+    print(item)
+
+    currentChatHist.append(item)
+    tmp_new = currentChatHist
+
+    tmp_new_tuple = tuple(tmp_new)
+    config[key] = tmp_new
+
+
+    with open('./internal/config.yaml', 'w') as file:
+        yaml.dump(config, file)
+    
+    return tmp_new_tuple
 
 
 def strToDocx(resource: str, output_path:str) -> None:
