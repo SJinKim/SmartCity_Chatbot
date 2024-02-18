@@ -1,8 +1,7 @@
 #from US3_sacherverhalt import execute_qa_chain
 from internal.US7_generierung import write_path_to, erstelleBescheidBackground, add_to_path
 from internal.US10_dbtest import test
-from internal.US10_initialLLM import * 
-import os
+from internal.US10_initialLLM import *
 import yaml
 import shutil
 import asyncio
