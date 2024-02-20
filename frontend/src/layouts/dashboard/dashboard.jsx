@@ -11,6 +11,7 @@ import NewChatButton from "../../components/NewChat"
 function DashboardLayout(props) {
 
     const theme = useTheme()
+
     return (
         <Box sx={{
             margin: 0,
@@ -52,6 +53,7 @@ function DashboardLayout(props) {
                             <NewChatButton
                                 handleNewTab={props.handleNewTab}
                                 handleTabDelete={props.handleTabDelete}
+                                chats={props.chats}
                             />
                         </Stack>
                     </Box>
@@ -67,7 +69,7 @@ function DashboardLayout(props) {
                         <Upload handleNewFile={props.handleNewFile} />
                         <Download handleFileDownload={props.handleFileDownload} />
                         <Button variant="contained" color="primary"
-                             onClick={props.handleAnleitungButtonClick} // Use the function from props
+                            onClick={props.handleAnleitungButtonClick} // Use the function from props
                             sx={{
                                 bgcolor: '#3B4159',
                                 color: 'white',
@@ -83,18 +85,16 @@ function DashboardLayout(props) {
                     </Stack>
                 </Grid>
                 <Grid item xs={10.2}>
-                    <Stack
-                        sx={{ height: '92vh' }}
-                    >
-                        <Chatbox
-                            messages={props.messages}
-                            chatId={props.chatId}
-                            isTyping={props.isTyping}
-                        />
+                    <Stack sx={{ height: '92vh' }}>
+                        {props.activeChat !== 0 ?
+                            <Chatbox chat={props.chats.find(chat => chat.id === props.activeChat)} />
+                            : <h1>Hello</h1>
+                        }
                         <Prompt
                             sendMessage={props.sendMessage}
                             handleNewMessage={props.handleNewMessage}
-                            newMessage={props.newMessage} />
+                            newMessage={props.newMessage}
+                        />
                     </Stack>
                 </Grid>
             </Grid>
@@ -104,16 +104,15 @@ function DashboardLayout(props) {
 
 DashboardLayout.propTypes = {
     handleNewFile: PropTypes.func.isRequired,
-    messages: PropTypes.array.isRequired,
     sendMessage: PropTypes.func.isRequired,
     newMessage: PropTypes.string.isRequired,
     handleNewMessage: PropTypes.func.isRequired,
     handleFileDownload: PropTypes.func.isRequired,
     handleNewTab: PropTypes.func.isRequired,
     handleTabDelete: PropTypes.func.isRequired,
-    chatId: PropTypes.number,
-    isTyping: PropTypes.bool.isRequired,
-    handleAnleitungButtonClick: PropTypes.func.isRequired
+    handleAnleitungButtonClick: PropTypes.func.isRequired,
+    chats: PropTypes.array.isRequired,
+    activeChat: PropTypes.number.isRequired
 }
 
 

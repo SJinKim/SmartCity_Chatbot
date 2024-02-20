@@ -1,4 +1,5 @@
 import asyncio
+import json
 import shutil
 from fastapi import BackgroundTasks, FastAPI, UploadFile, File, WebSocket
 from fastapi.staticfiles import StaticFiles
@@ -6,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
 import yaml
+from typing import Dict
 
 from internal.US7_generierung import write_path_to, erstelleBescheidBackground
 from internal.US1_loadQA_AzureChat import qa_chain
@@ -45,24 +47,27 @@ async def upload_file(background_tasks: BackgroundTasks, Sachverhalt: UploadFile
     background_tasks.add_task(erstelleBescheidBackground, filePath)
     return response
 
+session_manager: Dict[str, WebSocket] = {}
 
 # Path to chat websocket
-@app.websocket("/api/chat")
-async def websocket_endpoint(websocket: WebSocket):
+@app.websocket("/api/chat/{client_id}")
+async def websocket_endpoint(websocket: WebSocket, client_id: str):
     await websocket.accept()
-    await websocket.send_text('Hallo, wie kann ich Ihnen heute helfen?')
+
+    session_manager[client_id] = websocket
 
     try:
         while True:
             try:
                 message = await asyncio.wait_for(websocket.receive_text(), timeout=2)
-                
-                # Check for termination command
-                if message.lower() == "exit":
+
+                if message.lower() == "close":
                     break
+                
                 # Process received Message
-                response = qa_chain(query=message)                                        
-                await websocket.send_text(response)
+                response = qa_chain(query=message)      
+                return_message = {"client_id": client_id, "message": response}                                 
+                await websocket.send_text(json.dumps(return_message))
      
             # When no Message received, check if server wants to send a message
             except asyncio.TimeoutError as e:
@@ -72,11 +77,16 @@ async def websocket_endpoint(websocket: WebSocket):
                 if config['erstellt'] is True:
                     response = config["message_str"]
                     write_path_to(key='erstellt', item=False)
-                    await websocket.send_text(response)
+                    return_message = {"client_id": client_id, "message": response}                                  
+                    await websocket.send_text(json.dumps(return_message))
+                    continue
                                                 
     except Exception as e:
-        print(f"WebSocket error: {e}")
+        print(f"Websocket connection closed {client_id}")
+        
     finally:
+        del session_manager[client_id]
+        print(session_manager)
         await websocket.close()
 
 

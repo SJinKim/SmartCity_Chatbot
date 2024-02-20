@@ -5,24 +5,22 @@ import { useEffect, useRef } from 'react'
 
 
 const Chatbox = (props) => {
+  const chat = props.chat
+
   const chatbox = useRef(null);
   useEffect(() => {
     chatbox.current.scrollIntoView({ block: 'end', behavior: 'smooth' })
-  }, [props.messages])
+  }, [chat.chatHistory])
 
   const typingIndicator = () => {
-    if (props.isTyping === true)
+    if (chat.isTyping === true)
       return (
         <Box sx={{
           display: 'flex',
           pr: 5,
           justifyContent: 'flex-end'
         }}>
-          <CircularProgress sx={{
-
-            color: '#3B4159'
-          }
-          } />
+          <CircularProgress sx={{ color: '#3B4159' }} />
         </Box>
       )
   }
@@ -36,7 +34,7 @@ const Chatbox = (props) => {
           margin: 'auto',
           color: 'grey'
         }}>
-        CHAT {props.chatId}
+        CHAT {chat.id}
       </Typography>
       <Box
         sx={{
@@ -55,8 +53,8 @@ const Chatbox = (props) => {
         }}>
 
         <Stack spacing={3} ref={chatbox}>
-          {props.messages.map(el => {
-            return <TextMsg key={el.id} el={el} />
+          {chat.chatHistory.map(el => {
+            return <TextMsg key={el.timestamp} el={el} />
           })}
           {typingIndicator()}
         </Stack>
@@ -66,9 +64,7 @@ const Chatbox = (props) => {
 }
 
 Chatbox.propTypes = {
-  messages: PropTypes.array.isRequired,
-  chatId: PropTypes.number,
-  isTyping: PropTypes.bool.isRequired
+  chat: PropTypes.object.isRequired,
 }
 
 

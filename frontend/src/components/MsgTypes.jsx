@@ -6,19 +6,19 @@ const TextMsg = ({ el }) => {
   const theme = useTheme();
 
   const getName = () => {
-    return el.incoming ? "Nutzer" : "SmartCity Chatbot";
-  };
+    return el.incoming ? "SmartCity Chatbot" : "Nutzer"
+  }
 
   const getFormattedTimestamp = () => {
     const timestamp = new Date(el.timestamp);
-    return `${timestamp.toLocaleDateString()} ${timestamp.toLocaleTimeString()}`;
-  };
+    return `${timestamp.toLocaleDateString()} ${timestamp.toLocaleTimeString()}`
+  }
 
   return (
     <Box>
       <Stack
         direction="column"
-        alignItems={el.incoming ? "flex-start" : "flex-end"}
+        alignItems={el.incoming ? "flex-end" : "flex-start"}
         mt={0}
         mb={0} // Adjust as needed for bottom margin
         mx={1}
@@ -29,14 +29,14 @@ const TextMsg = ({ el }) => {
       </Stack>
       <Stack
         direction="row"
-        justifyContent={el.incoming ? "flex-start" : "flex-end"}
+        justifyContent={el.incoming ? "flex-end" : "flex-start"}
       >
         <Box
           p={1.5}
           sx={{
             bgcolor: el.incoming
-              ?  '#F1F8CC'  //theme.palette.primary.light
-              : '#DAD9DF', //theme.palette.primary.main,
+              ? '#DAD9DF'  //theme.palette.primary.light
+              : '#F1F8CC', //theme.palette.primary.main,
             width: "max-content",
             borderRadius: "10px",
             m: 0,
@@ -53,7 +53,7 @@ const TextMsg = ({ el }) => {
       </Stack>
       <Stack
         direction="row"
-        justifyContent={el.incoming ? "flex-start" : "flex-end"}
+        justifyContent={el.incoming ? "flex-end" : "flex-start"}
         mt={0}
         mb={1} // Adjust as needed for bottom margin
         mx={1}
@@ -68,7 +68,6 @@ const TextMsg = ({ el }) => {
 
 TextMsg.propTypes = {
   el: PropTypes.object.isRequired,
-
 }
 
 export { TextMsg };

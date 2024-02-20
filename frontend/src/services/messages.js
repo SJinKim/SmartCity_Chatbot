@@ -7,20 +7,8 @@ const fileUploadURI = '/api/upload'
 const fileDownloadURI = '/api/files'
 
 const sendMessage = (message) => {
- //   console.log("Sending message:", message);
     const req = axios.post(baseURI, message)
     return req.then(response => response.data)
-              /*  return req
-                    .then((response) => {
-                        setMessages((prevMessages) => [...prevMessages, response.data]);
-                        return response.data;
-                    })
-                    .catch((error) => {
-                        console.error("Error sending message:", error);
-                        setMessages((prevMessages) => [...prevMessages, message]);
-                        throw error;
-                    });*/
-
 }
 
 const getMessages = () => {
