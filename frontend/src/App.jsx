@@ -23,7 +23,6 @@ const App = () => {
     }
   }, [incomingMessage])
 
-
   const createNewChat = async (id, message) => {
     const socket = await new WebSocket(`ws://localhost:8000/api/chat/${id}`)
     const newChat = {
@@ -86,7 +85,7 @@ const App = () => {
         const newChat = await createNewChat(1)
         newChat.chatHistory = newChat.chatHistory.concat(outgoingMesssage)
         newChat.isTyping = true
-        setChats(chats.concat(newChat))
+        setChats([newChat])
         setActiveChat(1)
         newChat.socket.onopen = () => {
           newChat.socket.send(outgoingMesssage.message)
@@ -112,30 +111,42 @@ const App = () => {
       file.name
     )
     const response = await messageService.uploadFile(formData)
-    const message = {
-      message: response.message,
+    if (activeChat === 0) {
+      const newChat = await createNewChat(1, response.message)
+      newChat.isTyping = true
+      setChats([newChat])
+      setActiveChat(1)
+    } else {
+      const message = {
+        message: response.message,
         incoming: true,
         timestamp: Date.now()
-    }
-    if(activeChat === 0) {
-        const newChat = await createNewChat(1, message)
-        setChats(chats.concat(newChat))
-        setActiveChat(1)
+      }
+      const chat = chats.find(chat => chat.id === activeChat)
+      chat.chatHistory = chat.chatHistory.concat(message)
+      chat.isTyping = true
+      setChats([...chats])
     }
   }
 
-  const handleAnleitungButtonClick = () => {
+  const handleAnleitungButtonClick = async () => {
     const anleitungMessage = {
-      type: "msg-static",
       message: "In diesem Chat können Sie Fragen zu Ihrem Bescheid stellen.\nDer Chat wird Ihnen den entsprechenden Bescheid zusenden. Sie haben die Möglichkeit, den Bescheid durch Klicken auf den Button 'Herunterladen' herunterzuladen. Zusätzlich können Sie eine Datei hochladen, indem Sie auf den Button 'Hochladen' klicken. Der Chat verwendet diese Datei, um den entsprechenden Bescheid zu finden.Um mehrere Chats zu öffnen, klicken Sie auf den Button 'Neuer Chat'.",
-      incoming: false,
-      outgoing: true,
+      incoming: true,
       timestamp: Date.now(),
-      id: messages.length,
-      chatId: chatId
-    };
-    // Directly use setMessages to add the new message
-    setMessages(messages.concat(anleitungMessage));
+
+    }
+    if (activeChat === 0) {
+      const newChat = await createNewChat(1, anleitungMessage.message)
+      newChat.isTyping = false
+      setChats([newChat])
+      setActiveChat(1)
+    } else {
+      const chat = chats.find(chat => chat.id === activeChat)
+      chat.chatHistory = chat.chatHistory.concat(anleitungMessage)
+      chat.isTyping = false
+      setChats([...chats])
+    }
   }
 
   const handleFileDownload = async (event) => {
@@ -148,16 +159,22 @@ const App = () => {
       const fileURL = URL.createObjectURL(file)
       window.open(fileURL)
     } catch (exc) {
-      const conMsg = {
-        type: "msg-static",
+      const excMsg = {
         message: 'Es ist noch keine Datei zum Download verfügbar',
-        incoming: false,
-        outgoing: true,
+        incoming: true,
         timestamp: Date.now(),
-        id: messages.length,
-        chatId: chatId
       }
-      setMessages(messages.concat(conMsg))
+      if (activeChat === 0) {
+        const newChat = await createNewChat(1, excMsg.message)
+        newChat.isTyping = false
+        setChats([newChat])
+        setActiveChat(1)
+      } else {
+        const chat = chats.find(chat => chat.id === activeChat)
+        chat.chatHistory = chat.chatHistory.concat(excMsg)
+        chat.isTyping = false
+        setChats([...chats])
+      }
     }
   }
 

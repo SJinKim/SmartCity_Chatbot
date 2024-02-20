@@ -6,6 +6,7 @@ import Download from "../../components/Download"
 import PropTypes from 'prop-types'
 import { useTheme } from '@mui/material/styles'
 import NewChatButton from "../../components/NewChat"
+import StartScreen from "../../components/StartScreen"
 
 
 function DashboardLayout(props) {
@@ -88,7 +89,7 @@ function DashboardLayout(props) {
                     <Stack sx={{ height: '92vh' }}>
                         {props.activeChat !== 0 ?
                             <Chatbox chat={props.chats.find(chat => chat.id === props.activeChat)} />
-                            : <h1>Hello</h1>
+                            : <StartScreen />
                         }
                         <Prompt
                             sendMessage={props.sendMessage}
