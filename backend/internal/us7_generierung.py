@@ -115,48 +115,16 @@ def erstelle_bescheid(sachverhalt, gutachten_result, bescheid_path) -> str:
     str_to_docx(resource=bescheid_response, output_path=bescheid_path)
     return bescheid_response
 
-
-# Für Fast-API in main.py
-def erstelle_bescheid_background(file_path: str):
-    """Asynchronously generates expert opinion (Gutachten) and official notice (Bescheid) 
-    documents from a case file (Sachverhalt). Timestamps are used to ensure unique file names.
-    The generated documents are split into smaller chunks, and added to the existing 
-    VectorStores for Gutachten and Bescheide.
+def __generated_docs_to_index(gutachten_doc, bescheid_doc):
+    """
+    Indexes the generated expert opinion (Gutachten) and official
+    notice (Bescheid) docs by splitting them, adding them and saving them
+    in the respective existing VectoreStores (gutachten_index & bescheide_index).
 
     Args:
-        filePath (str): The path to the document containing the case file (Sachverhalt).
-
-    Returns:    None
+        gutachten_doc (_type_): generated gutachten
+        bescheid_doc (_type_): generated bescheid
     """
-    file_name = os.path.basename(file_path)
-    timestamp = datetime.now().strftime("%Y-%m-%d")
-    counter = 1
-
-    while True:
-        gutachten_name = f"[Gutachten] {file_name}_{timestamp} [{counter}].docx"
-        bescheid_name = f"[Bescheid] {file_name}_{timestamp} [{counter}].docx"
-        gutachten_path = f"./Gutachten_docs/{gutachten_name}"
-        bescheid_path = f"./Bescheide_docs/{bescheid_name}"
-
-        if not os.path.exists(gutachten_path) and not os.path.exists(bescheid_path):
-            break
-
-        counter += 1
-
-    gutachten = erstelle_gutachten(
-        sachverhalt=load_document(file_path), gutachten_path=gutachten_path
-    )
-    message_str = erstelle_bescheid(
-        sachverhalt=load_document(file_path),
-        gutachten_result=gutachten,
-        bescheid_path=bescheid_path,
-    )
-    gutachten_doc = load_document(gutachten_path)
-    bescheid_doc = load_document(bescheid_path)
-
-    # Indexes the generated expert opinion (Gutachten) and official
-    # notice (Bescheid) docs by splitting them, adding them and saving them
-    # in the respective existing VectoreStores (gutachten_index & bescheide_index).
     split_gutachten = split_documents(gutachten_doc)
     split_bescheid = split_documents(bescheid_doc)
 
@@ -187,6 +155,43 @@ def erstelle_bescheid_background(file_path: str):
     loaded_bescheide.save_local(
         folder_path=bescheide_index, index_name="bescheide_index"
     )
+
+
+# Für Fast-API in main.py
+def erstelle_bescheid_background(file_path: str):
+    """Asynchronously generates expert opinion (Gutachten) and official notice (Bescheid) 
+    documents from a case file (Sachverhalt). Timestamps are used to ensure unique file names.
+    The generated documents are split into smaller chunks, and added to the existing 
+    VectorStores for Gutachten and Bescheide.
+
+    Args:
+        filePath (str): The path to the document containing the case file (Sachverhalt).
+
+    Returns:    None
+    """
+    file_name = os.path.basename(file_path)
+    timestamp = datetime.now().strftime("%Y-%m-%d")
+    counter = 1
+
+    while True:
+        gutachten_path = f"./Gutachten_docs/[Gutachten] {file_name}_{timestamp} [{counter}].docx"
+        bescheid_path = f"./Bescheide_docs/[Bescheid] {file_name}_{timestamp} [{counter}].docx"
+
+        if not os.path.exists(gutachten_path) and not os.path.exists(bescheid_path):
+            break
+
+        counter += 1
+
+    gutachten = erstelle_gutachten(
+        sachverhalt=load_document(file_path), gutachten_path=gutachten_path
+    )
+    message_str = erstelle_bescheid(
+        sachverhalt=load_document(file_path),
+        gutachten_result=gutachten,
+        bescheid_path=bescheid_path,
+    )
+
+    __generated_docs_to_index(load_document(gutachten_path), load_document(bescheid_path))
 
     write_path_to(key="message_str", item=message_str)
     write_path_to(key="erstellt", item=True)

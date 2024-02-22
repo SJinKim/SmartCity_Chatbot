@@ -18,17 +18,14 @@ from langchain_community.vectorstores.utils import DistanceStrategy
 from langchain_community.document_loaders.unstructured import UnstructuredFileLoader
 from langchain.text_splitter import Document, RecursiveCharacterTextSplitter
 
+from internal.utils import check_environment
+
 
 # Retrieves and validates Azure OpenAI API credentials from loaded environment variables
 # Raises :ValueError: If either the API key or endpoint is not found in the environment
 load_dotenv()
-api_key = os.getenv("AZURE_OPENAI_KEY")
-if not api_key:
-    raise ValueError("< API Key > nicht gefunden!")
-azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
-if not azure_endpoint:
-    raise ValueError("< API Endpoint > nicht gefunden!")
 
+check_environment()
 
 def init_embeddings():
     """Initializes and returns Azure OpenAI Embeddings client.
@@ -41,7 +38,7 @@ def init_embeddings():
     return AzureOpenAIEmbeddings(
         deployment=os.getenv("AZURE_EMBEDDING_DEPLOYMENT"),
         model=os.getenv("AZURE_EMBEDDING_MODEL"),
-        api_key=api_key,
+        api_key=os.getenv("AZURE_OPENAI_KEY"),
         openai_api_version=os.getenv("AZURE_OPENAI_VERSION"),
     )
 
@@ -123,6 +120,31 @@ def __create_faiss_index(embedding_func, split_documents):
     vectorstore_faiss.add_documents(split_documents)
     return vectorstore_faiss
 
+def __parallel_upload(folder_path, data_folder):
+    """
+    Loads documents in parallel using a thread pool and displays a progress bar.
+    Args:
+        folder_path (_type_): path to documents folder to be uploaded
+        data_folder (_type_): name of the folder to be uploaded
+
+    Returns:
+        _type_: _description_
+    """
+    docs = []
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        total_files = len(folder_path)
+        progress_bar = tqdm(
+            total=total_files,
+            desc=(f"Dokumente aus Ordner < {data_folder} > werden geladen"),
+        )
+        futures = [executor.submit(__load_document, file_path) for file_path in folder_path]
+        for future in concurrent.futures.as_completed(futures):
+            doc = future.result()
+            docs.extend(doc)
+            progress_bar.update(1)
+        progress_bar.close()
+    return docs
+
 def upload_data(data_folder, vectorestore_name):
     """Uploads documents from a data folder to a Vectorstore.
         It checks for a saved index and loads it if available.
@@ -140,7 +162,6 @@ def upload_data(data_folder, vectorestore_name):
     parent_folder = os.path.dirname(os.path.dirname(__file__))
     folder = os.path.join(parent_folder, data_folder)
     folder_path = glob.glob(os.path.join(folder, "*"))
-    docs = []
 
     # Checks for a local index and loads it if available, otherwise creates one.
     local_index = os.path.join(os.path.dirname(__file__), vectorestore_name)
@@ -151,23 +172,7 @@ def upload_data(data_folder, vectorestore_name):
         print("Lokaler Index gefunden & geladen!")
     else:
         print("Kein lokaler Index gefunden, daher wird es erstellt...")
-
-        # Loads documents in parallel using a thread pool and displays a progress bar.
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            total_files = len(folder_path)
-            progress_bar = tqdm(
-                total=total_files,
-                desc=(f"Dokumente aus Ordner < {data_folder} > werden geladen"),
-            )
-            futures = [
-                executor.submit(__load_document, file_path) for file_path in folder_path
-            ]
-            for future in concurrent.futures.as_completed(futures):
-                doc = future.result()
-                docs.extend(doc)
-                progress_bar.update(1)
-            progress_bar.close()
-
+        docs = __parallel_upload(folder_path=folder_path, data_folder=data_folder)
         split_docs = __create_text_splitter(docs)
         print(f"Anzahl der aufgeteilten Chunks: {len(split_docs)}")
 
@@ -189,4 +194,4 @@ def upload_data(data_folder, vectorestore_name):
         print(f"Eingebettete Vektoren im < {vectorestore_name} >: {len(data_ids)}")
 
 
-# upload_data(data_folder="Bescheide_docs", vectorestore_name="bescheide_index")
+upload_data(data_folder="Bescheide_docs", vectorestore_name="bescheide_index")

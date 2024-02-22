@@ -19,18 +19,13 @@ from langchain_community.document_loaders import (
 )
 
 from internal.us1_load_data import init_embeddings
+from internal.utils import check_environment
 
 
 # Retrieves and validates Azure OpenAI API credentials from loaded environment variables.
 # Raises: ValueError: If either the API key or endpoint is not found in the environment.
 load_dotenv()
-api_key = os.getenv("AZURE_OPENAI_KEY")
-if not api_key:
-    raise ValueError("< API Key > nicht gefunden!")
-azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
-if not azure_endpoint:
-    raise ValueError("< API Endpoint > nicht gefunden!")
-
+check_environment()
 
 def init_llm():
     """Initializes and returns a AzureChatOpenAI language model instance.
@@ -44,7 +39,7 @@ def init_llm():
         azure_deployment=os.getenv("AZURE_OPENAI_DEPLOYMENT"),
         openai_api_version=os.getenv("AZURE_OPENAI_VERSION"),
         temperature=0.1,
-        api_key=api_key,
+        api_key=os.getenv("AZURE_OPENAI_KEY"),
     )
 
 
@@ -148,7 +143,6 @@ def refine_query(prompt):
     refined = message_generate.content
     return refined
 
-
 def qa_chain_context(query, document_split):
     """Performs a question-answering (QA) chain on a given message using retrieved doc 
        chunks and the local saved vectorestore.
@@ -160,15 +154,14 @@ def qa_chain_context(query, document_split):
     Returns:
         str: The generated response/answer and translated to German.
     """
-    # global embeddings, llm_client
-
     chain = load_qa_chain(llm=llm_client, chain_type="stuff", verbose=True)
     data_index = os.path.join(os.path.dirname(__file__), "data_recursive")
     loaded_data = FAISS.load_local(
         folder_path=data_index, embeddings=embeddings, index_name="data_recursive"
     )
 
-    refined_query = refine_query(query)
+    translator = GoogleTranslator(source="auto", target="german")
+    refined_query = refine_query(translator.translate(query))
 
     similar = loaded_data.similarity_search(query=refined_query)
     mmr = loaded_data.max_marginal_relevance_search(query=refined_query)
@@ -178,7 +171,6 @@ def qa_chain_context(query, document_split):
         input_documents=document_split, question=query, context=filtered
     )
 
-    translator = GoogleTranslator(source="auto", target="german")
     trans_result = translator.translate(response)
     return trans_result
 
@@ -194,15 +186,13 @@ def qa_chain(query):
     Returns:
         str: The generated response/answer and translated to German.
     """
-    # global embeddings, llm_client
-
     chain = load_qa_chain(llm=llm_client, chain_type="stuff", verbose=True)
     data_index = os.path.join(os.path.dirname(__file__), "data_recursive")
     loaded_data = FAISS.load_local(
         folder_path=data_index, embeddings=embeddings, index_name="data_recursive"
     )
-
-    refined_query = refine_query(query)
+    translator = GoogleTranslator(source="auto", target="german")
+    refined_query = refine_query(translator.translate(query))
 
     similar = loaded_data.similarity_search(query=refined_query)
     mmr = loaded_data.max_marginal_relevance_search(query=refined_query)
@@ -210,6 +200,5 @@ def qa_chain(query):
 
     response = chain.run(input_documents=filtered, question=query)
 
-    translator = GoogleTranslator(source="auto", target="german")
     trans_result = translator.translate(response)
     return trans_result
