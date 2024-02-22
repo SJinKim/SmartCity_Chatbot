@@ -86,7 +86,9 @@ function DashboardLayout(props) {
                     </Stack>
                 </Grid>
                 <Grid item xs={10.2}>
-                    <Stack sx={{ height: '92vh' }}>
+                    <Stack sx={{ height: '92vh',
+                                justifyContent: 'space-between'
+                    }}>
                         {props.activeChat !== 0 ?
                             <Chatbox chat={props.chats.find(chat => chat.id === props.activeChat)} />
                             : <StartScreen />
