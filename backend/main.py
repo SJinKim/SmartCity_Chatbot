@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 
 import yaml
 
+from internal.US3_sacherverhalt import qa_chain
 from internal.US7_generierung import write_path_to, erstelleBescheidBackground
-from internal.US1_loadQA_AzureChat import qa_chain
 
 load_dotenv()
 
