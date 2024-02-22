@@ -768,3 +768,221 @@ def init_embeddings():
 ------------------------------------------------------------------
 Your code has been rated at 6.72/10 (previous run: 7.28/10, -0.55)
 
+************* Module internal.us1_load_data
+internal/us1_load_data.py:126:0: R0914: Too many local variables (18/15) (too-many-locals)
+************* Module internal.us3_sacherverhalt
+internal/us3_sacherverhalt.py:112:0: C0301: Line too long (102/100) (line-too-long)
+internal/us3_sacherverhalt.py:113:0: C0301: Line too long (246/100) (line-too-long)
+internal/us3_sacherverhalt.py:114:0: C0301: Line too long (287/100) (line-too-long)
+internal/us3_sacherverhalt.py:124:0: C0301: Line too long (287/100) (line-too-long)
+internal/us3_sacherverhalt.py:125:0: C0301: Line too long (334/100) (line-too-long)
+internal/us3_sacherverhalt.py:126:0: C0301: Line too long (194/100) (line-too-long)
+internal/us3_sacherverhalt.py:137:0: C0301: Line too long (127/100) (line-too-long)
+internal/us3_sacherverhalt.py:171:0: C0301: Line too long (112/100) (line-too-long)
+internal/us3_sacherverhalt.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/us3_sacherverhalt.py:19:0: W0105: String statement has no effect (pointless-string-statement)
+internal/us3_sacherverhalt.py:111:20: W1308: Duplicate string formatting argument 'prompt', consider passing as named argument (duplicate-string-formatting-argument)
+internal/us3_sacherverhalt.py:112:8: C0209: Formatting a regular string which could be an f-string (consider-using-f-string)
+internal/us3_sacherverhalt.py:146:4: W0602: Using global for 'embeddings' but no assignment is done (global-variable-not-assigned)
+internal/us3_sacherverhalt.py:146:4: W0602: Using global for 'llm_client' but no assignment is done (global-variable-not-assigned)
+internal/us3_sacherverhalt.py:179:4: W0602: Using global for 'embeddings' but no assignment is done (global-variable-not-assigned)
+internal/us3_sacherverhalt.py:179:4: W0602: Using global for 'llm_client' but no assignment is done (global-variable-not-assigned)
+internal/us3_sacherverhalt.py:201:0: W0105: String statement has no effect (pointless-string-statement)
+internal/us3_sacherverhalt.py:4:0: C0411: standard import "import os" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:5:0: C0411: third party import "from dotenv import load_dotenv" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:6:0: C0411: third party import "from deep_translator import GoogleTranslator" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:7:0: C0411: third party import "from langchain_openai import AzureChatOpenAI" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:8:0: C0411: third party import "from langchain.prompts import PromptTemplate" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:9:0: C0411: third party import "from langchain_core.messages import HumanMessage" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:10:0: C0411: third party import "from langchain_community.vectorstores.faiss import FAISS" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:11:0: C0411: third party import "from langchain.text_splitter import CharacterTextSplitter" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:12:0: C0411: third party import "from langchain.chains.question_answering import load_qa_chain" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:13:0: C0411: third party import "from langchain_community.document_loaders import UnstructuredWordDocumentLoader, UnstructuredPDFLoader" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:11:0: C0412: Imports from package langchain are not grouped (ungrouped-imports)
+internal/us3_sacherverhalt.py:13:0: C0412: Imports from package langchain_community are not grouped (ungrouped-imports)
+internal/us3_sacherverhalt.py:8:0: W0611: Unused PromptTemplate imported from langchain.prompts (unused-import)
+************* Module internal.us5_gutachten_template
+internal/us5_gutachten_template.py:20:0: C0301: Line too long (110/100) (line-too-long)
+internal/us5_gutachten_template.py:21:0: C0301: Line too long (127/100) (line-too-long)
+internal/us5_gutachten_template.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/us5_gutachten_template.py:4:0: C0411: third party import "from langchain.prompts import PromptTemplate" should be placed before "from internal.us3_sacherverhalt import load_document" (wrong-import-order)
+************* Module internal.us6_bescheid_template
+internal/us6_bescheid_template.py:9:0: C0301: Line too long (147/100) (line-too-long)
+internal/us6_bescheid_template.py:16:0: C0301: Line too long (129/100) (line-too-long)
+internal/us6_bescheid_template.py:22:0: C0301: Line too long (167/100) (line-too-long)
+internal/us6_bescheid_template.py:24:0: C0301: Line too long (119/100) (line-too-long)
+internal/us6_bescheid_template.py:27:0: C0301: Line too long (112/100) (line-too-long)
+internal/us6_bescheid_template.py:29:0: C0301: Line too long (112/100) (line-too-long)
+internal/us6_bescheid_template.py:33:0: C0301: Line too long (127/100) (line-too-long)
+internal/us6_bescheid_template.py:36:0: C0301: Line too long (211/100) (line-too-long)
+internal/us6_bescheid_template.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/us6_bescheid_template.py:8:0: C0103: Function name "bescheidTemplate" doesn't conform to snake_case naming style (invalid-name)
+internal/us6_bescheid_template.py:44:8: C2401: Argument name "sachverhaltsprüfung" contains a non-ASCII character, consider renaming it. (non-ascii-name)
+internal/us6_bescheid_template.py:4:0: C0411: third party import "from langchain.prompts.pipeline import PipelinePromptTemplate" should be placed before "from internal.us3_sacherverhalt import load_document" (wrong-import-order)
+internal/us6_bescheid_template.py:5:0: C0411: third party import "from langchain.prompts.prompt import PromptTemplate" should be placed before "from internal.us3_sacherverhalt import load_document" (wrong-import-order)
+************* Module internal.us7_generierung
+internal/us7_generierung.py:120:0: R0914: Too many local variables (22/15) (too-many-locals)
+internal/us7_generierung.py:15:0: C0411: third party import "from langchain_community.vectorstores.faiss import FAISS" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us7_generierung.py:16:0: C0411: third party import "from langchain.chains.question_answering import load_qa_chain" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+************* Module main
+main.py:1:0: R0801: Similar lines in 2 files
+==internal.us1_load_data:[23:40]
+==internal.us3_sacherverhalt:[23:40]
+load_dotenv()
+api_key = os.getenv("AZURE_OPENAI_KEY")
+if not api_key:
+    raise ValueError("< API Key > nicht gefunden!")
+azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+if not azure_endpoint:
+    raise ValueError("< API Endpoint > nicht gefunden!")
+
+
+def init_embeddings():
+    """Initializes and returns Azure OpenAI Embeddings client.
+
+    Args:   None
+
+    Returns:
+        AzureOpenAIEmbeddings: An instance of the Azure OpenAI Embeddings client.
+    """ (duplicate-code)
+
+------------------------------------------------------------------
+Your code has been rated at 8.18/10 (previous run: 8.18/10, +0.00)
+
+************* Module us1_load_data
+internal/us1_load_data.py:126:0: R0914: Too many local variables (18/15) (too-many-locals)
+************* Module us3_sacherverhalt
+internal/us3_sacherverhalt.py:112:0: C0301: Line too long (102/100) (line-too-long)
+internal/us3_sacherverhalt.py:113:0: C0301: Line too long (246/100) (line-too-long)
+internal/us3_sacherverhalt.py:114:0: C0301: Line too long (287/100) (line-too-long)
+internal/us3_sacherverhalt.py:124:0: C0301: Line too long (287/100) (line-too-long)
+internal/us3_sacherverhalt.py:125:0: C0301: Line too long (334/100) (line-too-long)
+internal/us3_sacherverhalt.py:126:0: C0301: Line too long (194/100) (line-too-long)
+internal/us3_sacherverhalt.py:137:0: C0301: Line too long (127/100) (line-too-long)
+internal/us3_sacherverhalt.py:171:0: C0301: Line too long (112/100) (line-too-long)
+internal/us3_sacherverhalt.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/us3_sacherverhalt.py:19:0: W0105: String statement has no effect (pointless-string-statement)
+internal/us3_sacherverhalt.py:111:20: W1308: Duplicate string formatting argument 'prompt', consider passing as named argument (duplicate-string-formatting-argument)
+internal/us3_sacherverhalt.py:112:8: C0209: Formatting a regular string which could be an f-string (consider-using-f-string)
+internal/us3_sacherverhalt.py:146:4: W0602: Using global for 'embeddings' but no assignment is done (global-variable-not-assigned)
+internal/us3_sacherverhalt.py:146:4: W0602: Using global for 'llm_client' but no assignment is done (global-variable-not-assigned)
+internal/us3_sacherverhalt.py:179:4: W0602: Using global for 'embeddings' but no assignment is done (global-variable-not-assigned)
+internal/us3_sacherverhalt.py:179:4: W0602: Using global for 'llm_client' but no assignment is done (global-variable-not-assigned)
+internal/us3_sacherverhalt.py:201:0: W0105: String statement has no effect (pointless-string-statement)
+internal/us3_sacherverhalt.py:4:0: C0411: standard import "import os" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:5:0: C0411: third party import "from dotenv import load_dotenv" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:6:0: C0411: third party import "from deep_translator import GoogleTranslator" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:7:0: C0411: third party import "from langchain_openai import AzureChatOpenAI" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:8:0: C0411: third party import "from langchain.prompts import PromptTemplate" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:9:0: C0411: third party import "from langchain_core.messages import HumanMessage" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:10:0: C0411: third party import "from langchain_community.vectorstores.faiss import FAISS" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:11:0: C0411: third party import "from langchain.text_splitter import CharacterTextSplitter" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:12:0: C0411: third party import "from langchain.chains.question_answering import load_qa_chain" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:13:0: C0411: third party import "from langchain_community.document_loaders import UnstructuredWordDocumentLoader, UnstructuredPDFLoader" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:11:0: C0412: Imports from package langchain are not grouped (ungrouped-imports)
+internal/us3_sacherverhalt.py:13:0: C0412: Imports from package langchain_community are not grouped (ungrouped-imports)
+internal/us3_sacherverhalt.py:8:0: W0611: Unused PromptTemplate imported from langchain.prompts (unused-import)
+************* Module us5_gutachten_template
+internal/us5_gutachten_template.py:20:0: C0301: Line too long (110/100) (line-too-long)
+internal/us5_gutachten_template.py:21:0: C0301: Line too long (127/100) (line-too-long)
+internal/us5_gutachten_template.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/us5_gutachten_template.py:4:0: C0411: third party import "from langchain.prompts import PromptTemplate" should be placed before "from internal.us3_sacherverhalt import load_document" (wrong-import-order)
+************* Module us6_bescheid_template
+internal/us6_bescheid_template.py:9:0: C0301: Line too long (147/100) (line-too-long)
+internal/us6_bescheid_template.py:16:0: C0301: Line too long (129/100) (line-too-long)
+internal/us6_bescheid_template.py:22:0: C0301: Line too long (167/100) (line-too-long)
+internal/us6_bescheid_template.py:24:0: C0301: Line too long (119/100) (line-too-long)
+internal/us6_bescheid_template.py:27:0: C0301: Line too long (112/100) (line-too-long)
+internal/us6_bescheid_template.py:29:0: C0301: Line too long (112/100) (line-too-long)
+internal/us6_bescheid_template.py:33:0: C0301: Line too long (127/100) (line-too-long)
+internal/us6_bescheid_template.py:36:0: C0301: Line too long (211/100) (line-too-long)
+internal/us6_bescheid_template.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/us6_bescheid_template.py:8:0: C0103: Function name "bescheidTemplate" doesn't conform to snake_case naming style (invalid-name)
+internal/us6_bescheid_template.py:44:8: C2401: Argument name "sachverhaltsprüfung" contains a non-ASCII character, consider renaming it. (non-ascii-name)
+internal/us6_bescheid_template.py:4:0: C0411: third party import "from langchain.prompts.pipeline import PipelinePromptTemplate" should be placed before "from internal.us3_sacherverhalt import load_document" (wrong-import-order)
+internal/us6_bescheid_template.py:5:0: C0411: third party import "from langchain.prompts.prompt import PromptTemplate" should be placed before "from internal.us3_sacherverhalt import load_document" (wrong-import-order)
+************* Module us7_generierung
+internal/us7_generierung.py:120:0: R0914: Too many local variables (22/15) (too-many-locals)
+************* Module main
+main.py:1:0: R0801: Similar lines in 2 files
+==us1_load_data:[23:40]
+==us3_sacherverhalt:[23:40]
+load_dotenv()
+api_key = os.getenv("AZURE_OPENAI_KEY")
+if not api_key:
+    raise ValueError("< API Key > nicht gefunden!")
+azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+if not azure_endpoint:
+    raise ValueError("< API Endpoint > nicht gefunden!")
+
+
+def init_embeddings():
+    """Initializes and returns Azure OpenAI Embeddings client.
+
+    Args:   None
+
+    Returns:
+        AzureOpenAIEmbeddings: An instance of the Azure OpenAI Embeddings client.
+    """ (duplicate-code)
+
+------------------------------------------------------------------
+Your code has been rated at 8.25/10 (previous run: 8.18/10, +0.07)
+
+************* Module internal.us1_load_data
+internal/us1_load_data.py:126:0: R0914: Too many local variables (18/15) (too-many-locals)
+************* Module internal.us7_generierung
+internal/us7_generierung.py:120:0: R0914: Too many local variables (22/15) (too-many-locals)
+************* Module main
+main.py:1:0: R0801: Similar lines in 2 files
+==internal.us1_load_data:[23:40]
+==internal.us3_sacherverhalt:[25:42]
+load_dotenv()
+api_key = os.getenv("AZURE_OPENAI_KEY")
+if not api_key:
+    raise ValueError("< API Key > nicht gefunden!")
+azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+if not azure_endpoint:
+    raise ValueError("< API Endpoint > nicht gefunden!")
+
+
+def init_embeddings():
+    """Initializes and returns Azure OpenAI Embeddings client.
+
+    Args:   None
+
+    Returns:
+        AzureOpenAIEmbeddings: An instance of the Azure OpenAI Embeddings client.
+    """ (duplicate-code)
+
+------------------------------------------------------------------
+Your code has been rated at 9.89/10 (previous run: 9.89/10, +0.00)
+
+************* Module internal.us1_load_data
+internal/us1_load_data.py:126:0: R0914: Too many local variables (18/15) (too-many-locals)
+************* Module internal.us7_generierung
+internal/us7_generierung.py:120:0: R0914: Too many local variables (22/15) (too-many-locals)
+************* Module main
+main.py:1:0: R0801: Similar lines in 2 files
+==internal.us1_load_data:[23:40]
+==internal.us3_sacherverhalt:[25:42]
+load_dotenv()
+api_key = os.getenv("AZURE_OPENAI_KEY")
+if not api_key:
+    raise ValueError("< API Key > nicht gefunden!")
+azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+if not azure_endpoint:
+    raise ValueError("< API Endpoint > nicht gefunden!")
+
+
+def init_llm():
+    """Initializes and returns a AzureChatOpenAI language model instance.
+
+    Args:   None
+
+    Returns:
+        AzureOpenAIEmbeddings: An instance of the AzureChatOpenAI language model.
+    """ (duplicate-code)
+
+------------------------------------------------------------------
+Your code has been rated at 9.89/10 (previous run: 9.89/10, +0.00)
+

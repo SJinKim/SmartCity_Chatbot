@@ -1,14 +1,19 @@
-from internal.us1_load_data import init_embeddings
-from internal.us3_sacherverhalt import init_llm, load_document, split_documents
-from internal.us5_gutachten_template import gutachtentemplate
-from internal.us6_bescheid_template import bescheidTemplate
+"""
+    This Modul includes the functions to generate a gutachten and a bescheid
+"""
 
 import os
-import yaml
-import docx
 from datetime import datetime
+import docx
+import yaml
+
 from langchain_community.vectorstores.faiss import FAISS
 from langchain.chains.question_answering import load_qa_chain
+
+from internal.us1_load_data import init_embeddings
+from internal.us3_sacherverhalt import init_llm, load_document, split_documents
+from internal.us5_gutachten_template import gutachten_template
+from internal.us6_bescheid_template import bescheid_template
 
 
 llm_client = init_llm()
@@ -25,16 +30,16 @@ def write_path_to(key, item):
     Returns:    None
     """
     path = os.path.join(os.path.dirname(__file__), "config.yaml")
-    with open(path) as file:
+    with open(path, encoding='utf-8') as file:
         config = yaml.safe_load(file)
 
     config[key] = item
 
-    with open(path, "w") as file:
+    with open(path, "w", encoding='utf-8') as file:
         yaml.dump(config, file)
 
 
-def strToDocx(resource: str, output_path: str) -> None:
+def str_to_docx(resource: str, output_path: str) -> None:
     """This function writes the text from a string into a Docx file.
 
     Args:
@@ -49,10 +54,12 @@ def strToDocx(resource: str, output_path: str) -> None:
 
 
 # Verfeinerungstemplate für Gutachten- & Bescheidgenerierung
-def erstelleGutachten(sachverhalt, gutachten_path) -> str:
-    """Generates an expert opinion (Gutachten) as a .docx file, and saves it to the specified path.
-        This function leverages a pre-trained question answering chain and a pre-built indexes of expert opinions ("gutachten_index")
-        to generate a new expert opinion based on a provided case (Sachverhalt) file.
+def erstelle_gutachten(sachverhalt, gutachten_path) -> str:
+    """Generates an expert opinion (Gutachten) as a .docx file, 
+    and saves it to the specified path. This function leverages 
+    a pre-trained question answering chain and a pre-built indexes 
+    of expert opinions ("gutachten_index") to generate a new expert 
+    opinion based on a provided case (Sachverhalt) file.
 
     Args:
         sachverhalt (docx, pdf): Case file (Sachverhalt)
@@ -61,7 +68,7 @@ def erstelleGutachten(sachverhalt, gutachten_path) -> str:
     Returns:
         str: The generated expert opinion (Gutachten) as a string.
     """
-    gutachten_query = gutachtentemplate(sachverhalt=sachverhalt)
+    gutachten_query = gutachten_template(sachverhalt=sachverhalt)
 
     chain = load_qa_chain(llm=llm_client, chain_type="stuff", verbose=True)
     gutachten_index = os.path.join(os.path.dirname(__file__), "gutachten_index")
@@ -72,14 +79,16 @@ def erstelleGutachten(sachverhalt, gutachten_path) -> str:
     gutachten_response = chain.run(
         input_documents=sachverhalt, question=gutachten_query, context=loaded_gutachten
     )
-    strToDocx(resource=gutachten_response, output_path=gutachten_path)
+    str_to_docx(resource=gutachten_response, output_path=gutachten_path)
     return gutachten_response
 
 
-def erstelleBescheid(sachverhalt, gutachten_result, bescheid_path) -> str:
-    """Generates an official notice (Bescheid) as a .docx file, and saves it to the specified path.
-        This function leverages a pre-trained question answering chain and a pre-built indexes of official notices ("bescheide_index")
-        to generate a new official notice based on the generated expert opinion (Gutachten) of the provided case (Sachverhalt) file.
+def erstelle_bescheid(sachverhalt, gutachten_result, bescheid_path) -> str:
+    """Generates an official notice (Bescheid) as a .docx file, and saves it to the 
+    specified path. This function leverages a pre-trained question answering chain and 
+    a pre-built indexes of official notices ("bescheide_index") to generate a new 
+    official notice based on the generated expert opinion (Gutachten) of the provided 
+    case (Sachverhalt) file.
 
     Args:
         sachverhalt (docx, pdf): Case file (Sachverhalt)
@@ -89,8 +98,8 @@ def erstelleBescheid(sachverhalt, gutachten_result, bescheid_path) -> str:
     Returns:
         str: The generated official notice (Bescheid) as a string.
     """
-    bescheid_query = bescheidTemplate(
-        sachverhalt=sachverhalt, prüfungsergebnis=gutachten_result
+    bescheid_query = bescheid_template(
+        sachverhalt=sachverhalt, pruefungsergebnis=gutachten_result
     )
 
     chain = load_qa_chain(llm=llm_client, chain_type="stuff", verbose=True)
@@ -103,22 +112,23 @@ def erstelleBescheid(sachverhalt, gutachten_result, bescheid_path) -> str:
     bescheid_response = chain.run(
         input_documents=similar_bescheid, question=bescheid_query, context=sachverhalt
     )
-    strToDocx(resource=bescheid_response, output_path=bescheid_path)
+    str_to_docx(resource=bescheid_response, output_path=bescheid_path)
     return bescheid_response
 
 
 # Für Fast-API in main.py
-def erstelleBescheidBackground(filePath: str):
-    """Asynchronously generates expert opinion (Gutachten) and official notice (Bescheid) documents from a case file (Sachverhalt).
-        Timestamps are used to ensure unique file names.
-        The generated documents are split into smaller chunks, and added to the existing VectorStores for Gutachten and Bescheide.
+def erstelle_bescheid_background(file_path: str):
+    """Asynchronously generates expert opinion (Gutachten) and official notice (Bescheid) 
+    documents from a case file (Sachverhalt). Timestamps are used to ensure unique file names.
+    The generated documents are split into smaller chunks, and added to the existing 
+    VectorStores for Gutachten and Bescheide.
 
     Args:
         filePath (str): The path to the document containing the case file (Sachverhalt).
 
     Returns:    None
     """
-    file_name = os.path.basename(filePath)
+    file_name = os.path.basename(file_path)
     timestamp = datetime.now().strftime("%Y-%m-%d")
     counter = 1
 
@@ -133,20 +143,20 @@ def erstelleBescheidBackground(filePath: str):
 
         counter += 1
 
-    gutachten = erstelleGutachten(
-        sachverhalt=load_document(filePath), gutachten_path=gutachten_path
+    gutachten = erstelle_gutachten(
+        sachverhalt=load_document(file_path), gutachten_path=gutachten_path
     )
-    message_str = erstelleBescheid(
-        sachverhalt=load_document(filePath),
+    message_str = erstelle_bescheid(
+        sachverhalt=load_document(file_path),
         gutachten_result=gutachten,
         bescheid_path=bescheid_path,
     )
     gutachten_doc = load_document(gutachten_path)
     bescheid_doc = load_document(bescheid_path)
 
-    """ Indexes the generated expert opinion (Gutachten) and official notice (Bescheid) docs by splitting them, 
-        adding them and saving them in the respective existing VectoreStores (gutachten_index & bescheide_index).
-    """
+    # Indexes the generated expert opinion (Gutachten) and official
+    # notice (Bescheid) docs by splitting them, adding them and saving them
+    # in the respective existing VectoreStores (gutachten_index & bescheide_index).
     split_gutachten = split_documents(gutachten_doc)
     split_bescheid = split_documents(bescheid_doc)
 

@@ -61,7 +61,7 @@ const App = () => {
     const file = event.target.files[0]
     let formData = new FormData()
     formData.append(
-      "Sachverhalt",
+      "sachverhalt",
       file,
       file.name
     )
