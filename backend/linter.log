@@ -1019,3 +1019,10 @@ Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 --------------------------------------------------------------------
 Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
+************* Module internal.utils
+backend/internal/utils.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+backend/internal/utils.py:6:0: C0116: Missing function or method docstring (missing-function-docstring)
+
+------------------------------------------------------------------
+Your code has been rated at 9.93/10 (previous run: 9.89/10, +0.04)
+
