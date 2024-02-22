@@ -1,13 +1,12 @@
-#from US3_sacherverhalt import load_document # for Backend-Test
-from internal.US3_sacherverhalt import load_document
+# from US3_sacherverhalt import load_document # for Backend-Test
+from internal.us3_sacherverhalt import load_document
 
 from langchain.prompts.pipeline import PipelinePromptTemplate
 from langchain.prompts.prompt import PromptTemplate
 
 
-
-def bescheidTemplate(sachverhalt:str,prüfungsergebnis) -> PipelinePromptTemplate:
-    """ Generates an official notice (Bescheid) template based on the provided case file (Sachverhalt) and examination result (Sachverhaltsprüfung).
+def bescheidTemplate(sachverhalt: str, prüfungsergebnis) -> PipelinePromptTemplate:
+    """Generates an official notice (Bescheid) template based on the provided case file (Sachverhalt) and examination result (Sachverhaltsprüfung).
 
     Args:
         sachverhalt (str): The case file (Sachverhalt) text.
@@ -17,7 +16,7 @@ def bescheidTemplate(sachverhalt:str,prüfungsergebnis) -> PipelinePromptTemplat
         PipelinePromptTemplate: A template containing instructions and placeholders for generating an official notice (Bescheid).
     """
     beispiel_bescheid = load_document("./input_docs/Bescheid1.docx")
-    
+
     full_template = PromptTemplate.from_template(
         """"
         Du bist ein nützlicher Assistent für juristische Mitarbeiter der Stadtverwaltung und hilfst dabei, einen Bescheid basierend auf einen Sachverhalt zu verfassen.
@@ -38,12 +37,10 @@ def bescheidTemplate(sachverhalt:str,prüfungsergebnis) -> PipelinePromptTemplat
             5. Unterschrift mit Grußformel
         Bescheid:
         """
-        )
+    )
     message = full_template.format(
-        sachverhalt= sachverhalt,
-        bsl_bescheid= beispiel_bescheid,
-        sachverhaltsprüfung= prüfungsergebnis
-        )
+        sachverhalt=sachverhalt,
+        bsl_bescheid=beispiel_bescheid,
+        sachverhaltsprüfung=prüfungsergebnis,
+    )
     return message
-
-    

@@ -332,3 +332,439 @@ main.py:1:0: R0801: Similar lines in 2 files
 ------------------------------------------------------------------
 Your code has been rated at 4.42/10 (previous run: 4.42/10, +0.00)
 
+************* Module US1_loadData
+internal/US1_loadData.py:113:0: C0301: Line too long (107/100) (line-too-long)
+internal/US1_loadData.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/US1_loadData.py:1:0: C0103: Module name "US1_loadData" doesn't conform to snake_case naming style (invalid-name)
+internal/US1_loadData.py:16:0: W0105: String statement has no effect (pointless-string-statement)
+internal/US1_loadData.py:49:0: C0103: Function name "uploadData" doesn't conform to snake_case naming style (invalid-name)
+internal/US1_loadData.py:49:0: R0914: Too many local variables (21/15) (too-many-locals)
+internal/US1_loadData.py:84:4: W0105: String statement has no effect (pointless-string-statement)
+internal/US1_loadData.py:95:8: W0105: String statement has no effect (pointless-string-statement)
+internal/US1_loadData.py:177:8: W0105: String statement has no effect (pointless-string-statement)
+internal/US1_loadData.py:49:0: R0915: Too many statements (51/50) (too-many-statements)
+internal/US1_loadData.py:4:0: C0411: standard import "import concurrent.futures" should be placed before "import faiss" (wrong-import-order)
+internal/US1_loadData.py:6:0: C0411: standard import "from typing import Any, List" should be placed before "import faiss" (wrong-import-order)
+internal/US1_loadData.py:13:0: C0412: Imports from package langchain_community are not grouped (ungrouped-imports)
+internal/US1_loadData.py:6:0: W0611: Unused Any imported from typing (unused-import)
+internal/US1_loadData.py:6:0: W0611: Unused List imported from typing (unused-import)
+************* Module US3_sacherverhalt
+internal/US3_sacherverhalt.py:112:0: C0301: Line too long (102/100) (line-too-long)
+internal/US3_sacherverhalt.py:113:0: C0301: Line too long (246/100) (line-too-long)
+internal/US3_sacherverhalt.py:114:0: C0301: Line too long (287/100) (line-too-long)
+internal/US3_sacherverhalt.py:124:0: C0301: Line too long (287/100) (line-too-long)
+internal/US3_sacherverhalt.py:125:0: C0301: Line too long (334/100) (line-too-long)
+internal/US3_sacherverhalt.py:126:0: C0301: Line too long (194/100) (line-too-long)
+internal/US3_sacherverhalt.py:137:0: C0301: Line too long (127/100) (line-too-long)
+internal/US3_sacherverhalt.py:171:0: C0301: Line too long (112/100) (line-too-long)
+internal/US3_sacherverhalt.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/US3_sacherverhalt.py:1:0: C0103: Module name "US3_sacherverhalt" doesn't conform to snake_case naming style (invalid-name)
+internal/US3_sacherverhalt.py:19:0: W0105: String statement has no effect (pointless-string-statement)
+internal/US3_sacherverhalt.py:111:20: W1308: Duplicate string formatting argument 'prompt', consider passing as named argument (duplicate-string-formatting-argument)
+internal/US3_sacherverhalt.py:112:8: C0209: Formatting a regular string which could be an f-string (consider-using-f-string)
+internal/US3_sacherverhalt.py:146:4: W0602: Using global for 'embeddings' but no assignment is done (global-variable-not-assigned)
+internal/US3_sacherverhalt.py:146:4: W0602: Using global for 'llm_client' but no assignment is done (global-variable-not-assigned)
+internal/US3_sacherverhalt.py:179:4: W0602: Using global for 'embeddings' but no assignment is done (global-variable-not-assigned)
+internal/US3_sacherverhalt.py:179:4: W0602: Using global for 'llm_client' but no assignment is done (global-variable-not-assigned)
+internal/US3_sacherverhalt.py:201:0: W0105: String statement has no effect (pointless-string-statement)
+internal/US3_sacherverhalt.py:4:0: C0411: standard import "import os" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:5:0: C0411: third party import "from dotenv import load_dotenv" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:6:0: C0411: third party import "from deep_translator import GoogleTranslator" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:7:0: C0411: third party import "from langchain_openai import AzureChatOpenAI" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:8:0: C0411: third party import "from langchain.prompts import PromptTemplate" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:9:0: C0411: third party import "from langchain_core.messages import HumanMessage" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:10:0: C0411: third party import "from langchain_community.vectorstores.faiss import FAISS" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:11:0: C0411: third party import "from langchain.text_splitter import CharacterTextSplitter" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:12:0: C0411: third party import "from langchain.chains.question_answering import load_qa_chain" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:13:0: C0411: third party import "from langchain_community.document_loaders import UnstructuredWordDocumentLoader, UnstructuredPDFLoader" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:11:0: C0412: Imports from package langchain are not grouped (ungrouped-imports)
+internal/US3_sacherverhalt.py:13:0: C0412: Imports from package langchain_community are not grouped (ungrouped-imports)
+internal/US3_sacherverhalt.py:8:0: W0611: Unused PromptTemplate imported from langchain.prompts (unused-import)
+************* Module US5_gutachtentemplate
+internal/US5_gutachtentemplate.py:20:0: C0301: Line too long (110/100) (line-too-long)
+internal/US5_gutachtentemplate.py:21:0: C0301: Line too long (127/100) (line-too-long)
+internal/US5_gutachtentemplate.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/US5_gutachtentemplate.py:1:0: C0103: Module name "US5_gutachtentemplate" doesn't conform to snake_case naming style (invalid-name)
+internal/US5_gutachtentemplate.py:4:0: C0411: third party import "from langchain.prompts import PromptTemplate" should be placed before "from internal.US3_sacherverhalt import load_document" (wrong-import-order)
+************* Module US6_bescheidtemplate
+internal/US6_bescheidtemplate.py:9:0: C0301: Line too long (147/100) (line-too-long)
+internal/US6_bescheidtemplate.py:16:0: C0301: Line too long (129/100) (line-too-long)
+internal/US6_bescheidtemplate.py:22:0: C0301: Line too long (167/100) (line-too-long)
+internal/US6_bescheidtemplate.py:24:0: C0301: Line too long (119/100) (line-too-long)
+internal/US6_bescheidtemplate.py:27:0: C0301: Line too long (112/100) (line-too-long)
+internal/US6_bescheidtemplate.py:29:0: C0301: Line too long (112/100) (line-too-long)
+internal/US6_bescheidtemplate.py:33:0: C0301: Line too long (127/100) (line-too-long)
+internal/US6_bescheidtemplate.py:36:0: C0301: Line too long (211/100) (line-too-long)
+internal/US6_bescheidtemplate.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/US6_bescheidtemplate.py:1:0: C0103: Module name "US6_bescheidtemplate" doesn't conform to snake_case naming style (invalid-name)
+internal/US6_bescheidtemplate.py:8:0: C0103: Function name "bescheidTemplate" doesn't conform to snake_case naming style (invalid-name)
+internal/US6_bescheidtemplate.py:8:39: C2401: Argument name "prüfungsergebnis" contains a non-ASCII character, consider renaming it. (non-ascii-name)
+internal/US6_bescheidtemplate.py:44:8: C2401: Argument name "sachverhaltsprüfung" contains a non-ASCII character, consider renaming it. (non-ascii-name)
+internal/US6_bescheidtemplate.py:4:0: C0411: third party import "from langchain.prompts.pipeline import PipelinePromptTemplate" should be placed before "from internal.US3_sacherverhalt import load_document" (wrong-import-order)
+internal/US6_bescheidtemplate.py:5:0: C0411: third party import "from langchain.prompts.prompt import PromptTemplate" should be placed before "from internal.US3_sacherverhalt import load_document" (wrong-import-order)
+************* Module US7_generierung
+internal/US7_generierung.py:54:0: C0301: Line too long (133/100) (line-too-long)
+internal/US7_generierung.py:81:0: C0301: Line too long (134/100) (line-too-long)
+internal/US7_generierung.py:82:0: C0301: Line too long (132/100) (line-too-long)
+internal/US7_generierung.py:112:0: C0301: Line too long (131/100) (line-too-long)
+internal/US7_generierung.py:114:0: C0301: Line too long (130/100) (line-too-long)
+internal/US7_generierung.py:147:0: C0301: Line too long (111/100) (line-too-long)
+internal/US7_generierung.py:148:0: C0301: Line too long (113/100) (line-too-long)
+internal/US7_generierung.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/US7_generierung.py:1:0: C0103: Module name "US7_generierung" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:28:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+internal/US7_generierung.py:33:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+internal/US7_generierung.py:37:0: C0103: Function name "strToDocx" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:52:0: C0103: Function name "erstelleGutachten" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:79:0: C0103: Function name "erstelleBescheid" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:93:33: C2401: Argument name "prüfungsergebnis" contains a non-ASCII character, consider renaming it. (non-ascii-name)
+internal/US7_generierung.py:111:0: C0103: Function name "erstelleBescheidBackground" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:111:31: C0103: Argument name "filePath" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:111:0: R0914: Too many local variables (22/15) (too-many-locals)
+internal/US7_generierung.py:147:4: W0105: String statement has no effect (pointless-string-statement)
+internal/US7_generierung.py:6:0: C0411: standard import "import os" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US7_generierung.py:7:0: C0411: third party import "import yaml" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US7_generierung.py:8:0: C0411: third party import "import docx" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US7_generierung.py:9:0: C0411: standard import "from datetime import datetime" should be placed before "import yaml" (wrong-import-order)
+internal/US7_generierung.py:10:0: C0411: third party import "from langchain_community.vectorstores.faiss import FAISS" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US7_generierung.py:11:0: C0411: third party import "from langchain.chains.question_answering import load_qa_chain" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+************* Module main
+main.py:42:0: C0301: Line too long (189/100) (line-too-long)
+main.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+main.py:30:0: C0116: Missing function or method docstring (missing-function-docstring)
+main.py:31:39: C0103: Argument name "Sachverhalt" doesn't conform to snake_case naming style (invalid-name)
+main.py:34:4: C0103: Variable name "filePath" doesn't conform to snake_case naming style (invalid-name)
+main.py:50:0: C0116: Missing function or method docstring (missing-function-docstring)
+main.py:76:11: W0718: Catching too general exception Exception (broad-exception-caught)
+main.py:69:21: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+main.py:67:12: W0612: Unused variable 'e' (unused-variable)
+main.py:1:0: R0801: Similar lines in 2 files
+==US1_loadData:[20:37]
+==US3_sacherverhalt:[23:40]
+load_dotenv()
+api_key = os.getenv("AZURE_OPENAI_KEY")
+if not api_key:
+    raise ValueError("< API Key > nicht gefunden!")
+azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+if not azure_endpoint:
+    raise ValueError("< API Endpoint > nicht gefunden!")
+
+
+def init_llm():
+    """Initializes and returns a AzureChatOpenAI language model instance.
+
+    Args:   None
+
+    Returns:
+        AzureOpenAIEmbeddings: An instance of the AzureChatOpenAI language model.
+    """ (duplicate-code)
+
+------------------------------------------------------------------
+Your code has been rated at 6.52/10 (previous run: 7.07/10, -0.55)
+
+************* Module US1_loadData
+internal/US1_loadData.py:113:0: C0301: Line too long (107/100) (line-too-long)
+internal/US1_loadData.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/US1_loadData.py:1:0: C0103: Module name "US1_loadData" doesn't conform to snake_case naming style (invalid-name)
+internal/US1_loadData.py:16:0: W0105: String statement has no effect (pointless-string-statement)
+internal/US1_loadData.py:49:0: C0103: Function name "uploadData" doesn't conform to snake_case naming style (invalid-name)
+internal/US1_loadData.py:49:0: R0914: Too many local variables (21/15) (too-many-locals)
+internal/US1_loadData.py:84:4: W0105: String statement has no effect (pointless-string-statement)
+internal/US1_loadData.py:95:8: W0105: String statement has no effect (pointless-string-statement)
+internal/US1_loadData.py:177:8: W0105: String statement has no effect (pointless-string-statement)
+internal/US1_loadData.py:49:0: R0915: Too many statements (51/50) (too-many-statements)
+internal/US1_loadData.py:4:0: C0411: standard import "import concurrent.futures" should be placed before "import faiss" (wrong-import-order)
+internal/US1_loadData.py:6:0: C0411: standard import "from typing import Any, List" should be placed before "import faiss" (wrong-import-order)
+internal/US1_loadData.py:13:0: C0412: Imports from package langchain_community are not grouped (ungrouped-imports)
+internal/US1_loadData.py:6:0: W0611: Unused Any imported from typing (unused-import)
+internal/US1_loadData.py:6:0: W0611: Unused List imported from typing (unused-import)
+************* Module US3_sacherverhalt
+internal/US3_sacherverhalt.py:112:0: C0301: Line too long (102/100) (line-too-long)
+internal/US3_sacherverhalt.py:113:0: C0301: Line too long (246/100) (line-too-long)
+internal/US3_sacherverhalt.py:114:0: C0301: Line too long (287/100) (line-too-long)
+internal/US3_sacherverhalt.py:124:0: C0301: Line too long (287/100) (line-too-long)
+internal/US3_sacherverhalt.py:125:0: C0301: Line too long (334/100) (line-too-long)
+internal/US3_sacherverhalt.py:126:0: C0301: Line too long (194/100) (line-too-long)
+internal/US3_sacherverhalt.py:137:0: C0301: Line too long (127/100) (line-too-long)
+internal/US3_sacherverhalt.py:171:0: C0301: Line too long (112/100) (line-too-long)
+internal/US3_sacherverhalt.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/US3_sacherverhalt.py:1:0: C0103: Module name "US3_sacherverhalt" doesn't conform to snake_case naming style (invalid-name)
+internal/US3_sacherverhalt.py:19:0: W0105: String statement has no effect (pointless-string-statement)
+internal/US3_sacherverhalt.py:111:20: W1308: Duplicate string formatting argument 'prompt', consider passing as named argument (duplicate-string-formatting-argument)
+internal/US3_sacherverhalt.py:112:8: C0209: Formatting a regular string which could be an f-string (consider-using-f-string)
+internal/US3_sacherverhalt.py:146:4: W0602: Using global for 'embeddings' but no assignment is done (global-variable-not-assigned)
+internal/US3_sacherverhalt.py:146:4: W0602: Using global for 'llm_client' but no assignment is done (global-variable-not-assigned)
+internal/US3_sacherverhalt.py:179:4: W0602: Using global for 'embeddings' but no assignment is done (global-variable-not-assigned)
+internal/US3_sacherverhalt.py:179:4: W0602: Using global for 'llm_client' but no assignment is done (global-variable-not-assigned)
+internal/US3_sacherverhalt.py:201:0: W0105: String statement has no effect (pointless-string-statement)
+internal/US3_sacherverhalt.py:4:0: C0411: standard import "import os" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:5:0: C0411: third party import "from dotenv import load_dotenv" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:6:0: C0411: third party import "from deep_translator import GoogleTranslator" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:7:0: C0411: third party import "from langchain_openai import AzureChatOpenAI" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:8:0: C0411: third party import "from langchain.prompts import PromptTemplate" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:9:0: C0411: third party import "from langchain_core.messages import HumanMessage" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:10:0: C0411: third party import "from langchain_community.vectorstores.faiss import FAISS" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:11:0: C0411: third party import "from langchain.text_splitter import CharacterTextSplitter" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:12:0: C0411: third party import "from langchain.chains.question_answering import load_qa_chain" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:13:0: C0411: third party import "from langchain_community.document_loaders import UnstructuredWordDocumentLoader, UnstructuredPDFLoader" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US3_sacherverhalt.py:11:0: C0412: Imports from package langchain are not grouped (ungrouped-imports)
+internal/US3_sacherverhalt.py:13:0: C0412: Imports from package langchain_community are not grouped (ungrouped-imports)
+internal/US3_sacherverhalt.py:8:0: W0611: Unused PromptTemplate imported from langchain.prompts (unused-import)
+************* Module US5_gutachtentemplate
+internal/US5_gutachtentemplate.py:20:0: C0301: Line too long (110/100) (line-too-long)
+internal/US5_gutachtentemplate.py:21:0: C0301: Line too long (127/100) (line-too-long)
+internal/US5_gutachtentemplate.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/US5_gutachtentemplate.py:1:0: C0103: Module name "US5_gutachtentemplate" doesn't conform to snake_case naming style (invalid-name)
+internal/US5_gutachtentemplate.py:4:0: C0411: third party import "from langchain.prompts import PromptTemplate" should be placed before "from internal.US3_sacherverhalt import load_document" (wrong-import-order)
+************* Module US6_bescheidtemplate
+internal/US6_bescheidtemplate.py:9:0: C0301: Line too long (147/100) (line-too-long)
+internal/US6_bescheidtemplate.py:16:0: C0301: Line too long (129/100) (line-too-long)
+internal/US6_bescheidtemplate.py:22:0: C0301: Line too long (167/100) (line-too-long)
+internal/US6_bescheidtemplate.py:24:0: C0301: Line too long (119/100) (line-too-long)
+internal/US6_bescheidtemplate.py:27:0: C0301: Line too long (112/100) (line-too-long)
+internal/US6_bescheidtemplate.py:29:0: C0301: Line too long (112/100) (line-too-long)
+internal/US6_bescheidtemplate.py:33:0: C0301: Line too long (127/100) (line-too-long)
+internal/US6_bescheidtemplate.py:36:0: C0301: Line too long (211/100) (line-too-long)
+internal/US6_bescheidtemplate.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/US6_bescheidtemplate.py:1:0: C0103: Module name "US6_bescheidtemplate" doesn't conform to snake_case naming style (invalid-name)
+internal/US6_bescheidtemplate.py:8:0: C0103: Function name "bescheidTemplate" doesn't conform to snake_case naming style (invalid-name)
+internal/US6_bescheidtemplate.py:8:39: C2401: Argument name "prüfungsergebnis" contains a non-ASCII character, consider renaming it. (non-ascii-name)
+internal/US6_bescheidtemplate.py:44:8: C2401: Argument name "sachverhaltsprüfung" contains a non-ASCII character, consider renaming it. (non-ascii-name)
+internal/US6_bescheidtemplate.py:4:0: C0411: third party import "from langchain.prompts.pipeline import PipelinePromptTemplate" should be placed before "from internal.US3_sacherverhalt import load_document" (wrong-import-order)
+internal/US6_bescheidtemplate.py:5:0: C0411: third party import "from langchain.prompts.prompt import PromptTemplate" should be placed before "from internal.US3_sacherverhalt import load_document" (wrong-import-order)
+************* Module US7_generierung
+internal/US7_generierung.py:54:0: C0301: Line too long (133/100) (line-too-long)
+internal/US7_generierung.py:81:0: C0301: Line too long (134/100) (line-too-long)
+internal/US7_generierung.py:82:0: C0301: Line too long (132/100) (line-too-long)
+internal/US7_generierung.py:112:0: C0301: Line too long (131/100) (line-too-long)
+internal/US7_generierung.py:114:0: C0301: Line too long (130/100) (line-too-long)
+internal/US7_generierung.py:147:0: C0301: Line too long (111/100) (line-too-long)
+internal/US7_generierung.py:148:0: C0301: Line too long (113/100) (line-too-long)
+internal/US7_generierung.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/US7_generierung.py:1:0: C0103: Module name "US7_generierung" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:28:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+internal/US7_generierung.py:33:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+internal/US7_generierung.py:37:0: C0103: Function name "strToDocx" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:52:0: C0103: Function name "erstelleGutachten" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:79:0: C0103: Function name "erstelleBescheid" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:93:33: C2401: Argument name "prüfungsergebnis" contains a non-ASCII character, consider renaming it. (non-ascii-name)
+internal/US7_generierung.py:111:0: C0103: Function name "erstelleBescheidBackground" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:111:31: C0103: Argument name "filePath" doesn't conform to snake_case naming style (invalid-name)
+internal/US7_generierung.py:111:0: R0914: Too many local variables (22/15) (too-many-locals)
+internal/US7_generierung.py:147:4: W0105: String statement has no effect (pointless-string-statement)
+internal/US7_generierung.py:6:0: C0411: standard import "import os" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US7_generierung.py:7:0: C0411: third party import "import yaml" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US7_generierung.py:8:0: C0411: third party import "import docx" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US7_generierung.py:9:0: C0411: standard import "from datetime import datetime" should be placed before "import yaml" (wrong-import-order)
+internal/US7_generierung.py:10:0: C0411: third party import "from langchain_community.vectorstores.faiss import FAISS" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+internal/US7_generierung.py:11:0: C0411: third party import "from langchain.chains.question_answering import load_qa_chain" should be placed before "from internal.US1_loadData import init_embeddings" (wrong-import-order)
+************* Module main
+main.py:42:0: C0301: Line too long (189/100) (line-too-long)
+main.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+main.py:30:0: C0116: Missing function or method docstring (missing-function-docstring)
+main.py:31:39: C0103: Argument name "Sachverhalt" doesn't conform to snake_case naming style (invalid-name)
+main.py:34:4: C0103: Variable name "filePath" doesn't conform to snake_case naming style (invalid-name)
+main.py:50:0: C0116: Missing function or method docstring (missing-function-docstring)
+main.py:76:11: W0718: Catching too general exception Exception (broad-exception-caught)
+main.py:69:21: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+main.py:67:12: W0612: Unused variable 'e' (unused-variable)
+main.py:1:0: R0801: Similar lines in 2 files
+==US1_loadData:[20:37]
+==US3_sacherverhalt:[23:40]
+load_dotenv()
+api_key = os.getenv("AZURE_OPENAI_KEY")
+if not api_key:
+    raise ValueError("< API Key > nicht gefunden!")
+azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+if not azure_endpoint:
+    raise ValueError("< API Endpoint > nicht gefunden!")
+
+
+def init_embeddings():
+    """Initializes and returns Azure OpenAI Embeddings client.
+
+    Args:   None
+
+    Returns:
+        AzureOpenAIEmbeddings: An instance of the Azure OpenAI Embeddings client.
+    """ (duplicate-code)
+
+------------------------------------------------------------------
+Your code has been rated at 6.52/10 (previous run: 6.52/10, +0.00)
+
+************* Module internal/US1_loadData.py
+internal/US1_loadData.py:1:0: F0001: No module named internal/US1_loadData.py (fatal)
+************* Module internal/US3_sacherverhalt.py
+internal/US3_sacherverhalt.py:1:0: F0001: No module named internal/US3_sacherverhalt.py (fatal)
+************* Module internal/US5_gutachtentemplate.py
+internal/US5_gutachtentemplate.py:1:0: F0001: No module named internal/US5_gutachtentemplate.py (fatal)
+************* Module internal/US6_bescheidtemplate.py
+internal/US6_bescheidtemplate.py:1:0: F0001: No module named internal/US6_bescheidtemplate.py (fatal)
+************* Module internal/US7_generierung.py
+internal/US7_generierung.py:1:0: F0001: No module named internal/US7_generierung.py (fatal)
+************* Module main
+main.py:42:0: C0301: Line too long (189/100) (line-too-long)
+main.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+main.py:10:0: E0401: Unable to import 'internal.US3_sacherverhalt' (import-error)
+main.py:10:0: E0611: No name 'US3_sacherverhalt' in module 'internal' (no-name-in-module)
+main.py:11:0: E0401: Unable to import 'internal.US7_generierung' (import-error)
+main.py:11:0: E0611: No name 'US7_generierung' in module 'internal' (no-name-in-module)
+main.py:30:0: C0116: Missing function or method docstring (missing-function-docstring)
+main.py:31:39: C0103: Argument name "Sachverhalt" doesn't conform to snake_case naming style (invalid-name)
+main.py:34:4: C0103: Variable name "filePath" doesn't conform to snake_case naming style (invalid-name)
+main.py:50:0: C0116: Missing function or method docstring (missing-function-docstring)
+main.py:76:11: W0718: Catching too general exception Exception (broad-exception-caught)
+main.py:69:21: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+main.py:67:12: W0612: Unused variable 'e' (unused-variable)
+
+------------------------------------------------------------------
+Your code has been rated at 0.00/10 (previous run: 6.52/10, -6.52)
+
+************* Module internal/US1_loadData.py
+internal/US1_loadData.py:1:0: F0001: No module named internal/US1_loadData.py (fatal)
+************* Module internal/US3_sacherverhalt.py
+internal/US3_sacherverhalt.py:1:0: F0001: No module named internal/US3_sacherverhalt.py (fatal)
+************* Module internal/US5_gutachtentemplate.py
+internal/US5_gutachtentemplate.py:1:0: F0001: No module named internal/US5_gutachtentemplate.py (fatal)
+************* Module internal/US6_bescheidtemplate.py
+internal/US6_bescheidtemplate.py:1:0: F0001: No module named internal/US6_bescheidtemplate.py (fatal)
+************* Module internal/US7_generierung.py
+internal/US7_generierung.py:1:0: F0001: No module named internal/US7_generierung.py (fatal)
+************* Module main
+main.py:42:0: C0301: Line too long (189/100) (line-too-long)
+main.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+main.py:30:0: C0116: Missing function or method docstring (missing-function-docstring)
+main.py:31:39: C0103: Argument name "Sachverhalt" doesn't conform to snake_case naming style (invalid-name)
+main.py:34:4: C0103: Variable name "filePath" doesn't conform to snake_case naming style (invalid-name)
+main.py:50:0: C0116: Missing function or method docstring (missing-function-docstring)
+main.py:76:11: W0718: Catching too general exception Exception (broad-exception-caught)
+main.py:69:21: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+main.py:67:12: W0612: Unused variable 'e' (unused-variable)
+
+------------------------------------------------------------------
+Your code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)
+
+************* Module us1_load_data
+internal/us1_load_data.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/us1_load_data.py:16:0: W0105: String statement has no effect (pointless-string-statement)
+internal/us1_load_data.py:49:0: C0103: Function name "uploadData" doesn't conform to snake_case naming style (invalid-name)
+internal/us1_load_data.py:49:0: R0914: Too many local variables (21/15) (too-many-locals)
+internal/us1_load_data.py:84:4: W0105: String statement has no effect (pointless-string-statement)
+internal/us1_load_data.py:95:8: W0105: String statement has no effect (pointless-string-statement)
+internal/us1_load_data.py:178:8: W0105: String statement has no effect (pointless-string-statement)
+internal/us1_load_data.py:49:0: R0915: Too many statements (51/50) (too-many-statements)
+internal/us1_load_data.py:4:0: C0411: standard import "import concurrent.futures" should be placed before "import faiss" (wrong-import-order)
+internal/us1_load_data.py:6:0: C0411: standard import "from typing import Any, List" should be placed before "import faiss" (wrong-import-order)
+internal/us1_load_data.py:13:0: C0412: Imports from package langchain_community are not grouped (ungrouped-imports)
+internal/us1_load_data.py:6:0: W0611: Unused Any imported from typing (unused-import)
+internal/us1_load_data.py:6:0: W0611: Unused List imported from typing (unused-import)
+************* Module us3_sacherverhalt
+internal/us3_sacherverhalt.py:112:0: C0301: Line too long (102/100) (line-too-long)
+internal/us3_sacherverhalt.py:113:0: C0301: Line too long (246/100) (line-too-long)
+internal/us3_sacherverhalt.py:114:0: C0301: Line too long (287/100) (line-too-long)
+internal/us3_sacherverhalt.py:124:0: C0301: Line too long (287/100) (line-too-long)
+internal/us3_sacherverhalt.py:125:0: C0301: Line too long (334/100) (line-too-long)
+internal/us3_sacherverhalt.py:126:0: C0301: Line too long (194/100) (line-too-long)
+internal/us3_sacherverhalt.py:137:0: C0301: Line too long (127/100) (line-too-long)
+internal/us3_sacherverhalt.py:171:0: C0301: Line too long (112/100) (line-too-long)
+internal/us3_sacherverhalt.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/us3_sacherverhalt.py:19:0: W0105: String statement has no effect (pointless-string-statement)
+internal/us3_sacherverhalt.py:111:20: W1308: Duplicate string formatting argument 'prompt', consider passing as named argument (duplicate-string-formatting-argument)
+internal/us3_sacherverhalt.py:112:8: C0209: Formatting a regular string which could be an f-string (consider-using-f-string)
+internal/us3_sacherverhalt.py:146:4: W0602: Using global for 'embeddings' but no assignment is done (global-variable-not-assigned)
+internal/us3_sacherverhalt.py:146:4: W0602: Using global for 'llm_client' but no assignment is done (global-variable-not-assigned)
+internal/us3_sacherverhalt.py:179:4: W0602: Using global for 'embeddings' but no assignment is done (global-variable-not-assigned)
+internal/us3_sacherverhalt.py:179:4: W0602: Using global for 'llm_client' but no assignment is done (global-variable-not-assigned)
+internal/us3_sacherverhalt.py:201:0: W0105: String statement has no effect (pointless-string-statement)
+internal/us3_sacherverhalt.py:4:0: C0411: standard import "import os" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:5:0: C0411: third party import "from dotenv import load_dotenv" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:6:0: C0411: third party import "from deep_translator import GoogleTranslator" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:7:0: C0411: third party import "from langchain_openai import AzureChatOpenAI" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:8:0: C0411: third party import "from langchain.prompts import PromptTemplate" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:9:0: C0411: third party import "from langchain_core.messages import HumanMessage" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:10:0: C0411: third party import "from langchain_community.vectorstores.faiss import FAISS" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:11:0: C0411: third party import "from langchain.text_splitter import CharacterTextSplitter" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:12:0: C0411: third party import "from langchain.chains.question_answering import load_qa_chain" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:13:0: C0411: third party import "from langchain_community.document_loaders import UnstructuredWordDocumentLoader, UnstructuredPDFLoader" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us3_sacherverhalt.py:11:0: C0412: Imports from package langchain are not grouped (ungrouped-imports)
+internal/us3_sacherverhalt.py:13:0: C0412: Imports from package langchain_community are not grouped (ungrouped-imports)
+internal/us3_sacherverhalt.py:8:0: W0611: Unused PromptTemplate imported from langchain.prompts (unused-import)
+************* Module us5_gutachten_template
+internal/us5_gutachten_template.py:20:0: C0301: Line too long (110/100) (line-too-long)
+internal/us5_gutachten_template.py:21:0: C0301: Line too long (127/100) (line-too-long)
+internal/us5_gutachten_template.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/us5_gutachten_template.py:4:0: C0411: third party import "from langchain.prompts import PromptTemplate" should be placed before "from internal.us3_sacherverhalt import load_document" (wrong-import-order)
+************* Module us6_bescheid_template
+internal/us6_bescheid_template.py:9:0: C0301: Line too long (147/100) (line-too-long)
+internal/us6_bescheid_template.py:16:0: C0301: Line too long (129/100) (line-too-long)
+internal/us6_bescheid_template.py:22:0: C0301: Line too long (167/100) (line-too-long)
+internal/us6_bescheid_template.py:24:0: C0301: Line too long (119/100) (line-too-long)
+internal/us6_bescheid_template.py:27:0: C0301: Line too long (112/100) (line-too-long)
+internal/us6_bescheid_template.py:29:0: C0301: Line too long (112/100) (line-too-long)
+internal/us6_bescheid_template.py:33:0: C0301: Line too long (127/100) (line-too-long)
+internal/us6_bescheid_template.py:36:0: C0301: Line too long (211/100) (line-too-long)
+internal/us6_bescheid_template.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/us6_bescheid_template.py:8:0: C0103: Function name "bescheidTemplate" doesn't conform to snake_case naming style (invalid-name)
+internal/us6_bescheid_template.py:8:39: C2401: Argument name "prüfungsergebnis" contains a non-ASCII character, consider renaming it. (non-ascii-name)
+internal/us6_bescheid_template.py:44:8: C2401: Argument name "sachverhaltsprüfung" contains a non-ASCII character, consider renaming it. (non-ascii-name)
+internal/us6_bescheid_template.py:4:0: C0411: third party import "from langchain.prompts.pipeline import PipelinePromptTemplate" should be placed before "from internal.us3_sacherverhalt import load_document" (wrong-import-order)
+internal/us6_bescheid_template.py:5:0: C0411: third party import "from langchain.prompts.prompt import PromptTemplate" should be placed before "from internal.us3_sacherverhalt import load_document" (wrong-import-order)
+************* Module us7__generierung
+internal/us7__generierung.py:54:0: C0301: Line too long (133/100) (line-too-long)
+internal/us7__generierung.py:81:0: C0301: Line too long (134/100) (line-too-long)
+internal/us7__generierung.py:82:0: C0301: Line too long (132/100) (line-too-long)
+internal/us7__generierung.py:112:0: C0301: Line too long (131/100) (line-too-long)
+internal/us7__generierung.py:114:0: C0301: Line too long (130/100) (line-too-long)
+internal/us7__generierung.py:147:0: C0301: Line too long (111/100) (line-too-long)
+internal/us7__generierung.py:148:0: C0301: Line too long (113/100) (line-too-long)
+internal/us7__generierung.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/us7__generierung.py:28:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+internal/us7__generierung.py:33:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+internal/us7__generierung.py:37:0: C0103: Function name "strToDocx" doesn't conform to snake_case naming style (invalid-name)
+internal/us7__generierung.py:52:0: C0103: Function name "erstelleGutachten" doesn't conform to snake_case naming style (invalid-name)
+internal/us7__generierung.py:79:0: C0103: Function name "erstelleBescheid" doesn't conform to snake_case naming style (invalid-name)
+internal/us7__generierung.py:93:33: C2401: Argument name "prüfungsergebnis" contains a non-ASCII character, consider renaming it. (non-ascii-name)
+internal/us7__generierung.py:111:0: C0103: Function name "erstelleBescheidBackground" doesn't conform to snake_case naming style (invalid-name)
+internal/us7__generierung.py:111:31: C0103: Argument name "filePath" doesn't conform to snake_case naming style (invalid-name)
+internal/us7__generierung.py:111:0: R0914: Too many local variables (22/15) (too-many-locals)
+internal/us7__generierung.py:147:4: W0105: String statement has no effect (pointless-string-statement)
+internal/us7__generierung.py:6:0: C0411: standard import "import os" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us7__generierung.py:7:0: C0411: third party import "import yaml" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us7__generierung.py:8:0: C0411: third party import "import docx" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us7__generierung.py:9:0: C0411: standard import "from datetime import datetime" should be placed before "import yaml" (wrong-import-order)
+internal/us7__generierung.py:10:0: C0411: third party import "from langchain_community.vectorstores.faiss import FAISS" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+internal/us7__generierung.py:11:0: C0411: third party import "from langchain.chains.question_answering import load_qa_chain" should be placed before "from internal.us1_load_data import init_embeddings" (wrong-import-order)
+************* Module main
+main.py:42:0: C0301: Line too long (189/100) (line-too-long)
+main.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+main.py:30:0: C0116: Missing function or method docstring (missing-function-docstring)
+main.py:31:39: C0103: Argument name "Sachverhalt" doesn't conform to snake_case naming style (invalid-name)
+main.py:34:4: C0103: Variable name "filePath" doesn't conform to snake_case naming style (invalid-name)
+main.py:50:0: C0116: Missing function or method docstring (missing-function-docstring)
+main.py:76:11: W0718: Catching too general exception Exception (broad-exception-caught)
+main.py:69:21: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+main.py:67:12: W0612: Unused variable 'e' (unused-variable)
+main.py:1:0: R0801: Similar lines in 2 files
+==us1_load_data:[20:37]
+==us3_sacherverhalt:[23:40]
+load_dotenv()
+api_key = os.getenv("AZURE_OPENAI_KEY")
+if not api_key:
+    raise ValueError("< API Key > nicht gefunden!")
+azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+if not azure_endpoint:
+    raise ValueError("< API Endpoint > nicht gefunden!")
+
+
+def init_embeddings():
+    """Initializes and returns Azure OpenAI Embeddings client.
+
+    Args:   None
+
+    Returns:
+        AzureOpenAIEmbeddings: An instance of the Azure OpenAI Embeddings client.
+    """ (duplicate-code)
+
+------------------------------------------------------------------
+Your code has been rated at 6.72/10 (previous run: 7.28/10, -0.55)
+

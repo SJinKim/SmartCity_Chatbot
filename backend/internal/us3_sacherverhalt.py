@@ -1,5 +1,5 @@
-#from US1_loadData import init_embeddings # for Backend-Test
-from internal.US1_loadData import init_embeddings
+# from US1_loadData import init_embeddings # for Backend-Test
+from internal.us1_load_data import init_embeddings
 
 import os
 from dotenv import load_dotenv
@@ -10,10 +10,12 @@ from langchain_core.messages import HumanMessage
 from langchain_community.vectorstores.faiss import FAISS
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains.question_answering import load_qa_chain
-from langchain_community.document_loaders import UnstructuredWordDocumentLoader, UnstructuredPDFLoader
+from langchain_community.document_loaders import (
+    UnstructuredWordDocumentLoader,
+    UnstructuredPDFLoader,
+)
 
 
- 
 """ Retrieves and validates Azure OpenAI API credentials from loaded environment variables.
 
 Raises:
@@ -29,26 +31,27 @@ if not azure_endpoint:
 
 
 def init_llm():
-    """ Initializes and returns a AzureChatOpenAI language model instance.
-    
+    """Initializes and returns a AzureChatOpenAI language model instance.
+
     Args:   None
-    
+
     Returns:
         AzureOpenAIEmbeddings: An instance of the AzureChatOpenAI language model.
-    """        
+    """
     return AzureChatOpenAI(
         azure_deployment=os.getenv("AZURE_OPENAI_DEPLOYMENT"),
         openai_api_version=os.getenv("AZURE_OPENAI_VERSION"),
         temperature=0.1,
-        api_key=api_key
+        api_key=api_key,
     )
-   
+
+
 llm_client = init_llm()
 embeddings = init_embeddings()
 
 
 def load_document(file_path):
-    """ Loads a document from a file, supporting PDF and DOCX formats.
+    """Loads a document from a file, supporting PDF and DOCX formats.
 
     Args:
         file_path: The path to the document file.
@@ -66,12 +69,14 @@ def load_document(file_path):
         docx_loader = UnstructuredWordDocumentLoader(file_path)
         doc = docx_loader.load()
     else:
-        raise ValueError("Ungültige Dateiendung. Nur < .pdf > und < .docx > werden unterstützt!")
+        raise ValueError(
+            "Ungültige Dateiendung. Nur < .pdf > und < .docx > werden unterstützt!"
+        )
     return doc
 
 
 def split_documents(doc, chunk_size=1500, chunk_overlap=200):
-    """ Splits a document into overlapping chunks using a CharacterTextSplitter.
+    """Splits a document into overlapping chunks using a CharacterTextSplitter.
 
     Args:
         doc: The document to split.
@@ -80,13 +85,15 @@ def split_documents(doc, chunk_size=1500, chunk_overlap=200):
 
     Returns:    A list of overlapping chunks from the document.
     """
-    text_splitter = CharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
+    text_splitter = CharacterTextSplitter(
+        chunk_size=chunk_size, chunk_overlap=chunk_overlap
+    )
     chunks = text_splitter.split_documents(doc)
     return chunks
 
 
 def refine_query(prompt):
-    """ Refines a user query to generate a more detailed search query.
+    """Refines a user query to generate a more detailed search query.
 
     Args:
         prompt: The initial user query.
@@ -97,8 +104,10 @@ def refine_query(prompt):
         ValueError: If the prompt is empty or invalid.
     """
     if not prompt:
-        raise ValueError(f"< {prompt} > ist eine ungültige Anfrage. Bitte gebe erneut ein!")
-    
+        raise ValueError(
+            f"< {prompt} > ist eine ungültige Anfrage. Bitte gebe erneut ein!"
+        )
+
     refine_prompt = (
         """Generiere eine verfeinerte Nutzeranfrage '{}', um die Suchergebnisse präziser zu gestalten.
         Die Verfeinerung der Nutzeranfrage '{}' dient dazu, die Suchanfrage zu optimieren, indem zusätzliche Informationen hinzugefügt werden. Dies kann z. B. durch die Angabe von Kontexten, Suchbegriffen, Synonyme oder semantische Ähnlichkeiten.
@@ -125,7 +134,7 @@ def refine_query(prompt):
 
 
 def qa_chain_context(query, document_split):
-    """ Performs a question-answering (QA) chain on a given message using retrieved doc chunks and the local saved vectorestore.
+    """Performs a question-answering (QA) chain on a given message using retrieved doc chunks and the local saved vectorestore.
 
     Args:
         message (str): The user's input message or query/prompt.
@@ -135,21 +144,24 @@ def qa_chain_context(query, document_split):
         str: The generated response/answer and translated to German.
     """
     global embeddings, llm_client
-    
-    
+
     chain = load_qa_chain(llm=llm_client, chain_type="stuff", verbose=True)
     data_index = os.path.join(os.path.dirname(__file__), "data_recursive")
-    loaded_data = FAISS.load_local(folder_path=data_index, embeddings=embeddings, index_name="data_recursive")
-    
+    loaded_data = FAISS.load_local(
+        folder_path=data_index, embeddings=embeddings, index_name="data_recursive"
+    )
+
     refined_query = refine_query(query)
 
     similar = loaded_data.similarity_search(query=refined_query)
     mmr = loaded_data.max_marginal_relevance_search(query=refined_query)
     filtered = similar + mmr + document_split
 
-    response = chain.run(input_documents=document_split, question=query, context=filtered)
+    response = chain.run(
+        input_documents=document_split, question=query, context=filtered
+    )
 
-    translator = GoogleTranslator(source='auto', target='german')
+    translator = GoogleTranslator(source="auto", target="german")
     trans_result = translator.translate(response)
     return trans_result
 
@@ -163,25 +175,26 @@ def qa_chain(query):
 
     Returns:
         str: The generated response/answer and translated to German.
-    """    
+    """
     global embeddings, llm_client
-    
+
     chain = load_qa_chain(llm=llm_client, chain_type="stuff", verbose=True)
     data_index = os.path.join(os.path.dirname(__file__), "data_recursive")
-    loaded_data = FAISS.load_local(folder_path=data_index, embeddings=embeddings, index_name="data_recursive")
-    
+    loaded_data = FAISS.load_local(
+        folder_path=data_index, embeddings=embeddings, index_name="data_recursive"
+    )
+
     refined_query = refine_query(query)
 
     similar = loaded_data.similarity_search(query=refined_query)
     mmr = loaded_data.max_marginal_relevance_search(query=refined_query)
     filtered = similar + mmr
-    
+
     response = chain.run(input_documents=filtered, question=query)
 
-    translator = GoogleTranslator(source='auto', target='german')
+    translator = GoogleTranslator(source="auto", target="german")
     trans_result = translator.translate(response)
     return trans_result
-
 
 
 # Test

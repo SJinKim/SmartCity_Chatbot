@@ -1,12 +1,11 @@
-#from US3_sacherverhalt import load_document # for Backend test
-from internal.US3_sacherverhalt import load_document
+# from US3_sacherverhalt import load_document # for Backend test
+from internal.us3_sacherverhalt import load_document
 
 from langchain.prompts import PromptTemplate
 
 
-
-def gutachtentemplate(sachverhalt) -> str : 
-    """ Generates an expert opinion (Gutachten) based on a template and case file (Sachverhalt).
+def gutachtentemplate(sachverhalt) -> str:
+    """Generates an expert opinion (Gutachten) based on a template and case file (Sachverhalt).
 
     Args:
         sachverhalt (str): Case file (Sachverhalt) to be analyzed and processed.
@@ -16,7 +15,7 @@ def gutachtentemplate(sachverhalt) -> str :
     """
     vorlage = load_document("./input_docs/Gutachtentemplate.docx")[0].page_content
     beispiel_gutachten = load_document("./input_docs/Gutachten1.docx")[0].page_content
-    
+
     prompt_template = PromptTemplate.from_template(
         """ Du bist ein nützlicher Assistent für juristische Mitarbeiter der Stadtverwaltung und hilfst dabei, 
             anhand der Gutachtenvorlage ein ausfürliches und sachlichen Gutachten basierend auf einen Sachverhalt zu verfassen.
@@ -25,13 +24,12 @@ def gutachtentemplate(sachverhalt) -> str :
             Hier ist der zu analysierende und zu verarbeitende Sachverhalt: {sachverhalt}
             Bitte erstelle ein Gutachten anhand der oben erwähnten Informationen.
             Gutachten:
-        """ 
+        """
     )
     messages = prompt_template.format(
-        gutachtensvorlage = vorlage,
+        gutachtensvorlage=vorlage,
         beispiel_gutachten=beispiel_gutachten,
-        sachverhalt =sachverhalt
-        )
-    
-    return messages
+        sachverhalt=sachverhalt,
+    )
 
+    return messages
