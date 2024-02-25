@@ -3,7 +3,15 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 // ----------------------------------------------------------------------
-
+/**
+ * functions for a responsive layout -> not used in this state of the development
+ * 
+ * @param {*} query 
+ * @param {*} key 
+ * @param {*} start 
+ * @param {*} end 
+ * @returns 
+ */
 export default function useResponsive(query, key, start, end) {
   const theme = useTheme();
 

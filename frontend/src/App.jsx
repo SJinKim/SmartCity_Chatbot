@@ -1,62 +1,141 @@
 import { useEffect, useState } from 'react'
 import messageService from './services/messages'
+import createNewChat from './services/chats'
 import DashboardLayout from './layouts/dashboard/dashboard'
+import ErrorScreen from './components/ErrorScreen'
 
-const socket = new WebSocket("ws://localhost:8000/api/chat")
 
+/**
+ * main component of the application
+ * @component
+ * @returns {JSX.Element} rendert application component
+ */
 const App = () => {
   const [newMessage, setNewMessage] = useState('')
-  const [messages, setMessages] = useState([])
-  const [chatHistory, setChatHistory] = useState([])
-  const [chatId, setChatId] = useState(1)
-  const [openChats, setOpenChats] = useState([1])
-  const [isTyping, setIsTyping] = useState(false)
+  const [activeChat, setActiveChat] = useState(0)
+  const [chats, setChats] = useState([])
+  const [incomingMessage, setIncomingMessage] = useState()
+  const [websocketError, setWebsocketError] = useState(false)
 
+  /**
+   * effect for handling new incoming message
+   */
   useEffect(() => {
-    setChatHistory(messages.filter(msg => {
-      if (msg.chatId === chatId)
-        return msg
-    }))
-  }, [chatId, messages])
-
-  socket.onmessage = (event) => {
-    const message = {
-      type: "msg",
-      message: event.data,
-      incoming: false,
-      outgoing: true,
-      timestamp: Date.now(),
-      id: messages.length,
-      chatId: chatId
+    if (incomingMessage !== undefined) {
+      const id = Number(incomingMessage.client_id)
+      const message = {
+        message: incomingMessage.message,
+        incoming: true,
+        timestamp: Date.now()
+      }
+      // find the correct chat for incoming message via id
+      const chat = chats.find(chat => chat.id === id)
+      chat.isTyping = false
+      chat.chatHistory = chat.chatHistory.concat(message)
+      setChats([...chats])
     }
-    setMessages(messages.concat(message))
-    setNewMessage('')
-    setIsTyping(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [incomingMessage])
+
+  /**
+   * handler for creating and opening a new chat
+   * @param {number} id the chat id 
+   */
+  const handleNewTab = async (id) => {
+    if (id > chats.length) {
+      const message = 'Hallo, wie kann ich Ihnen helfen?'
+      const newChat =
+        await createNewChat(
+          id,
+          message,
+          (msgData) => setIncomingMessage(msgData),
+          () => setWebsocketError(true)
+        )
+      setChats(chats.concat(newChat))
+    }
+    setActiveChat(id)
   }
 
+  /**
+   * handler for deleting a chat
+   * @param {number} id chat id to be deleted
+   */
+  const handleTabDelete = (id) => {
+    const chatToClose = chats.find(chat => chat.id === id)
+    if (chatToClose.socket.readyState === WebSocket.OPEN)
+      chatToClose.socket.send("close")
+    if (chats.length > 1) {
+      const tmpChats = chats.filter(chat => chat.id !== id)
+      setChats(tmpChats)
+      setActiveChat(Math.max(...tmpChats.map(chat => chat.id)))
+    } else {
+      setChats([])
+      setActiveChat(0)
+    }
+  }
+
+  // safe the messsage from the ui prompt to the state variable
   const handleNewMessage = (event) => {
     setNewMessage(event.target.value)
   }
 
-  const sendMessage = (event) => {
+  /**
+   * handler for sending a new message to server
+   * @param {Object} event 
+   */
+  const sendMessage = async (event) => {
     event.preventDefault()
+    // do nothing if no message was typed in prompt
     if (newMessage !== '') {
-      const message = {
-        type: "msg",
+      let socket = null
+      const outgoingMesssage = {
         message: newMessage,
-        incoming: true,
-        outgoing: false,
-        timestamp: Date.now(),
-        id: messages.length,
-        chatId: chatId
+        incoming: false,
+        timestamp: Date.now()
       }
-      socket.send(JSON.stringify(message.message))
-      setMessages(messages.concat(message))
+      // create new chat if no chat is active
+      if (activeChat === 0) {
+        const newChat =
+          await createNewChat(
+            1,
+            undefined,
+            (msgData) => setIncomingMessage(msgData),
+            () => setWebsocketError(true)
+          )
+        if (newChat !== undefined) {
+          newChat.chatHistory = newChat.chatHistory.concat(outgoingMesssage)
+          newChat.isTyping = true
+          setChats([newChat])
+          setActiveChat(1)
+          socket = newChat.socket
+        }
+      }
+      // find the chat for sending the message to the right socket connection
+      // and append the message to the chat history
+      else {
+        const chat = chats.find(chat => chat.id === activeChat)
+        chat.chatHistory = chat.chatHistory.concat(outgoingMesssage)
+        chat.isTyping = true
+        setChats([...chats])
+        socket = chats.find(chat => chat.id === activeChat).socket
+      }
+      // send the message via socket, only if socket is ready and exists
+      if (socket !== null && socket.readyState === WebSocket.OPEN) {
+        socket.send(outgoingMesssage.message)
+      }
+      // set error state for rerendering to error screen, if socket not open
+      else {
+        setWebsocketError(true)
+      }
+      // delete message from the prompt in the ui
       setNewMessage('')
-      setIsTyping(true)
     }
   }
 
+  /**
+   * handler for uploading the selected text file to the server 
+   * @param {Object} event 
+   */
   const handleNewFile = async (event) => {
     const file = event.target.files[0]
     let formData = new FormData()
@@ -65,34 +144,83 @@ const App = () => {
       file,
       file.name
     )
-    const response = await messageService.uploadFile(formData)
-    const conMsg = {
-      type: "msg-static",
-      message: response.message,
-      incoming: false,
-      outgoing: true,
-      timestamp: Date.now(),
-      id: messages.length,
-      chatId: chatId
+    // try to send the constructed html form data message
+    try {
+      const response = await messageService.uploadFile(formData)
+      // create new chat if no chat is active
+      if (activeChat === 0) {
+        const newChat =
+          await createNewChat(
+            1,
+            response.message,
+            (msgData) => setIncomingMessage(msgData),
+            () => setWebsocketError(true)
+          )
+        newChat.isTyping = true
+        setChats([newChat])
+        setActiveChat(1)
+      }
+      // find active chat and append the response message from file upload 
+      else {
+        const message = {
+          message: response.message,
+          incoming: true,
+          timestamp: Date.now()
+        }
+        const chat = chats.find(chat => chat.id === activeChat)
+        chat.chatHistory = chat.chatHistory.concat(message)
+        chat.isTyping = true
+        setChats([...chats])
+      }
     }
-    setMessages(messages.concat(conMsg))
-    setIsTyping(true)
+    // if upload fails set error state for rerendering to error screen 
+    catch (error) {
+      setWebsocketError(true)
+    }
   }
 
-  const handleAnleitungButtonClick = () => {
+  /**
+   * handler for creating the message that explains the chatbot
+   */
+  const handleAnleitungButtonClick = async () => {
     const anleitungMessage = {
-      type: "msg-static",
-      message: "In diesem Chat können Sie Fragen zu Ihrem Bescheid stellen.\nDer Chat wird Ihnen den entsprechenden Bescheid zusenden. Sie haben die Möglichkeit, den Bescheid durch Klicken auf den Button 'Herunterladen' herunterzuladen. Zusätzlich können Sie eine Datei hochladen, indem Sie auf den Button 'Hochladen' klicken. Der Chat verwendet diese Datei, um den entsprechenden Bescheid zu finden.Um mehrere Chats zu öffnen, klicken Sie auf den Button 'Neuer Chat'.",
-        incoming: false,
-      outgoing: true,
+      message: `In diesem Chat können Sie Fragen zu Ihrem Bescheid stellen.\
+                Der Chat wird Ihnen den entsprechenden Bescheid zusenden.\
+                Sie haben die Möglichkeit, den Bescheid durch Klicken auf den \
+                Button 'Herunterladen' herunterzuladen. Zusätzlich können \
+                Sie eine Datei hochladen, indem Sie auf den Button 'Hochladen' \
+                klicken. Der Chat verwendet diese Datei, um den entsprechenden \
+                Bescheid zu finden. Um mehrere Chats zu öffnen, klicken Sie auf \
+                den Button 'Neuer Chat'.`,
+      incoming: true,
       timestamp: Date.now(),
-      id: messages.length,
-      chatId: chatId
-    };
-    // Directly use setMessages to add the new message
-    setMessages(messages.concat(anleitungMessage));
-  };
 
+    }
+    // create new chat if no active chat exists
+    if (activeChat === 0) {
+      const newChat =
+        await createNewChat(
+          1,
+          anleitungMessage.message,
+          (msgData) => setIncomingMessage(msgData),
+          () => setWebsocketError(true)
+        )
+      if (newChat !== undefined) {
+        newChat.isTyping = false
+        setChats([newChat])
+        setActiveChat(1)
+      }
+    }
+    // find active chat and append the message to chat history 
+    else {
+      const chat = chats.find(chat => chat.id === activeChat)
+      chat.chatHistory = chat.chatHistory.concat(anleitungMessage)
+      chat.isTyping = false
+      setChats([...chats])
+    }
+  }
+
+  //TODO Download mit Backend organisieren!
   const handleFileDownload = async (event) => {
     event.preventDefault()
     try {
@@ -103,55 +231,52 @@ const App = () => {
       const fileURL = URL.createObjectURL(file)
       window.open(fileURL)
     } catch (exc) {
-      const conMsg = {
-        type: "msg-static",
+      const excMsg = {
         message: 'Es ist noch keine Datei zum Download verfügbar',
-        incoming: false,
-        outgoing: true,
+        incoming: true,
         timestamp: Date.now(),
-        id: messages.length,
-        chatId: chatId
       }
-      setMessages(messages.concat(conMsg))
+      if (activeChat === 0) {
+        const newChat =
+          await createNewChat(
+            1,
+            excMsg.message,
+            (msgData) => setIncomingMessage(msgData),
+            () => setWebsocketError(true)
+          )
+        if (newChat !== undefined) {
+          newChat.isTyping = false
+          setChats([newChat])
+          setActiveChat(1)
+        }
+      } else {
+        const chat = chats.find(chat => chat.id === activeChat)
+        chat.chatHistory = chat.chatHistory.concat(excMsg)
+        chat.isTyping = false
+        setChats([...chats])
+      }
     }
   }
 
-  const handleNewTab = (id) => {
-    setChatId(id)
-    setOpenChats(openChats.concat(id))
-  }
-
-  // TODO
-  const handleTabDelete = (id) => {
-    setMessages(messages.filter(msg => {
-      if (msg.chatId !== id)
-        return msg
-    }))
-    const chats = openChats.filter(chat => {
-      if (chat !== id)
-        return chat
-    })
-    setOpenChats(chats)
-    setChatId(chats.sort((a, b) => { a > b ? -1 : 1 })[chats.length - 1])
-  }
-
-  //TODO Wenn alle Chats Zu -> Start Screen UI Logo? -> Websocket close()
-  //TODO Neues Socket für jedes Chat Tab?
   return (
     <>
-      < DashboardLayout
-        messages={chatHistory}
-        sendMessage={sendMessage}
-        handleNewMessage={handleNewMessage}
-        newMessage={newMessage}
-        handleNewFile={handleNewFile}
-        handleFileDownload={handleFileDownload}
-        handleNewTab={handleNewTab}
-        handleTabDelete={handleTabDelete}
-        chatId={chatId}
-        isTyping={isTyping}
-        handleAnleitungButtonClick={handleAnleitungButtonClick} // Pass the function as a prop
-      />
+      {/* Display error screen if connection to server fails, else the chat ui */}
+      {websocketError ?
+        <ErrorScreen />
+        :
+        < DashboardLayout
+          chats={chats}
+          activeChat={activeChat}
+          sendMessage={sendMessage}
+          handleNewMessage={handleNewMessage}
+          newMessage={newMessage}
+          handleNewFile={handleNewFile}
+          handleFileDownload={handleFileDownload}
+          handleNewTab={handleNewTab}
+          handleTabDelete={handleTabDelete}
+          handleAnleitungButtonClick={handleAnleitungButtonClick}
+        />
+      }
     </>
   )
 }

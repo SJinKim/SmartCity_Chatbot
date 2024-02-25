@@ -1,16 +1,25 @@
-import { Box, Stack, Grid, Button } from "@mui/material"
+import { Box, Stack, Grid } from "@mui/material"
 import Chatbox from "../../components/Chatbox"
 import Prompt from '../../components/Prompt'
 import Upload from '../../components/Upload'
 import Download from "../../components/Download"
+import Anleitung from "../../components/Anleitung"
 import PropTypes from 'prop-types'
 import { useTheme } from '@mui/material/styles'
 import NewChatButton from "../../components/NewChat"
+import StartScreen from "../../components/StartScreen"
 
-
+/**
+ * component for formatting the layout of the ui
+ * 
+ * @component
+ * @param {*} props 
+ * @returns {JSX.Element} the rendert 
+ */
 function DashboardLayout(props) {
 
     const theme = useTheme()
+
     return (
         <Box sx={{
             margin: 0,
@@ -19,7 +28,7 @@ function DashboardLayout(props) {
             overflow: 'hidden'
         }}>
             <Grid container spacing={0}>
-                {/** This is the Menu Container -> Refactor in new Dashboard Component? */}
+                {/** This is the Menu Container */}
                 <Grid item xs={1.8}
                     sx={{
                         display: 'flex',
@@ -43,7 +52,6 @@ function DashboardLayout(props) {
                     </Box>
                     {/* Top content */}
                     <Box sx={{
-                        // flexGrow: 1,
                         backgroundColor: "#BED702",
                         height: "98vh",
                     }}>
@@ -52,6 +60,7 @@ function DashboardLayout(props) {
                             <NewChatButton
                                 handleNewTab={props.handleNewTab}
                                 handleTabDelete={props.handleTabDelete}
+                                chats={props.chats}
                             />
                         </Stack>
                     </Box>
@@ -66,35 +75,21 @@ function DashboardLayout(props) {
                     <Stack spacing={2} sx={{ p: 2, pb: 4 }}>
                         <Upload handleNewFile={props.handleNewFile} />
                         <Download handleFileDownload={props.handleFileDownload} />
-                        <Button variant="contained" color="primary"
-                             onClick={props.handleAnleitungButtonClick} // Use the function from props
-                            sx={{
-                                bgcolor: '#3B4159',
-                                color: 'white',
-                                '&:hover': {
-                                    bgcolor: 'rgba(59, 65, 89, 0.8)' // A slightly lighter color on hover
-                                }
-                            }}
-                        >
-                            Anleitung
-                        </Button>
-
-
+                        <Anleitung handleAnleitungButtonClick={props.handleAnleitungButtonClick} />
                     </Stack>
                 </Grid>
+                {/** Chat UI */}
                 <Grid item xs={10.2}>
-                    <Stack
-                        sx={{ height: '92vh' }}
-                    >
-                        <Chatbox
-                            messages={props.messages}
-                            chatId={props.chatId}
-                            isTyping={props.isTyping}
-                        />
+                    <Stack sx={{ height: '92vh' }}>
+                        {props.activeChat !== 0 ?
+                            <Chatbox chat={props.chats.find(chat => chat.id === props.activeChat)} />
+                            : <StartScreen />
+                        }
                         <Prompt
                             sendMessage={props.sendMessage}
                             handleNewMessage={props.handleNewMessage}
-                            newMessage={props.newMessage} />
+                            newMessage={props.newMessage}
+                        />
                     </Stack>
                 </Grid>
             </Grid>
@@ -104,16 +99,25 @@ function DashboardLayout(props) {
 
 DashboardLayout.propTypes = {
     handleNewFile: PropTypes.func.isRequired,
-    messages: PropTypes.array.isRequired,
     sendMessage: PropTypes.func.isRequired,
     newMessage: PropTypes.string.isRequired,
     handleNewMessage: PropTypes.func.isRequired,
     handleFileDownload: PropTypes.func.isRequired,
     handleNewTab: PropTypes.func.isRequired,
     handleTabDelete: PropTypes.func.isRequired,
-    chatId: PropTypes.number,
-    isTyping: PropTypes.bool.isRequired,
-    handleAnleitungButtonClick: PropTypes.func.isRequired
+    handleAnleitungButtonClick: PropTypes.func.isRequired,
+    chats: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired, // chat ID
+            chatHistory: PropTypes.arrayOf(PropTypes.shape({
+                message: PropTypes.string.isRequired, // the message for a bubble
+                incoming: PropTypes.bool.isRequired, // if message is from server or user
+                timestamp: PropTypes.number.isRequired // datetime of generation
+            })).isRequired, // array of text messages in json format
+            isTyping: PropTypes.bool.isRequired // typing indicator
+        }).isRequired,
+    ).isRequired,
+    activeChat: PropTypes.number.isRequired
 }
 
 

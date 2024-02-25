@@ -1,0 +1,10 @@
+{
+    "source": {
+      "include": ["src"],
+      "exclude": ["node_modules", "dist"]
+    },
+    "opts": {
+      "destination": "docs"
+    }
+  }
+  

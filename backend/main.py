@@ -3,6 +3,8 @@
 """
 import asyncio
 import shutil
+import json
+from typing import Dict
 from fastapi import BackgroundTasks, FastAPI, UploadFile, File, WebSocket, WebSocketException
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
@@ -16,6 +18,8 @@ from internal.us7_generierung import write_path_to, erstelle_bescheid_background
 load_dotenv()
 
 app = FastAPI()
+
+session_manager: Dict[str, WebSocket] = {}
 
 origins = ["http://localhost:8000", "http://localhost:5173"]
 
@@ -60,16 +64,18 @@ async def upload_file(background_tasks: BackgroundTasks, sachverhalt: UploadFile
 
 
 # Path to chat websocket
-@app.websocket("/api/chat")
-async def websocket_endpoint(websocket: WebSocket):
-    """this functions accepts a websocket connection to establish a
+@app.websocket("/api/chat/{client_id}")
+async def websocket_endpoint(websocket: WebSocket, client_id: str):
+    """
+    this functions accepts a websocket connection to establish a
     bidirectional connection between the server(ai) and the client
 
     Args:
-        websocket (WebSocket): the websocket
+        websocket (WebSocket): the socket connection
+        client_id (str): id of the client
     """
     await websocket.accept()
-    await websocket.send_text("Hallo, wie kann ich Ihnen heute helfen?")
+    session_manager[client_id] = websocket
 
     try:
         while True:
@@ -77,26 +83,31 @@ async def websocket_endpoint(websocket: WebSocket):
                 message = await asyncio.wait_for(websocket.receive_text(), timeout=2)
 
                 # Check for termination command
-                if message.lower() == "exit":
+                if message.lower() == "close":
                     break
                 # Process received Message
                 response = qa_chain(query=message)
-                await websocket.send_text(response)
+                return_message = {"client_id": client_id, "message": response}
+                await websocket.send_text(json.dumps(return_message))
 
             # When no Message received, check if server wants to send a message
-            except asyncio.TimeoutError as e:
-                print(f"asyncio timeout: {e}")
+            except asyncio.TimeoutError: # as e:
+                # print(f"asyncio timeout: {e}")
                 # load yaml file
                 with open("./internal/config.yaml", encoding='utf-8') as file:
                     config = yaml.safe_load(file)
                 if config["erstellt"] is True:
                     response = config["message_str"]
                     write_path_to(key="erstellt", item=False)
-                    await websocket.send_text(response)
+                    return_message = {"client_id": client_id, "message": response}
+                    await websocket.send_text(json.dumps(return_message))
+                    continue
 
     except WebSocketException as e:
         print(f"WebSocket error: {e}")
     finally:
+        del session_manager[client_id]
+        print(session_manager)
         await websocket.close()
 
 

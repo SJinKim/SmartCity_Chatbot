@@ -1,7 +1,14 @@
 import { Button } from '@mui/material'
 import PropTypes from 'prop-types'
 
-const UploadButton = (props) => {
+/**
+ * formats and implements the upload button
+ * 
+ * @component
+ * @param {Function} handleNewFile event handler
+ * @returns {JSX.Element} renders the upload button
+ */
+const UploadButton = ({ handleNewFile }) => {
     return (
         <>
             <Button
@@ -14,7 +21,7 @@ const UploadButton = (props) => {
                         bgcolor: 'rgba(59, 65, 89, 0.8)' // A slightly lighter color on hover
                     }
                 }}
-             
+
             >
                 Hochladen
                 <input
@@ -27,7 +34,7 @@ const UploadButton = (props) => {
                     .docx,
                     .xml'
                     type='file'
-                    onChange={props.handleNewFile}
+                    onChange={handleNewFile}
                 />
             </Button>
         </>

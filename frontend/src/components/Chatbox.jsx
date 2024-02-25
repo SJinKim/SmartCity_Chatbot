@@ -3,32 +3,42 @@ import { TextMsg } from './MsgTypes'
 import PropTypes from 'prop-types'
 import { useEffect, useRef } from 'react'
 
+/**
+ * Component for displaying chatbubbles
+ * 
+ * @component
+ * @param {Object} chat the chat to be displayed in the Window
+ * @returns {JSX.Element} react element that renders the chat bubbles
+ */
+const Chatbox = ({ chat }) => {
 
-const Chatbox = (props) => {
+  //Ref for automatic scrolling
   const chatbox = useRef(null);
   useEffect(() => {
+    // automatic scrolling to newest bubble
     chatbox.current.scrollIntoView({ block: 'end', behavior: 'smooth' })
-  }, [props.messages])
+  }, [chat.chatHistory])
 
+  /**
+   * function for displaying if chatbot is typing
+   * 
+   * @returns {JSX.Element} typing indicator if user is waiting for response from server
+   */
   const typingIndicator = () => {
-    if (props.isTyping === true)
+    if (chat.isTyping === true)
       return (
         <Box sx={{
           display: 'flex',
           pr: 5,
           justifyContent: 'flex-end'
         }}>
-          <CircularProgress sx={{
-
-            color: '#3B4159'
-          }
-          } />
+          <CircularProgress sx={{ color: '#3B4159' }} />
         </Box>
       )
   }
 
   return (
-    <>
+    <> {/* title of the chat */}
       <Typography
         variant='h4'
         sx={{
@@ -36,8 +46,9 @@ const Chatbox = (props) => {
           margin: 'auto',
           color: 'grey'
         }}>
-        CHAT {props.chatId}
+        CHAT {chat.id}
       </Typography>
+      {/* chatbox content */}
       <Box
         sx={{
           position: "relative",
@@ -54,10 +65,12 @@ const Chatbox = (props) => {
 
         }}>
 
+        {/* stack for displaying the bubbles */}
         <Stack spacing={3} ref={chatbox}>
-          {props.messages.map(el => {
-            return <TextMsg key={el.id} el={el} />
+          {chat.chatHistory.map(el => {
+            return <TextMsg key={el.timestamp} el={el} />
           })}
+          {/* display typing indicator */}
           {typingIndicator()}
         </Stack>
       </Box>
@@ -65,11 +78,17 @@ const Chatbox = (props) => {
   )
 }
 
-Chatbox.propTypes = {
-  messages: PropTypes.array.isRequired,
-  chatId: PropTypes.number,
-  isTyping: PropTypes.bool.isRequired
-}
 
+Chatbox.propTypes = {
+  chat: PropTypes.shape({
+    id: PropTypes.number.isRequired, // chat ID
+    chatHistory: PropTypes.arrayOf(PropTypes.shape({
+      message: PropTypes.string.isRequired, // the message for a bubble
+      incoming: PropTypes.bool.isRequired, // if message is from server or user
+      timestamp: PropTypes.number.isRequired // datetime of generation
+    })).isRequired, // array of text messages in json format
+    isTyping: PropTypes.bool.isRequired // typing indicator
+  }).isRequired,
+}
 
 export default Chatbox

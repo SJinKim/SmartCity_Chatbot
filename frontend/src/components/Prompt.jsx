@@ -2,6 +2,13 @@ import { TextField, Box, Stack, InputAdornment } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send';
 import PropTypes from 'prop-types'
 
+/**
+ * formats and creates prompt for chat app
+ * 
+ * @component
+ * @param {Object} props 
+ * @returns {JSX.Element} renders prompt
+ */
 const Prompt = (props) => {
     return (
         <Box
@@ -13,7 +20,8 @@ const Prompt = (props) => {
                 width: '90%',
                 transform: 'translate(-50%, 50%)',
             }}
-        >
+        >   
+            {/** the prompt */}
             <Stack spacing={2} direction='row'>
                 <TextField
                     fullWidth
@@ -37,19 +45,6 @@ const Prompt = (props) => {
                             </InputAdornment>,
                     }}
                 />
-                {/** 
-                 * <Button type='submit' variant='contained' sx={{
-                    bgcolor: '#3B4159',
-                    color: 'white',
-                    '&:hover': {
-                        bgcolor: 'rgba(59, 65, 89, 0.8)' // A slightly lighter color on hover
-                    },
-                    borderRadius: '25px'
-                }}>
-                    Send
-                </Button>
-                */}
-
             </Stack>
         </Box>
     )
