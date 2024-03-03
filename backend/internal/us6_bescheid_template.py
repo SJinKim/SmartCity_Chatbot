@@ -9,7 +9,7 @@ from internal.us3_sacherverhalt import load_document
 
 
 def bescheid_template(sachverhalt: str, pruefungsergebnis) -> PipelinePromptTemplate:
-    """Generates an official notice (Bescheid) template based on the provided case 
+    """Generates an official notice (Bescheid) template based on the provided case
        file (Sachverhalt) and examination result (Sachverhaltsprüfung).
 
     Args:
@@ -17,13 +17,13 @@ def bescheid_template(sachverhalt: str, pruefungsergebnis) -> PipelinePromptTemp
         prüfungsergebnis (str): The case file examination (Sachverhaltsprüfung) text.
 
     Returns:
-        PipelinePromptTemplate: A template containing instructions and placeholders for 
+        PipelinePromptTemplate: A template containing instructions and placeholders for
         generating an official notice (Bescheid).
     """
     beispiel_bescheid = load_document("./input_docs/Bescheid1.docx")
 
     full_template = PromptTemplate.from_template(
-    """Du bist ein nützlicher Assistent für juristische Mitarbeiter der Stadtverwaltung \
+        """Du bist ein nützlicher Assistent für juristische Mitarbeiter der Stadtverwaltung \
     und hilfst dabei, einen Bescheid basierend auf einen Sachverhalt zu verfassen.
     Die Erstellung eines Bescheides erfolgt in folgenden Schritten:
     1. Den gegebenen Sachverhalt analysieren, um zu verstehen, was passiert ist und was \

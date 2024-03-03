@@ -27,6 +27,7 @@ load_dotenv()
 
 check_environment()
 
+
 def init_embeddings():
     """Initializes and returns Azure OpenAI Embeddings client.
 
@@ -120,6 +121,7 @@ def __create_faiss_index(embedding_func, split_documents):
     vectorstore_faiss.add_documents(split_documents)
     return vectorstore_faiss
 
+
 def __parallel_upload(folder_path, data_folder):
     """
     Loads documents in parallel using a thread pool and displays a progress bar.
@@ -137,13 +139,16 @@ def __parallel_upload(folder_path, data_folder):
             total=total_files,
             desc=(f"Dokumente aus Ordner < {data_folder} > werden geladen"),
         )
-        futures = [executor.submit(__load_document, file_path) for file_path in folder_path]
+        futures = [
+            executor.submit(__load_document, file_path) for file_path in folder_path
+        ]
         for future in concurrent.futures.as_completed(futures):
             doc = future.result()
             docs.extend(doc)
             progress_bar.update(1)
         progress_bar.close()
     return docs
+
 
 def upload_data(data_folder, vectorestore_name):
     """Uploads documents from a data folder to a Vectorstore.

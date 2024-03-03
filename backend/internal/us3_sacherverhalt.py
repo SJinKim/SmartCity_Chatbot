@@ -2,7 +2,6 @@
     This modul contains the functions for creating the chains for the ai. 
 """
 
-
 import os
 from dotenv import load_dotenv
 
@@ -26,6 +25,7 @@ from internal.utils import check_environment
 # Raises: ValueError: If either the API key or endpoint is not found in the environment.
 load_dotenv()
 check_environment()
+
 
 def init_llm():
     """Initializes and returns a AzureChatOpenAI language model instance.
@@ -143,8 +143,9 @@ def refine_query(prompt):
     refined = message_generate.content
     return refined
 
+
 def qa_chain_context(query, document_split):
-    """Performs a question-answering (QA) chain on a given message using retrieved doc 
+    """Performs a question-answering (QA) chain on a given message using retrieved doc
        chunks and the local saved vectorestore.
 
     Args:
@@ -177,7 +178,7 @@ def qa_chain_context(query, document_split):
 
 def qa_chain(query):
     """
-    Generates a response to a user query using a question-answering (QA) chain 
+    Generates a response to a user query using a question-answering (QA) chain
     and the local saved vectorestore.
 
     Args:

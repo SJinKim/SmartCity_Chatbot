@@ -30,13 +30,55 @@ def write_path_to(key, item):
     Returns:    None
     """
     path = os.path.join(os.path.dirname(__file__), "config.yaml")
-    with open(path, encoding='utf-8') as file:
+    with open(path, encoding="utf-8") as file:
         config = yaml.safe_load(file)
 
     config[key] = item
 
-    with open(path, "w", encoding='utf-8') as file:
+    with open(path, "w", encoding="utf-8") as file:
         yaml.dump(config, file)
+
+
+def add_to_path(key: str, item: str) -> tuple:
+    """
+        add value to config file
+    Args:
+        key (str): key of pair to be changed
+        item (str): new value
+
+    Returns:
+        tuple: updated value
+    """
+    with open("./internal/config.yaml", "r", encoding="utf-8") as f:
+        config = yaml.safe_load(f)
+    # print('start writing into yaml')
+    current_chat_hist = config[key]
+
+    current_chat_hist.append(item)
+    tmp_new = current_chat_hist
+
+    tmp_new_tuple = tuple(tmp_new)
+    config[key] = tmp_new
+
+    with open("./internal/config.yaml", "w", encoding="utf-8") as file:
+        yaml.dump(config, file)
+
+    return tmp_new_tuple
+
+
+def get_value_from_config(key: str):
+    """
+        gets value from config with passed key
+    Args:
+        key (str): key
+
+    Returns:
+        str: value
+    """
+    with open("./internal/config.yaml", "r", encoding="utf-8") as f:
+        config = yaml.safe_load(f)
+
+    return config[key]
 
 
 def str_to_docx(resource: str, output_path: str) -> None:
@@ -55,10 +97,10 @@ def str_to_docx(resource: str, output_path: str) -> None:
 
 # Verfeinerungstemplate für Gutachten- & Bescheidgenerierung
 def erstelle_gutachten(sachverhalt, gutachten_path) -> str:
-    """Generates an expert opinion (Gutachten) as a .docx file, 
-    and saves it to the specified path. This function leverages 
-    a pre-trained question answering chain and a pre-built indexes 
-    of expert opinions ("gutachten_index") to generate a new expert 
+    """Generates an expert opinion (Gutachten) as a .docx file,
+    and saves it to the specified path. This function leverages
+    a pre-trained question answering chain and a pre-built indexes
+    of expert opinions ("gutachten_index") to generate a new expert
     opinion based on a provided case (Sachverhalt) file.
 
     Args:
@@ -84,10 +126,10 @@ def erstelle_gutachten(sachverhalt, gutachten_path) -> str:
 
 
 def erstelle_bescheid(sachverhalt, gutachten_result, bescheid_path) -> str:
-    """Generates an official notice (Bescheid) as a .docx file, and saves it to the 
-    specified path. This function leverages a pre-trained question answering chain and 
-    a pre-built indexes of official notices ("bescheide_index") to generate a new 
-    official notice based on the generated expert opinion (Gutachten) of the provided 
+    """Generates an official notice (Bescheid) as a .docx file, and saves it to the
+    specified path. This function leverages a pre-trained question answering chain and
+    a pre-built indexes of official notices ("bescheide_index") to generate a new
+    official notice based on the generated expert opinion (Gutachten) of the provided
     case (Sachverhalt) file.
 
     Args:
@@ -114,6 +156,7 @@ def erstelle_bescheid(sachverhalt, gutachten_result, bescheid_path) -> str:
     )
     str_to_docx(resource=bescheid_response, output_path=bescheid_path)
     return bescheid_response
+
 
 def __generated_docs_to_index(gutachten_doc, bescheid_doc):
     """
@@ -159,9 +202,9 @@ def __generated_docs_to_index(gutachten_doc, bescheid_doc):
 
 # Für Fast-API in main.py
 def erstelle_bescheid_background(file_path: str):
-    """Asynchronously generates expert opinion (Gutachten) and official notice (Bescheid) 
+    """Asynchronously generates expert opinion (Gutachten) and official notice (Bescheid)
     documents from a case file (Sachverhalt). Timestamps are used to ensure unique file names.
-    The generated documents are split into smaller chunks, and added to the existing 
+    The generated documents are split into smaller chunks, and added to the existing
     VectorStores for Gutachten and Bescheide.
 
     Args:
@@ -174,8 +217,12 @@ def erstelle_bescheid_background(file_path: str):
     counter = 1
 
     while True:
-        gutachten_path = f"./Gutachten_docs/[Gutachten] {file_name}_{timestamp} [{counter}].docx"
-        bescheid_path = f"./Bescheide_docs/[Bescheid] {file_name}_{timestamp} [{counter}].docx"
+        gutachten_path = (
+            f"./Gutachten_docs/[Gutachten] {file_name}_{timestamp} [{counter}].docx"
+        )
+        bescheid_path = (
+            f"./Bescheide_docs/[Bescheid] {file_name}_{timestamp} [{counter}].docx"
+        )
 
         if not os.path.exists(gutachten_path) and not os.path.exists(bescheid_path):
             break
@@ -191,7 +238,9 @@ def erstelle_bescheid_background(file_path: str):
         bescheid_path=bescheid_path,
     )
 
-    __generated_docs_to_index(load_document(gutachten_path), load_document(bescheid_path))
+    __generated_docs_to_index(
+        load_document(gutachten_path), load_document(bescheid_path)
+    )
 
     write_path_to(key="message_str", item=message_str)
     write_path_to(key="erstellt", item=True)

@@ -20,7 +20,7 @@ def gutachten_template(sachverhalt) -> str:
     beispiel_gutachten = load_document("./input_docs/Gutachten1.docx")[0].page_content
 
     prompt_template = PromptTemplate.from_template(
-    """Du bist ein nützlicher Assistent für juristische Mitarbeiter der Stadtverwaltung \
+        """Du bist ein nützlicher Assistent für juristische Mitarbeiter der Stadtverwaltung \
     und hilfst dabei, anhand der Gutachtenvorlage ein ausfürliches und sachlichen \
     Gutachten basierend auf einen Sachverhalt zu verfassen.
     Gutachtenvorlage lautet: {gutachtensvorlage}

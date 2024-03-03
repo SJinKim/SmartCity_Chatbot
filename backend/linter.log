@@ -1026,3 +1026,41 @@ backend/internal/utils.py:6:0: C0116: Missing function or method docstring (miss
 ------------------------------------------------------------------
 Your code has been rated at 9.93/10 (previous run: 9.89/10, +0.04)
 
+************* Module internal.us10_interaktion
+internal/us10_interaktion.py:40:0: C0301: Line too long (103/100) (line-too-long)
+internal/us10_interaktion.py:54:0: C0301: Line too long (208/100) (line-too-long)
+internal/us10_interaktion.py:60:0: C0301: Line too long (244/100) (line-too-long)
+internal/us10_interaktion.py:80:0: C0301: Line too long (136/100) (line-too-long)
+internal/us10_interaktion.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+internal/us10_interaktion.py:14:0: C0116: Missing function or method docstring (missing-function-docstring)
+internal/us10_interaktion.py:23:4: W0612: Unused variable 'emb_deployment' (unused-variable)
+internal/us10_interaktion.py:24:4: W0612: Unused variable 'emb_model' (unused-variable)
+internal/us10_interaktion.py:39:0: C0116: Missing function or method docstring (missing-function-docstring)
+internal/us10_interaktion.py:39:0: R0914: Too many local variables (21/15) (too-many-locals)
+internal/us10_interaktion.py:7:0: C0411: standard import "from typing import Literal" should be placed before "from langchain.prompts.prompt import PromptTemplate" (wrong-import-order)
+internal/us10_interaktion.py:9:0: C0411: standard import "import os" should be placed before "from langchain.prompts.prompt import PromptTemplate" (wrong-import-order)
+************* Module internal.us7_generierung
+internal/us7_generierung.py:42:0: C0116: Missing function or method docstring (missing-function-docstring)
+internal/us7_generierung.py:43:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+internal/us7_generierung.py:46:4: C0103: Variable name "currentChatHist" doesn't conform to snake_case naming style (invalid-name)
+internal/us7_generierung.py:54:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+internal/us7_generierung.py:60:0: C0116: Missing function or method docstring (missing-function-docstring)
+internal/us7_generierung.py:61:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+internal/us7_generierung.py:82:36: W0613: Unused argument 'gutachten_path' (unused-argument)
+internal/us7_generierung.py:111:53: W0613: Unused argument 'bescheid_path' (unused-argument)
+************* Module internal.utils
+internal/utils.py:27:23: C0103: Argument name "currentResponse" doesn't conform to snake_case naming style (invalid-name)
+internal/utils.py:36:4: C0103: Variable name "fileContent" doesn't conform to snake_case naming style (invalid-name)
+internal/utils.py:37:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+************* Module main
+main.py:120:16: C0103: Variable name "isBescheid" doesn't conform to snake_case naming style (invalid-name)
+main.py:124:26: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+main.py:23:0: W0611: Unused qa_chain imported from internal.us3_sacherverhalt (unused-import)
+
+------------------------------------------------------------------
+Your code has been rated at 9.30/10 (previous run: 9.30/10, +0.00)
+
+
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 9.81/10, +0.19)
+

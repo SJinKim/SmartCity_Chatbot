@@ -1,19 +1,33 @@
 """
     This is the main/start function of the server including the routes
 """
+
 import asyncio
 import shutil
 import json
 from typing import Dict
-from fastapi import BackgroundTasks, FastAPI, UploadFile, File, WebSocket, WebSocketException
+from fastapi import (
+    BackgroundTasks,
+    FastAPI,
+    UploadFile,
+    File,
+    WebSocket,
+    WebSocketException,
+)
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
 import yaml
 
-from internal.us3_sacherverhalt import qa_chain
-from internal.us7_generierung import write_path_to, erstelle_bescheid_background
+from internal.us7_generierung import (
+    write_path_to,
+    erstelle_bescheid_background,
+    add_to_path,
+    get_value_from_config,
+)
+from internal.us10_interaktion import multiple_prompt_chain
+from internal.utils import is_result_bescheid
 
 load_dotenv()
 
@@ -34,7 +48,9 @@ app.add_middleware(
 
 # Path for uploading Files
 @app.post("/api/upload")
-async def upload_file(background_tasks: BackgroundTasks, sachverhalt: UploadFile = File(...)):
+async def upload_file(
+    background_tasks: BackgroundTasks, sachverhalt: UploadFile = File(...)
+):
     """This Route recieves a pdf or txt file (sachverhalt) from the client, and triggers
     the a backroundtask to create a bescheid.
 
@@ -63,6 +79,11 @@ async def upload_file(background_tasks: BackgroundTasks, sachverhalt: UploadFile
     return response
 
 
+# Download
+@app.get("/api/download")
+# download function implementieren
+
+
 # Path to chat websocket
 @app.websocket("/api/chat/{client_id}")
 async def websocket_endpoint(websocket: WebSocket, client_id: str):
@@ -86,15 +107,26 @@ async def websocket_endpoint(websocket: WebSocket, client_id: str):
                 if message.lower() == "close":
                     break
                 # Process received Message
-                response = qa_chain(query=message)
+                # response = qa_chain(query=message)
+                current_msg = get_value_from_config("message_str")
+                response = multiple_prompt_chain(
+                    user_query=message, original_bescheid=current_msg
+                )
                 return_message = {"client_id": client_id, "message": response}
                 await websocket.send_text(json.dumps(return_message))
 
+                # add response to yaml
+                is_bescheid = is_result_bescheid(response)
+                if is_bescheid:
+                    write_path_to(key="message_str", item=response)
+                else:
+                    print("not a bescheid only general answer!")
+                add_to_path(key="chatHist", item=response)
             # When no Message received, check if server wants to send a message
-            except asyncio.TimeoutError: # as e:
+            except asyncio.TimeoutError:  # as e:
                 # print(f"asyncio timeout: {e}")
                 # load yaml file
-                with open("./internal/config.yaml", encoding='utf-8') as file:
+                with open("./internal/config.yaml", encoding="utf-8") as file:
                     config = yaml.safe_load(file)
                 if config["erstellt"] is True:
                     response = config["message_str"]
@@ -105,10 +137,15 @@ async def websocket_endpoint(websocket: WebSocket, client_id: str):
 
     except WebSocketException as e:
         print(f"WebSocket error: {e}")
+        write_path_to(key="message_str", item="")
+        write_path_to(key="chatHist", item=["init"])
     finally:
         del session_manager[client_id]
         print(session_manager)
         await websocket.close()
+        if len(session_manager) == 0:
+            write_path_to(key="message_str", item="")
+            write_path_to(key="chatHist", item=["init"])
 
 
 # Path to the file to be downloaded
