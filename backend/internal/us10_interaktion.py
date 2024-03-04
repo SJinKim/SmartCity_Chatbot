@@ -128,5 +128,4 @@ def multiple_prompt_chain(user_query: str, original_bescheid: str):
         verbose=True,
     )
     translator = GoogleTranslator(source="auto", target="german")
-    result = chain.run(input=user_query)
-    return translator.translate(result)
+    return translator.translate(chain.run(input=user_query))

@@ -1,5 +1,13 @@
 chatHist:
 - init
+- "Es tut mir leid, aber ich kann keine eindeutige Frage in deinem Input erkennen.\
+  \ Wenn du Fragen zum Chatbot oder seiner Funktionalit\xE4t hast, kann ich dir gerne\
+  \ weiterhelfen. Mit diesem Chatbot kannst du einen Bescheid erstellen, indem du\
+  \ einen Sachverhalt \xFCber den Hochladen Button hinzuf\xFCgst. Daraufhin wird automatisch\
+  \ ein Bescheid generiert, den du noch weiter bearbeiten und Fragen dazu stellen\
+  \ kannst. Wenn du zufrieden mit dem generierten Bescheid bist, kannst du ihn als\
+  \ doc-Datei herunterladen. Um mehrere Chats zu \xF6ffnen, klicke auf den Button\
+  \ Neuer Chat."
 erstellt: false
 message_str: ''
 sachverhalt: ''

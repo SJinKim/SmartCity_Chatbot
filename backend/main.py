@@ -86,6 +86,15 @@ async def upload_file(
 # Download
 @app.get("/api/download")
 def file_download():
+    """
+    route for downloading the bescheid as word document
+
+    Raises:
+        HTTPException: if there is no bescheid at this point
+
+    Returns:
+        Response: the document 
+    """
     doc = docx.Document()
     doc.add_heading('Bescheid', 0)
     bescheid_str = get_value_from_config('message_str')
@@ -97,13 +106,14 @@ def file_download():
     doc.save(doc_bytes)
     doc_bytes.seek(0)
 
+    filename = "bescheid.doc"
     # Erstelle die Response mit dem Dokument als Inhalt
-    response = Response(content=doc_bytes.getvalue(), 
-                        media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                        headers={"Content-Disposition": f"attachment; filename=bescheid.doc"}
-                        )
+    response = Response(
+        content=doc_bytes.getvalue(),
+        media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        headers={"Content-Disposition": f"attachment; filename={filename}"}
+        )
     return response
-
 
 
 # Path to chat websocket

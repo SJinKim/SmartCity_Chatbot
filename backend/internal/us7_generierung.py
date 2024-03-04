@@ -201,6 +201,11 @@ def __generated_docs_to_index(gutachten_doc, bescheid_doc):
     )
 
 def safe_sachverhalt(file_path: str) -> None:
+    """
+        safe the sachverhalt in config.yaml
+    Args:
+        file_path (): path of the sachverhalt document
+    """
     sachverhalt = load_document(file_path)[0].page_content
     write_path_to(key='sachverhalt', item=sachverhalt)
 
@@ -232,9 +237,7 @@ def erstelle_bescheid_background(file_path: str):
             break
 
         counter += 1
-    
     safe_sachverhalt(file_path)
-
     gutachten = erstelle_gutachten(
         sachverhalt=load_document(file_path), gutachten_path=gutachten_path
     )
