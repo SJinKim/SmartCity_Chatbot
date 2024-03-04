@@ -129,9 +129,9 @@ async def websocket_endpoint(websocket: WebSocket, client_id: str):
                 with open("./internal/config.yaml", encoding="utf-8") as file:
                     config = yaml.safe_load(file)
                 if config["erstellt"] is True:
-                    response = config["message_str"]
+                    res = config["message_str"]
                     write_path_to(key="erstellt", item=False)
-                    return_message = {"client_id": client_id, "message": response}
+                    return_message = {"client_id": client_id, "message": res}
                     await websocket.send_text(json.dumps(return_message))
                     continue
 
@@ -139,6 +139,7 @@ async def websocket_endpoint(websocket: WebSocket, client_id: str):
         print(f"WebSocket error: {e}")
         write_path_to(key="message_str", item="")
         write_path_to(key="chatHist", item=["init"])
+        write_path_to(key="sachverhalt", item="")
     finally:
         del session_manager[client_id]
         print(session_manager)
@@ -146,6 +147,7 @@ async def websocket_endpoint(websocket: WebSocket, client_id: str):
         if len(session_manager) == 0:
             write_path_to(key="message_str", item="")
             write_path_to(key="chatHist", item=["init"])
+            write_path_to(key="sachverhalt", item="")
 
 
 # Path to the file to be downloaded

@@ -44,12 +44,14 @@ def is_result_bescheid(current_response: str) -> bool:
     print("No such words in here Bescheid!")
     return False
 
-def bescheid_concat(prompt_template: str, bescheid: str) -> Literal[""]:
+def template_concat(prompt_template: str, input: str) -> Literal[""]:
     """
-    concats the Bescheid to the prompt template
+    concats input to given prompt template
 
     Returns:
         Literal: prompt template
     """
-    result: str = prompt_template + bescheid
-    return Literal[f"{result}"]
+    result: str = prompt_template + input
+    return result
+
+

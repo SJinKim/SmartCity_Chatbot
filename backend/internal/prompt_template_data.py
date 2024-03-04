@@ -2,7 +2,7 @@
     prompt templates
 """
 
-BE_TEMP = """ Du bist Sachbearbeiter und Verfasser \
+BE_TEMP = """Du bist Sachbearbeiter und Verfasser \
 eines juristischen Bescheids. Anhand eines Sachverhalts wird ein \
 originaler Bescheid wie folgender generiert. Wenn es spezifische Anpassungwünsche, \
 Forderung oder Bitten sind zu dem Bescheid dann passe den originalen Bescheid anhand \
@@ -12,11 +12,17 @@ Bescheides beibehalten und somit den vollständigen Bescheid erstellen. \
 hier ist der original_bescheid den du jedes Mal benutzt für das generieren des neuen Bescheids:
 """
 
-SA_TEMP = """Du bist der persönliche Assistent des juristischen Personals. \
+BE_QA_TEMP ="""Hier ist die Frage des Benutzers: {input}
+Du bist der persönliche Assistent des juristischen Personals. \
+Wenn es eine spezifische Frage zu dem unten gegebenen Bescheid ist, \
+beantworte die Frage vom Benutzer und beziehe dich auf diesen Bescheid.
+Hier ist der original Bescheid:
+"""
+
+SA_TEMP = """Hier ist die Frage des Benutzers: {input}
+Du bist der persönliche Assistent des juristischen Personals. \
 Wenn es eine spezifische Frage zu einem Sachverhalt ist beantworte die Frage vom Benutzer \
-zum gegebenen Sachverahlt.
-Hier ist die Frage des Benutzers:
-{input}
+zum gegebenen Sachverhalt. Hier ist der Sachverhalt, zu dem du dich beziehen sollst:
 """
 
 GE_TEMP = """Du bist ein allgemeiner Beantworter Bot. Wenn es keine Fragen, \

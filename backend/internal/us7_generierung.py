@@ -14,6 +14,7 @@ from internal.us1_load_data import init_embeddings
 from internal.us3_sacherverhalt import init_llm, load_document, split_documents
 from internal.us5_gutachten_template import gutachten_template
 from internal.us6_bescheid_template import bescheid_template
+# from internal.utils import safe_sachverhalt
 
 
 llm_client = init_llm()
@@ -199,6 +200,9 @@ def __generated_docs_to_index(gutachten_doc, bescheid_doc):
         folder_path=bescheide_index, index_name="bescheide_index"
     )
 
+def safe_sachverhalt(file_path: str) -> None:
+    sachverhalt = load_document(file_path)[0].page_content
+    write_path_to(key='sachverhalt', item=sachverhalt)
 
 # Für Fast-API in main.py
 def erstelle_bescheid_background(file_path: str):
@@ -228,6 +232,8 @@ def erstelle_bescheid_background(file_path: str):
             break
 
         counter += 1
+    
+    safe_sachverhalt(file_path)
 
     gutachten = erstelle_gutachten(
         sachverhalt=load_document(file_path), gutachten_path=gutachten_path

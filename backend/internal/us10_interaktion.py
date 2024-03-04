@@ -13,8 +13,9 @@ from langchain.chains.router.llm_router import LLMRouterChain, RouterOutputParse
 from langchain.chains.router.multi_prompt_prompt import MULTI_PROMPT_ROUTER_TEMPLATE
 from langchain_openai import AzureChatOpenAI
 
-from internal.prompt_template_data import BE_TEMP, SA_TEMP, GE_TEMP
-from internal.utils import bescheid_concat
+from internal.prompt_template_data import BE_TEMP, SA_TEMP, GE_TEMP, BE_QA_TEMP
+from internal.utils import template_concat
+from internal.us7_generierung import get_value_from_config
 
 
 def initial():
@@ -58,23 +59,28 @@ def __gen_prompt_infos(original_bescheid: str):
     Returns:
         _type_: List of Dictonaries of prompts
     """
-    b_temp = bescheid_concat(BE_TEMP, original_bescheid)
+    sachverhalt = get_value_from_config(key='sachverhalt')
     prompt_infos = [
             {
                 "name": "adjustTemplate",
                 "description": "Gut um generierte Bescheide zu bearbeiten und neu herzustellen",
-                "prompt_template": b_temp,
+                "prompt_template": template_concat(BE_TEMP, original_bescheid),
             },
             {
                 "name": "aboutSachverhalt",
                 "description": "Gut um Fragen bezüglich des Sachverhalts zu beantworten.",
-                "prompt_template": SA_TEMP,
+                "prompt_template": template_concat(SA_TEMP, sachverhalt),
             },
             {
                 "name": "generalQA",
                 "description": """Gut um Fragen zu beantworten, die weder mit dem Sachverhalt \
                     noch mit dem generierten Bescheid zu tun haben.""",
                 "prompt_template": GE_TEMP,
+            },
+            {
+                "name": "Bescheid_QA",
+                "description": "Gut um Fragen zu beantworten, die zum generierten Bescheid sind.",
+                "prompt_template": template_concat(BE_QA_TEMP, original_bescheid),
             },
         ]
     return prompt_infos
