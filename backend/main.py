@@ -113,7 +113,8 @@ async def websocket_endpoint(websocket: WebSocket, client_id: str):
                     user_query=message, original_bescheid=current_msg
                 )
                 return_message = {"client_id": client_id, "message": response}
-                await websocket.send_text(json.dumps(return_message))
+                result_message = json.dumps(return_message)
+                await websocket.send_text(result_message)
 
                 # add response to yaml
                 is_bescheid = is_result_bescheid(response)
@@ -132,7 +133,8 @@ async def websocket_endpoint(websocket: WebSocket, client_id: str):
                     res = config["message_str"]
                     write_path_to(key="erstellt", item=False)
                     return_message = {"client_id": client_id, "message": res}
-                    await websocket.send_text(json.dumps(return_message))
+                    re_me = json.dumps(return_message)
+                    await websocket.send_text(re_me)
                     continue
 
     except WebSocketException as e:

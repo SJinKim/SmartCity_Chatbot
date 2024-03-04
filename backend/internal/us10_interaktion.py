@@ -3,6 +3,7 @@
     according to user input and generates answers.
 """
 import os
+from deep_translator import GoogleTranslator
 from dotenv import find_dotenv, load_dotenv
 
 from langchain.prompts.prompt import PromptTemplate
@@ -73,9 +74,9 @@ def __gen_prompt_infos(original_bescheid: str):
             },
             {
                 "name": "generalQA",
-                "description": """Gut um Fragen zu beantworten, die weder mit dem Sachverhalt \
+                "description": """Gut um Input zu bearbeiten, der weder mit dem Sachverhalt \
                     noch mit dem generierten Bescheid zu tun haben.""",
-                "prompt_template": GE_TEMP,
+                "prompt_template": template_concat(GE_TEMP, get_value_from_config(key='tutorial')),
             },
             {
                 "name": "Bescheid_QA",
@@ -126,6 +127,6 @@ def multiple_prompt_chain(user_query: str, original_bescheid: str):
         default_chain=default_chain,
         verbose=True,
     )
-
+    translator = GoogleTranslator(source="auto", target="german")
     result = chain.run(input=user_query)
-    return result
+    return translator.translate(result)
