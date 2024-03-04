@@ -4,7 +4,7 @@ const baseURI = '/api/message'
 
 const fileUploadURI = '/api/upload'
 
-const fileDownloadURI = '/api/files'
+const fileDownloadURI = '/api/download'
 
 /**
  * sends message to backend as html post -> not used
@@ -44,8 +44,8 @@ const uploadFile = async (file) => {
  * @param {string} filename 
  * @returns {JSON} the donwloaded byte stream from backend
  */
-const downloadFile = async (filename) => {
-    const response = await axios.get(`${fileDownloadURI}/${filename}`,
+const downloadFile = async () => {
+    const response = await axios.get(`${fileDownloadURI}`,
         { responseType: 'blob' })
     return response.data
 }

@@ -220,16 +220,26 @@ const App = () => {
     }
   }
 
-  //TODO Download mit Backend organisieren!
+  /**
+   *  downloads the bescheid from backend, if bescheid exists
+   */
   const handleFileDownload = async (event) => {
     event.preventDefault()
     try {
-      const response = await messageService.downloadFile('Bescheidvorlage.pdf')
+      const response = await messageService.downloadFile()
       const file = new Blob(
         [response],
-        { type: 'application/pdf' })
+        { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' })
       const fileURL = URL.createObjectURL(file)
-      window.open(fileURL)
+      const link = document.createElement('a');
+      link.href = fileURL;
+      link.setAttribute('download', 'bescheid.doc');
+      document.body.appendChild(link);
+      // Trigger the download
+      link.click();
+      // Clean up resources
+      window.URL.revokeObjectURL(fileURL);
+      document.body.removeChild(link);
     } catch (exc) {
       const excMsg = {
         message: 'Es ist noch keine Datei zum Download verfügbar',

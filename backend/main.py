@@ -3,12 +3,16 @@
 """
 
 import asyncio
+from io import BytesIO
 import shutil
 import json
 from typing import Dict
+import docx
 from fastapi import (
     BackgroundTasks,
     FastAPI,
+    HTTPException,
+    Response,
     UploadFile,
     File,
     WebSocket,
@@ -81,7 +85,25 @@ async def upload_file(
 
 # Download
 @app.get("/api/download")
-# download function implementieren
+def file_download():
+    doc = docx.Document()
+    doc.add_heading('Bescheid', 0)
+    bescheid_str = get_value_from_config('message_str')
+    if not bescheid_str:
+        raise HTTPException(status_code=400, detail="Der Inhalt des Dokuments ist leer.")
+    doc.add_paragraph().add_run(bescheid_str)
+    # Erzeuge ein BytesIO-Objekt, um das Dokument im Speicher zu halten
+    doc_bytes = BytesIO()
+    doc.save(doc_bytes)
+    doc_bytes.seek(0)
+
+    # Erstelle die Response mit dem Dokument als Inhalt
+    response = Response(content=doc_bytes.getvalue(), 
+                        media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                        headers={"Content-Disposition": f"attachment; filename=bescheid.doc"}
+                        )
+    return response
+
 
 
 # Path to chat websocket
