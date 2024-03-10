@@ -49,7 +49,7 @@ This chatbot uses AI to generate legal notices from case files uploaded by users
 3. Paste the following lines in the empty `.env` file and replace the placeholders (e.g. "YOUR_AZURE_OPENAI_KEY_HERE") with your actual credential values:
 
 ```
-AZURE_OPENAI_KEY="YOUR_AZURE_OPENAI_KEY_HERE"
+AZURE_OPENAI_KEY="YOUR_AZURE_OPENAI_KEY"
 AZURE_OPENAI_ENDPOINT="YOUR_AZURE_ENDPOINT_URL"
 AZURE_OPENAI_DEPLOYMENT="YOUR_DEPLOYMENT_NAME"
 AZURE_OPENAI_VERSION="YOUR_API_VERSION"
