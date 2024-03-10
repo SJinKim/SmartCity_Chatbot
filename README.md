@@ -17,7 +17,7 @@ The chatbot generates draft notices (`Bescheide`) based on the uploaded case fil
 The user can review and edit the generated draft notice before finalizing it through customization options such as adding additional information or changing the existing content.
 
 🖊️  **Downloadable**: 
-The user can manually download the generated legal notice in `DOCX` text format.
+The user can manually download the generated legal notice in text format (`DOCX`).
 
 
 ## Disclaimer
