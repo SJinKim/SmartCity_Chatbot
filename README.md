@@ -6,7 +6,7 @@ This repository provides a user-friendly AI chatbot assistant to support German 
 
 
 ## Features 
-📌 The chatbot is still under development and is currently trained on a dataset of German federal laws and the state laws of Baden-Württemberg.
+📌 The chatbot is still under development and based on a dataset of German federal laws and the state laws of Baden-Württemberg.
 
 🖊️  **Smart Legal Assistance**: 
 The chatbot analyzes the uploaded case file (`Sachverhalte`) in `DOCX` or `PDF` format and offers context-aware responses leveraging OpenAI's GPT-3.5 language model. 
