@@ -6,6 +6,7 @@ This repository provides a user-friendly AI chatbot assistant to support German 
 
 
 ## Features 
+📌 The chatbot is still under development and is currently trained on a dataset of German federal laws and the state laws of Baden-Württemberg.
 
 🖊️  **Smart Legal Assistance**: 
 The chatbot analyzes the uploaded case file (`Sachverhalte`) in `DOCX` or `PDF` format and offers context-aware responses leveraging OpenAI's GPT-3.5 language model. 
@@ -21,6 +22,7 @@ The user can manually download the generated legal notice in text format (`DOCX`
 
 
 ## Disclaimer
+📌 The chatbot is not a substitute for legal advice from a qualified attorney.
 
 This chatbot uses AI to generate legal notices from case files uploaded by users. The chatbot is not a legal advisor and does not ensure the accuracy or validity of the notices or information. Users must verify the notices and information with their own legal counsel or other sources. The chatbot and its creators are not liable for any harm or loss from using the chatbot or the information. Users agree to these terms by using the chatbot.
 
@@ -34,7 +36,7 @@ This chatbot uses AI to generate legal notices from case files uploaded by users
    - If you encounter error code 0x80370102, run `wsl --set-default-version 1` in CMD as Administrator.
    - To use WSL with VSCode: `https://code.visualstudio.com/docs/remote/wsl` (WSL Extension).
 
-📌 Open WSL to run:
+Open WSL to run:
 - `sudo apt update` and `sudo apt upgrade` before creating a virtual environment.
 - `python3.10-venv` with `sudo apt install python3.10-venv`.
 - `python3-pip` with `apt install python3-pip`.
