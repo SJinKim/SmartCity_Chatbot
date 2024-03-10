@@ -145,6 +145,7 @@ AZURE_EMBEDDING_DEPLOYMENT="YOUR_EMBEDDING_DEPLOYMENT_NAME"
 ## Contributing (Open Source)
 - Pull requests are welcome. 
 - For major changes, please open an issue first to discuss what you would like to change.
+- To ask questions, give feedback or suggestions on this project, reach us via [![](https://i.postimg.cc/N0gDTQ6C/Discord.png)](http://)
 
 
 ## License
@@ -160,5 +161,3 @@ AZURE_EMBEDDING_DEPLOYMENT="YOUR_EMBEDDING_DEPLOYMENT_NAME"
 [![](https://i.postimg.cc/Z04mdHg8/SJ.jpg)](https://github.com/SJinKim)
 
 © 2024 for the "Practical Lab for Bachelors" of the TUDa in cooperation with [[ui!] Urban Software Institute](https://www.ui.city/). 
-
-To ask questions, give feedback or suggestions on this project, join our [![](https://i.postimg.cc/N0gDTQ6C/Discord.png)](http://)-Server!
