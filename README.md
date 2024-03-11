@@ -53,7 +53,7 @@ Open WSL to run:
 #### 📌 Create environment file with Azure OpenAI credentials (e.g. API key, endpoint etc.)
 1. Open a text editor like `Editor`, `Notepad` or VSCode.
 2. Create a new file in the project's `backend folder` and name it `.env` (make sure the filename starts with a dot '.').
-3. Paste the following lines in the empty `.env` file and replace the placeholders (e.g. "YOUR_AZURE_OPENAI_KEY_HERE") with your actual credential values:
+3. Paste the following lines in the empty `.env` file and replace the placeholders (e.g. "YOUR_AZURE_OPENAI_KEY") with your actual credential values:
 
 ```
 AZURE_OPENAI_KEY="YOUR_AZURE_OPENAI_KEY"
