@@ -35,6 +35,9 @@ This chatbot uses AI to generate legal notices from case files uploaded by users
 - Install Python version via Ubuntu 22.04 using WSL2: `https://learn.microsoft.com/en-us/windows/wsl/` (Installation Guide).
    - If you encounter error code 0x80370102, run `wsl --set-default-version 1` in CMD as Administrator.
    - To use WSL with VSCode: `https://code.visualstudio.com/docs/remote/wsl` (WSL Extension).
+- Node.js v18.7.1:
+    - How to install Node.js, nvm and npm on WSL2: 
+    `https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl`
 
 Open WSL to run:
 - `sudo apt update` and `sudo apt upgrade` before creating a virtual environment.
@@ -44,6 +47,8 @@ Open WSL to run:
 #### Windows (Python v3.11.7)
 - Install Python version: `https://www.python.org/downloads/release/python-3117/`.
    - Installation Guide: `https://docs.python.org/3/using/windows.html`.
+-  Node.js v18.7.1:
+   - How to install: `https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-overview`
 
 #### 📌 Create environment file with Azure OpenAI credentials (e.g. API key, endpoint etc.)
 1. Open a text editor like `Editor`, `Notepad` or VSCode.
@@ -93,9 +98,8 @@ AZURE_EMBEDDING_DEPLOYMENT="YOUR_EMBEDDING_DEPLOYMENT_NAME"
 
 
 #### Frontend
-📌 Assuming **Node.js, nvm and npm** are installed: 
+📌 Assuming **Node.js(18.7.1), nvm and npm** are installed: 
 
-`https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-overview` (Installation Guide).
 1. Navigate to project directory `cd SmartCity_Chatbot`.
 2. Navigate to frontend folder `cd frontend`.
 3. Install node-modules `npm install`.
@@ -138,10 +142,11 @@ AZURE_EMBEDDING_DEPLOYMENT="YOUR_EMBEDDING_DEPLOYMENT_NAME"
 
 ### Frontend
 - **JavaScript** (`https://learn.microsoft.com/en-us/windows/dev-environment/javascript/`)
-- **React Native** `https://reactnative.dev/`
+- **React** `https://react.dev/`
 - **Material-UI** (MUI) `https://mui.com/`
 - **Node.js** (`v18.7.1`) `https://nodejs.org/en`
 - **Vite** `https://vitejs.dev/`
+- **axios** `https://axios-http.com/`
 
 
 ## Contributing (Open Source)
