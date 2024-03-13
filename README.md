@@ -23,11 +23,20 @@ The user can manually download the generated legal notice in text format (`DOCX`
 
 
 ## Walkthrough (Tips)
-🏃 Add other dataset
+🏃 Ask the chatbot any question you like
 
-🏃
-
-🏃
+🏃 Upload case file by clicking on the upload button 
+      - now chatbot creates a legal notice for you
+      - you will get the created legal notice as a message
+      
+🏃 Adjust the created legal notice according to the desired adjustments
+      - for best adjustment results use phrases like:
+         - input: "Ändere mir den Bescheid [mention the part to be adjusted] [state your desired adjustment]"
+         
+🏃 Ask questions about the uploaded case file or generated legal notice if you like
+      - for best results use the specific words in your question: "Sachverhalt" or "Bescheid"
+      
+🏃 Download generated legal notice by clicking the download button
 
 
 ## Disclaimer
