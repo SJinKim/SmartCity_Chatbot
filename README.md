@@ -66,7 +66,7 @@ AZURE_EMBEDDING_DEPLOYMENT="YOUR_EMBEDDING_DEPLOYMENT_NAME"
 4. Save the file ✅
 
 
-### Getting Started
+### Getting Started (setup for development environment)
 
 #### Backend
 
@@ -93,7 +93,7 @@ AZURE_EMBEDDING_DEPLOYMENT="YOUR_EMBEDDING_DEPLOYMENT_NAME"
 6. Activate the created virtual environment `./<venv-directory-name>/Scripts/Activate.ps1`.
 7. Install the required packages `pip install -r requirements.win`.
 8. Check if your `.env` file (containing the Azure OpenAI credentials) is in the root directory of backend folder.
-9. Start backend server `uvicorn main:app --reload`
+9. Start backend server `uvicorn main:app` / optional `uvicorn main:app --reload` to enable auto-reload.
 10. Open browser via `http://127.0.0.1:8000` / to quit `Ctrl+C`.
 
 
@@ -103,7 +103,7 @@ AZURE_EMBEDDING_DEPLOYMENT="YOUR_EMBEDDING_DEPLOYMENT_NAME"
 1. Navigate to project directory `cd SmartCity_Chatbot`.
 2. Navigate to frontend folder `cd frontend`.
 3. Install node-modules `npm install`.
-4. Start the server in development mode `npm run dev`.
+4. Start frontend server in development mode `npm run dev`.
 5. Open browser via `http://localhost:5173/`.
 6. Make production build `npm run build`.
 7. Build and deploy to backend `npm run build:deploy`.
@@ -117,19 +117,7 @@ AZURE_EMBEDDING_DEPLOYMENT="YOUR_EMBEDDING_DEPLOYMENT_NAME"
 2. Open browser via `http://0.0.0.0:8000` / to quit `Ctrl+C`.
 
 ### Without Docker
-📌 See the "Installation" section.
-
-#### WSL (Linux-Terminal)
-1. Navigate to project directory `cd SmartCity_Chatbot` and backend folder `cd backend`.
-2. Activate the created virtual environment `source <venv-directory-name>/bin/activate` / to quit `exit`.
-3. Start backend server `uvicorn main:app --reload`.
-4. Open browser via `http://127.0.0.1:8000` / to quit `Ctrl+C`.
-
-#### PowerShell (Windows-Terminal)
-1. Navigate to project directory `cd SmartCity_Chatbot` and backend folder `cd backend`.
-   - Activate the created virtual environment `./venv-directory-name>/Scripts/Activate.ps1` / to quit `exit`.
-2. Start backend server `uvicorn main:app --reload`.
-3. Open browser via `http://127.0.0.1:8000` / to quit `Ctrl+C`.
+📌 See "Installation" section.
 
 
 ## Dependencies
