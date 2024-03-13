@@ -5,7 +5,6 @@ Lib
 Include
 __pycache__
 pyvenv.cfg
-.env
 share
 .venv*
 .txt
