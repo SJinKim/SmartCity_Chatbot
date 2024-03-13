@@ -4,6 +4,7 @@
 
 This repository provides a user-friendly AI chatbot assistant to support German legal inquiries. The chatbot generates legal notices (`Bescheide`) based on user-uploaded case files (`Sachverhalte`), offers customization options before finalizing the file, and has potential for further expansion and integration.
 
+*Bild: Langchain-Skizze*
 
 ## Features 
 📌 The chatbot is still under development and based on a dataset of German federal laws and the state laws of Baden-Württemberg.
@@ -22,7 +23,11 @@ The user can manually download the generated legal notice in text format (`DOCX`
 
 
 ## Walkthrough (Tips)
+🏃 Add other dataset
 
+🏃
+
+🏃
 
 
 ## Disclaimer
@@ -119,6 +124,7 @@ AZURE_OPENAI_ENDPOINT="YOUR_AZURE_ENDPOINT_URL"
 
 
 ## Dependencies
+*Bild: Architekturskizze*
 
 ### Backend
 - **Python** (Linux: `v3.10.12` | Windows: `v3.11.7`) `https://www.python.org/`
