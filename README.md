@@ -50,18 +50,12 @@ Open WSL to run:
 -  Node.js v18.7.1:
    - How to install: `https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-overview`
 
-#### 📌 Create environment file with Azure OpenAI credentials (e.g. API key, endpoint etc.)
-1. Open a text editor like `Editor`, `Notepad` or VSCode.
-2. Create a new file in the project's `backend folder` and name it `.env` (make sure the filename starts with a dot '.').
-3. Paste the following lines in the empty `.env` file and replace the placeholders (e.g. "YOUR_AZURE_OPENAI_KEY") with your actual credential values:
-
+#### 📌 Place Azure OpenAI "API key" and "endpoint" in environment file (.env)
+1. Navigate to project's `backend folder` and open the `.env` file.
+2. Replace only these following placeholders (e.g. "YOUR_AZURE_OPENAI_KEY") with your actual credential values:
 ```
 AZURE_OPENAI_KEY="YOUR_AZURE_OPENAI_KEY"
 AZURE_OPENAI_ENDPOINT="YOUR_AZURE_ENDPOINT_URL"
-AZURE_OPENAI_DEPLOYMENT="YOUR_DEPLOYMENT_NAME"
-AZURE_OPENAI_VERSION="YOUR_API_VERSION"
-AZURE_EMBEDDING_MODEL="YOUR_AZURE_EMBEDDING_MODEL"
-AZURE_EMBEDDING_DEPLOYMENT="YOUR_EMBEDDING_DEPLOYMENT_NAME"
 ```
 4. Save the file ✅
 
