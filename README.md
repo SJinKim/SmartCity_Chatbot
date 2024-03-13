@@ -57,7 +57,7 @@ Open WSL to run:
 AZURE_OPENAI_KEY="YOUR_AZURE_OPENAI_KEY"
 AZURE_OPENAI_ENDPOINT="YOUR_AZURE_ENDPOINT_URL"
 ```
-4. Save the file ✅
+3. Save the file ✅
 
 
 ### Getting Started (setup for development environment)
