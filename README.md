@@ -21,6 +21,10 @@ The user can review and edit the generated draft notice before finalizing it thr
 The user can manually download the generated legal notice in text format (`DOCX`).
 
 
+## Walkthrough (Tips)
+
+
+
 ## Disclaimer
 📌 The chatbot is not a substitute for legal advice from a qualified attorney.
 
