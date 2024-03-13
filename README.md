@@ -124,7 +124,7 @@ AZURE_OPENAI_ENDPOINT="YOUR_AZURE_ENDPOINT_URL"
 
 
 ## Dependencies
-![](https://i.postimg.cc/HxnqXgBx/service-arch.png)
+![](https://i.postimg.cc/9Q85M0YS/service-arch.png)
 
 ### Backend
 - **Python** (Linux: `v3.10.12` | Windows: `v3.11.7`) `https://www.python.org/`
