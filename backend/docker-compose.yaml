@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  web:
+    # It tells Docker Compose to build the Docker image using the current directory (denoted by .) as the build context
+    build: .
+    image: citychatbot
+    #starting a Python web server using Uvicorn
+    command: sh -c "uvicorn main:app --reload --port=8000  --host=0.0.0.0"
+    ports:
+    # it's mapping port 8000 from the container to port 8000 on the host
+      - 8000:8000
+    volumes:
+    - .:/app
+    container_name: citychatbotapp
+
+
+    
