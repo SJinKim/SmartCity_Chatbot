@@ -11,7 +11,7 @@ This repository provides a user-friendly AI chatbot assistant to support German 
 The chatbot analyzes the uploaded case file (`Sachverhalte`) in `DOCX` or `PDF` format and offers context-aware responses leveraging OpenAI's GPT-3.5 language model. 
 
 🖊️  **Automated Notice Generation**: 
-The chatbot generates draft notices (`Bescheide`) based on the uploaded case file and the user's input. The draft notice includes the decision of the authority, the legal justification for the decision, and information on legal remedies.
+The chatbot generates draft legal notices (`Bescheide`) based on the uploaded case file and the user's input. The legal notice includes the decision of the authority, the legal justification for the decision, and information on legal remedies.
 
 🖊️  **Customization**: 
 The user can review and edit the generated draft notice before finalizing it through customization options such as adding additional information or changing the existing content.
@@ -21,20 +21,20 @@ The user can manually download the generated legal notice in text format (`DOCX`
 
 
 ## Walkthrough (Tips)
-🏃 Ask the chatbot any question you like
-
-🏃 Upload case file by clicking on the upload button
-- now chatbot creates a legal notice for you
-- you will get the created legal notice as a message
+🏃 Upload case file by clicking on the upload button (`HOCHLADEN`).
+- Now the chatbot will create a draft legal notice for you, which takes a short amount of time.
+- You will receive the generated legal notice as a message in the chat.
       
-🏃 Adjust the created legal notice according to the desired adjustments
-- for best adjustment results use phrases like:
-- input: "Ändere mir den Bescheid [mention the part to be adjusted] [state your desired adjustment]"
+🏃 Adjust the draft legal notice according to the desired adjustments:
+- For best customization results, use phrases like:
+```
+PROMPT: "Ändere mir den Bescheid [specify the part you want to change] [specify the adjustment you want to make]
+```
          
-🏃 Ask questions about the uploaded case file or generated legal notice if you like
-- for best results use the specific words in your question: "Sachverhalt" or "Bescheid"
+🏃 You can ask questions about the uploaded case file or the generated legal notice, as well as generated questions if you wish.
+- For the best results, mention the case file or legal notice directly as the specific words in your question: `Sachverhalt` or `Bescheid`.
       
-🏃 Download generated legal notice by clicking the download button
+🏃 Click the download button (`HERUNTERLADEN`) to download the generated and customized legal notice.
 
 
 ## Disclaimer
