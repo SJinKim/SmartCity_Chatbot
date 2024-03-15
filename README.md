@@ -91,7 +91,7 @@ AZURE_OPENAI_ENDPOINT="YOUR_AZURE_ENDPOINT_URL"
 7. Install the required packages `pip3 install -r requirements.unix.txt`.
 8. Check if your `.env` file (containing the Azure OpenAI credentials) is in the root directory of backend folder.
 9. Start backend server `uvicorn main:app` / optional `uvicorn main:app --reload` to enable auto-reload.
-10. Open browser via `http://127.0.0.1:8000` / to quit `Ctrl+C`.
+10. Open the browser via `http://127.0.0.1:8000` / to exit `Ctrl+C`.
 
 ##### PowerShell (Windows-Terminal)
 1. Clone the GitHub repository `git clone https://github.com/SJinKim/SmartCity_Chatbot.git`.
@@ -104,7 +104,7 @@ AZURE_OPENAI_ENDPOINT="YOUR_AZURE_ENDPOINT_URL"
 7. Install the required packages `pip install -r requirements.win.txt`.
 8. Check if your `.env` file (containing the Azure OpenAI credentials) is in the root directory of backend folder.
 9. Start backend server `uvicorn main:app` / optional `uvicorn main:app --reload` to enable auto-reload.
-10. Open browser via `http://127.0.0.1:8000` / to quit `Ctrl+C`.
+10. Open the browser via `http://127.0.0.1:8000` / to exit `Ctrl+C`.
 
 
 #### Frontend
@@ -123,13 +123,12 @@ AZURE_OPENAI_ENDPOINT="YOUR_AZURE_ENDPOINT_URL"
 
 ### With Docker
 📌 Assuming **Docker Desktop** is installed `https://www.docker.com/products/docker-desktop/`.
-1. Start the docker daemon (by simply starting docker destop)
-2. fill in "AZURE_OPENAI_KEY " and "AZURE_OPENAI_ENDPOINT" in the env file.
-3. opens the Windows console, switch to the folder where docker-compose.yaml is located.
-   relative path : `../SmartCity_Chatbot/backend/`
-4. run `docker-compose up -d` in the console
-5. open http://localhost:8000 in your web browser
-6. use the application 
+1. Start the `Docker Daemon` (by simply executing Docker Destop).
+2. Enter your `"AZURE_OPENAI_KEY"` and `"AZURE_OPENAI_ENDPOINT"` in the env file `(.env)`.
+3. Open the Windows console, switch to the folder where `docker-compose.yaml` is located.
+   - Relative path : `../SmartCity_Chatbot/backend/`.
+4. Run `docker-compose up -d` in the console.
+5. To run the application, open the browser via `http://localhost:8000` / to exit `Ctrl+C`.
 
 ### Without Docker
 📌 See "Installation" section.
