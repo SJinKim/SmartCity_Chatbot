@@ -28,7 +28,7 @@ The user can manually download the generated legal notice in text format (`DOCX`
 🏃 Adjust the draft legal notice according to the desired adjustments:
 - For best customization results, use phrases like:
 ```
-PROMPT: "Ändere mir den Bescheid [specify the part you want to change] [specify the adjustment you want to make]
+PROMPT: "Ändere mir den Bescheid [specify the part you want to change] [specify the adjustment you want to make]."
 ```
          
 🏃 You can ask questions about the uploaded case file or the generated legal notice, as well as generated questions if you wish.
