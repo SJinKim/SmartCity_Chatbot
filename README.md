@@ -123,7 +123,7 @@ AZURE_OPENAI_ENDPOINT="YOUR_AZURE_ENDPOINT_URL"
 
 ### With Docker
 📌 Assuming **Docker Desktop** is installed `https://www.docker.com/products/docker-desktop/`.
-1. Start the `Docker Daemon` (by simply executing Docker Destop).
+1. Start the `Docker Daemon` (by simply executing `Docker Destop`).
 2. Enter your `"AZURE_OPENAI_KEY"` and `"AZURE_OPENAI_ENDPOINT"` in the env file `(.env)`.
 3. Open the Windows console, switch to the folder where `docker-compose.yaml` is located.
    - Relative path : `../SmartCity_Chatbot/backend/`.
