@@ -1,6 +1,6 @@
 # Smart-City-Chatbot (LegalBot) 📄➜📚🤖➜🪄📝➜✉️
 
-![](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![](https://i.postimg.cc/zXWRQ7QT/SCB-preview.png)
 
 This repository provides a user-friendly AI chatbot assistant to support German legal inquiries. The chatbot generates legal notices (`Bescheide`) based on user-uploaded case files (`Sachverhalte`), offers customization options before finalizing the file, and has potential for further expansion and integration.
 
@@ -83,27 +83,27 @@ AZURE_OPENAI_ENDPOINT="YOUR_AZURE_ENDPOINT_URL"
 #### Backend
 
 ##### WSL (Linux-Terminal)
-1. Navigate to the directory where you want to install the project `cd <your-home-directory>`.
-2. Clone the GitHub repository `git clone https://github.com/SJinKim/SmartCity_Chatbot.git`.
+1. Clone the GitHub repository `git clone https://github.com/SJinKim/SmartCity_Chatbot.git`.
    - If you encounter an error, run `git config --system core.protectNTFS false` in CMD as Administrator.
+2. Navigate to the directory where you want to install the project `cd <your-home-directory>`.
 3. Navigate to project directory `cd SmartCity_Chatbot`.
 4. Navigate to backend folder `cd backend`.
 5. Create a virtual environment `python3 -m venv <venv-directory-name>`.
 6. Activate the created virtual environment `source <venv-directory-name>/bin/activate`.
 7. Install the required packages `pip3 install -r requirements.unix.txt`.
 8. Check if your `.env` file (containing the Azure OpenAI credentials) is in the root directory of backend folder.
-9. Start backend server `uvicorn main:app --reload`.
+9. Start backend server `uvicorn main:app` / optional `uvicorn main:app --reload` to enable auto-reload.
 10. Open browser via `http://127.0.0.1:8000` / to quit `Ctrl+C`.
 
 ##### PowerShell (Windows-Terminal)
-1. Navigate to the directory where you want to install the project `cd <your-home-directory>`.
-2. Clone the GitHub repository `git clone https://github.com/SJinKim/SmartCity_Chatbot.git`.
+1. Clone the GitHub repository `git clone https://github.com/SJinKim/SmartCity_Chatbot.git`.
    - If you encounter an error, run `git config --system core.protectNTFS false` in CMD as Administrator.
+2. Navigate to the directory where you want to install the project `cd <your-home-directory>`.
 3. Navigate to project directory `cd SmartCity_Chatbot`.
 4. Navigate to backend folder `cd backend`.
 5. Create a virtual environment `python -m venv <venv-directory-name>`.
 6. Activate the created virtual environment `./<venv-directory-name>/Scripts/Activate.ps1`.
-7. Install the required packages `pip install -r requirements.win`.
+7. Install the required packages `pip install -r requirements.win.txt`.
 8. Check if your `.env` file (containing the Azure OpenAI credentials) is in the root directory of backend folder.
 9. Start backend server `uvicorn main:app` / optional `uvicorn main:app --reload` to enable auto-reload.
 10. Open browser via `http://127.0.0.1:8000` / to quit `Ctrl+C`.
@@ -125,8 +125,13 @@ AZURE_OPENAI_ENDPOINT="YOUR_AZURE_ENDPOINT_URL"
 
 ### With Docker
 📌 Assuming **Docker Desktop** is installed `https://www.docker.com/products/docker-desktop/`.
-1. Run `docker run <image-name>`.
-2. Open browser via `http://0.0.0.0:8000` / to quit `Ctrl+C`.
+1. Start the docker daemon (by simply starting docker destop)
+2. fill in "AZURE_OPENAI_KEY " and "AZURE_OPENAI_ENDPOINT" in the env file.
+3. opens the Windows console, switch to the folder where docker-compose.yaml is located.
+   relative path : `../SmartCity_Chatbot/backend/`
+4. run `docker-compose up -d` in the console
+5. open http://localhost:8000 in your web browser
+6. use the application 
 
 ### Without Docker
 📌 See "Installation" section.
@@ -151,9 +156,7 @@ AZURE_OPENAI_ENDPOINT="YOUR_AZURE_ENDPOINT_URL"
 
 
 ## Contributing (Open Source)
-- Pull requests are welcome. 
-- For major changes, please open an issue first to discuss what you would like to change.
-- To ask questions, give feedback or suggestions on this project, reach us via [![](https://i.postimg.cc/N0gDTQ6C/Discord.png)](http://)
+- Pull requests are welcome, but for major changes, please open an issue first to discuss what you would like to change.
 
 
 ## License
@@ -162,10 +165,10 @@ AZURE_OPENAI_ENDPOINT="YOUR_AZURE_ENDPOINT_URL"
 
 ## Created By (Contact)
 
-[![](https://i.postimg.cc/Y4F71sM3/A.jpg)](https://github.com/vasilevaana)
-[![](https://i.postimg.cc/9wmjHXT8/M.jpg)](https://github.com/comdyax)
-[![](https://i.postimg.cc/wydpFQBd/G.jpg)](https://github.com/Gii-DE)
-[![](https://i.postimg.cc/DJdKN4W4/JL.png)](https://)
-[![](https://i.postimg.cc/Z04mdHg8/SJ.jpg)](https://github.com/SJinKim)
+[![](https://i.postimg.cc/hhwyhr9L/SCB-frontent-a.png)](https://github.com/vasilevaana)
+[![](https://i.postimg.cc/C1zWMRTp/SCB-frontent-m.png)](https://github.com/comdyax)
+[![](https://i.postimg.cc/Btt7qy1Z/SCB-backend-g.png)](https://github.com/Gii-DE)
+[![](https://i.postimg.cc/ZCdfNdc1/SCB-backend-j.png)](https://github.com/Emmaliyt)
+[![](https://i.postimg.cc/G4nXxmg9/SCB-backend-sj.png)](https://github.com/SJinKim)
 
 © 2024 for the "Practical Lab for Bachelors" of the TUDa in cooperation with [[ui!] Urban Software Institute](https://www.ui.city/). 
