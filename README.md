@@ -164,7 +164,7 @@ AZURE_OPENAI_ENDPOINT="YOUR_AZURE_ENDPOINT_URL"
 ## Created By (Contact)
 
 [![](https://i.postimg.cc/hhwyhr9L/SCB-frontent-a.png)](https://github.com/vasilevaana)
-[![](https://i.postimg.cc/QC4LjcVD/SCB-frontent-m.png)](https://github.com/comdyax)
+[![](https://i.postimg.cc/WbBWg5BK/SCB-frontent-m.png)](https://github.com/comdyax)
 [![](https://i.postimg.cc/Btt7qy1Z/SCB-backend-g.png)](https://github.com/Gii-DE)
 [![](https://i.postimg.cc/ZCdfNdc1/SCB-backend-j.png)](https://github.com/Emmaliyt)
 [![](https://i.postimg.cc/G4nXxmg9/SCB-backend-sj.png)](https://github.com/SJinKim)
