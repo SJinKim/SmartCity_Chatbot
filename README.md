@@ -76,7 +76,7 @@ AZURE_OPENAI_ENDPOINT="YOUR_AZURE_ENDPOINT_URL"
 3. Save the file ✅
 
 
-### Getting Started (setup for development environment)
+### Getting Started (Setup for Development Environment)
 
 #### Backend
 
