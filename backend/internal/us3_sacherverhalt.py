@@ -1,5 +1,5 @@
 """
-    This modul contains the functions for creating the chains for the ai. 
+    This modul contains the functions for transforming the uploaded case file.
 """
 
 import os
@@ -21,14 +21,14 @@ from internal.us1_load_data import init_embeddings
 from internal.utils import check_environment
 
 
-# Retrieves and validates Azure OpenAI API credentials from loaded environment variables.
-# Raises: ValueError: If either the API key or endpoint is not found in the environment.
+## Retrieves and validates Azure OpenAI API credentials from loaded environment variables.
 load_dotenv()
+# Raises :ValueError: If either the API key or endpoint is not found in the environment.
 check_environment()
 
 
 def init_llm():
-    """Initializes and returns a AzureChatOpenAI language model instance.
+    """ Initializes and returns a AzureChatOpenAI language model instance.
 
     Args:   None
 
@@ -48,7 +48,7 @@ embeddings = init_embeddings()
 
 
 def load_document(file_path):
-    """Loads a document from a file, supporting PDF and DOCX formats.
+    """ Loads a document from a file, supporting PDF and DOCX formats.
 
     Args:
         file_path: The path to the document file.
@@ -73,7 +73,7 @@ def load_document(file_path):
 
 
 def split_documents(doc, chunk_size=1500, chunk_overlap=200):
-    """Splits a document into overlapping chunks using a CharacterTextSplitter.
+    """ Splits a document into overlapping chunks using a CharacterTextSplitter.
 
     Args:
         doc: The document to split.
@@ -90,7 +90,7 @@ def split_documents(doc, chunk_size=1500, chunk_overlap=200):
 
 
 def refine_query(prompt):
-    """Refines a user query to generate a more detailed search query.
+    """ Refines a user query to generate a more detailed search query.
 
     Args:
         prompt: The initial user query.
@@ -107,78 +107,27 @@ def refine_query(prompt):
 
     refine_prompt = f"""Generiere eine verfeinerte Nutzeranfrage '{prompt}', \
     um die Suchergebnisse präziser zu gestalten. 
-    Die Verfeinerung der Nutzeranfrage '{prompt}' dient dazu, \
-    die Suchanfrage zu optimieren, indem zusätzliche Informationen hinzugefügt \
-    werden. Dies kann z. B. durch die Angabe von Kontexten, Suchbegriffen, \
-    Synonyme oder semantische Ähnlichkeiten. \
-    Eine verfeinerte Nutzeranfrage kann dazu beitragen, dass der Nutzer die \
-    gewünschten Ergebnisse schneller und korrekter findet. Dies ist besonders \
-    wichtig, wenn die ursprüngliche Nutzeranfrage unpräzise ist oder nur Stichworte, \
-    Rechtschreibfehler und Falschformulierungen enthält.
+    Die Verfeinerung der Nutzeranfrage dient dazu, \
+    die Suchanfrage '{prompt}' für den Nutzer zu optimieren, indem nur äquivalente Kontexte, Suchbegriffe, \
+    Synonyme oder semantische Ähnlichkeiten zur Anfrage ergänzt werden. \
 
-    Mögliche Fragen, die du dir stellen kannst:
-    * Was ist der Kontext der Anfrage?
-    * Welche spezifischen Informationen sind für die Anfrage relevant?
-    * Welche Aspekte der Anfrage möchtest du genauer untersuchen?
-    * Welches Ergebnis ist für den Nutzer wichtig?
-    * Welche Informationen sind für das Ergebnis relevant?
+    Gehe Schritt für Schritt folgendermaßen bei der Verbesserung der Nutzeranfrage '{prompt}' vor:
+    1. **Kontextanalyse:** Identifiziere den Kontext der Anfrage und überlege welche relevante Informationen dazu passen könnten.
+    2. **Alternative Formulierungen:** Ersetze unklare oder missverständliche Formulierungen durch kontextbezogene Synonyme.
+    3. **Konsistenzprüfung:** Stelle sicher, dass die verfeinerte Anfrage konsistent mit der ursprünglichen Anfrage ist \
+        und den semantischen Inhalt korrekt widerspiegelt. Bei unklaren oder fehlerhaften Anfragen wird der Nutzer um eine präzisere Formulierung gebeten. \
+        Erfinde keine zufällige Inhalte dazu, die nicht in '{prompt}' enthalten waren oder im Kontext dazu stehen.
 
-    Hier sind einige Möglichkeiten, die Nutzeranfrage zu verfeinern:
-    * **Füge weitere Details hinzu:** Wenn die Nutzeranfrage nur allgemeine Informationen \
-    enthält, kannst du weitere Details hinzufügen, um den juristischen Fall präziser zu \
-    beschreiben. Zum Beispiel könntest du spezifische Gesetze, beteiligte Parteien oder \
-    relevante Fakten angeben.
-    * **Verwende alternative Formulierungen:** Wenn die Nutzeranfrage unklar oder \
-    missverständlich ist, kannst du alternative Formulierungen verwenden, um den Fall \
-    genauer zu beschreiben. Zum Beispiel könntest du "Vertragsbruch in einem \
-    Mietverhältnis" durch "Vertragsverletzung durch den Mieter in einem Mietverhältnis" \
-    ersetzen.
-    * **Entferne irrelevante Informationen:** Wenn die Nutzeranfrage irrelevante Informationen \
-    enthält, kannst du diese entfernen, um den Fokus auf die relevanten Aspekte des Falls \
-    zu legen.
-
-    Bitte gib die verfeinerte Anfrage als String zurück."""
+    **Rückgabewert:**
+    Die verfeinerte Anfrage als String."""
     message = HumanMessage(content=refine_prompt)
     message_generate = llm_client([message])
     refined = message_generate.content
     return refined
 
 
-def qa_chain_context(query, document_split):
-    """Performs a question-answering (QA) chain on a given message using retrieved doc
-       chunks and the local saved vectorestore.
-
-    Args:
-        message (str): The user's input message or query/prompt.
-        document_split (list): A list of smaller text segments from a loaded document.
-
-    Returns:
-        str: The generated response/answer and translated to German.
-    """
-    chain = load_qa_chain(llm=llm_client, chain_type="stuff", verbose=True)
-    data_index = os.path.join(os.path.dirname(__file__), "data_recursive")
-    loaded_data = FAISS.load_local(
-        folder_path=data_index, embeddings=embeddings, index_name="data_recursive"
-    )
-
-    translator = GoogleTranslator(source="auto", target="german")
-    refined_query = refine_query(translator.translate(query))
-
-    similar = loaded_data.similarity_search(query=refined_query)
-    mmr = loaded_data.max_marginal_relevance_search(query=refined_query)
-    filtered = similar + mmr + document_split
-
-    response = chain.run(
-        input_documents=document_split, question=query, context=filtered
-    )
-
-    trans_result = translator.translate(response)
-    return trans_result
-
-
 def qa_chain(query):
-    """
-    Generates a response to a user query using a question-answering (QA) chain
+    """ Generates a response to a user query using a question-answering (QA) chain
     and the local saved vectorestore.
 
     Args:
