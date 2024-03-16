@@ -3,7 +3,7 @@
 This repository provides a user-friendly AI chatbot assistant to support German legal inquiries. The chatbot generates legal notices (`Bescheide`) based on user-uploaded case files (`Sachverhalte`), offers customization options before finalizing the file, and has potential for further expansion and integration.
 
 ## Features 
-![](https://i.postimg.cc/zXWRQ7QT/SCB-preview.png)
+![](https://s9.gifyu.com/images/SUY2c.gif =1280x1024)
 
 📌 The chatbot is still under development and based on a dataset of German federal laws and the state laws of Baden-Württemberg.
 
@@ -30,11 +30,15 @@ The user can manually download the generated legal notice in text format (`DOCX`
 ```
 PROMPT: "Ändere mir den Bescheid [specify the part you want to change] [specify the adjustment you want to make]"
 ```
-         
+
+🏃 Click the download button (`HERUNTERLADEN`) to download the generated and customized legal notice.
+
+![](https://s9.gifyu.com/images/SUY26.gif =1280x1024)
+
 🏃 You can ask questions about the uploaded case file or the generated legal notice, as well as generated questions if you wish.
 - For the best results, mention the case file or legal notice directly as the specific words in your question: `Sachverhalt` or `Bescheid`.
       
-🏃 Click the download button (`HERUNTERLADEN`) to download the generated and customized legal notice.
+![](https://s9.gifyu.com/images/SUY2i.gif =1280x1024)
 
 
 ## Disclaimer
