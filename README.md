@@ -32,7 +32,7 @@ PROMPT: "Ändere mir den Bescheid [specify the part you want to change] [specify
 ```
 
 🏃 Click the download button (`HERUNTERLADEN`) to download the generated and customized legal notice.
-![](https://s9.gifyu.com/images/SUY26.gif)
+![](https://s9.gifyu.com/images/SUYSD.gif)
 
 🏃 You can ask questions about the uploaded case file or the generated legal notice, as well as generated questions if you wish.
 - For the best results, mention the case file or legal notice directly as the specific words in your question: `Sachverhalt` or `Bescheid`.
@@ -125,7 +125,7 @@ AZURE_OPENAI_ENDPOINT="YOUR_AZURE_ENDPOINT_URL"
 
 ### With Docker
 📌 Assuming **Docker Desktop** is installed `https://www.docker.com/products/docker-desktop/`.
-1. Start the `Docker Daemon` (by simply executing `Docker Destop`).
+1. Start the `Docker Daemon` (by simply executing `Docker Desktop`).
 2. Place your `"AZURE_OPENAI_KEY"` and `"AZURE_OPENAI_ENDPOINT"` in the env file `(.env)`.
 3. Open the Windows console, switch to the folder where `docker-compose.yaml` is located.
    - Relative path : `../SmartCity_Chatbot/backend/`.
