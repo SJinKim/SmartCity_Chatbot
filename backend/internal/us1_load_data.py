@@ -1,6 +1,6 @@
 """
-    This modul contains the function to upload the laws
-    that are relevant for the AI into vector store -> only used from development
+    Optional (dev-mode): This module contains the function to create a vector index 
+    for uploading further data sources (e.g. additional laws) to be added to the project.
 """
 
 import os
@@ -21,16 +21,14 @@ from langchain.text_splitter import Document, RecursiveCharacterTextSplitter
 from internal.utils import check_environment
 
 
-# Retrieves and validates Azure OpenAI API credentials from loaded environment variables
-# Raises :ValueError: If either the API key or endpoint is not found in the environment
+# Retrieves and validates Azure OpenAI API credentials from loaded environment variables.
 load_dotenv()
-
+# Raises :ValueError: If either the API key or endpoint is not found in the environment.
 check_environment()
 
 
 def init_embeddings():
-    """Initializes and returns Azure OpenAI Embeddings client.
-
+    """ Initializes and returns Azure OpenAI Embeddings client.
     Args:   None
 
     Returns:
@@ -48,8 +46,7 @@ embeddings = init_embeddings()
 
 
 def __load_document(file_path):
-    """Loads a document from a given file path.
-
+    """ Loads a document from a given file path.
     Args:
         file_path (str): The path to the document file.
 
@@ -65,9 +62,8 @@ def __load_document(file_path):
 
 
 def __create_text_splitter(documents, max_chunk=2000, min_chunk=400):
-    """Splits documents into smaller chunks using a recursive approach and
-       displays a progress bar.
-
+    """ Splits documents into smaller chunks using a recursive approach and
+    displays a progress bar.
     Args:
         documents: A list of documents to be split.
         max_chunk: The maximum chunk size for the initial split (default: 2000).
@@ -96,8 +92,7 @@ def __create_text_splitter(documents, max_chunk=2000, min_chunk=400):
 
 
 def __create_faiss_index(embedding_func, split_documents):
-    """Creates a FAISS index, adds the doc chunks to it and saves it to a local file.
-
+    """ Creates a vectorestore index, adds the doc chunks to it and saves it to a local file.
     Args:
         embedding_func: The embedding function used to represent documents.
         split_documents: A list of doc chunks to be added to the index.
@@ -105,7 +100,7 @@ def __create_faiss_index(embedding_func, split_documents):
 
     Returns:    A FAISS vectorstore with the added documents.
     """
-    index = faiss.IndexFlatL2(1536)  # size of system-dimension
+    index = faiss.IndexFlatL2(1536)  # System-dimension size
     docstore = InMemoryDocstore(
         {str(i): chunk for i, chunk in enumerate(split_documents)}
     )
@@ -123,8 +118,7 @@ def __create_faiss_index(embedding_func, split_documents):
 
 
 def __parallel_upload(folder_path, data_folder):
-    """
-    Loads documents in parallel using a thread pool and displays a progress bar.
+    """ Loads documents in parallel using a thread pool and displays a progress bar.
     Args:
         folder_path (_type_): path to documents folder to be uploaded
         data_folder (_type_): name of the folder to be uploaded
@@ -151,7 +145,7 @@ def __parallel_upload(folder_path, data_folder):
 
 
 def upload_data(data_folder, vectorestore_name):
-    """Uploads documents from a data folder to a Vectorstore.
+    """ Uploads documents from a data folder to a Vectorstore.
         It checks for a saved index and loads it if available.
         Otherwise, it loads documents in parallel, splits them into chunks,
         creates a FAISS index, and saves it for future use.
@@ -198,5 +192,5 @@ def upload_data(data_folder, vectorestore_name):
         data_ids = loaded_data.index_to_docstore_id
         print(f"Eingebettete Vektoren im < {vectorestore_name} >: {len(data_ids)}")
 
-
-upload_data(data_folder="Bescheide_docs", vectorestore_name="bescheide_index")
+# Uncomment the code in order to use the function.
+#upload_data(data_folder="Bescheide_docs", vectorestore_name="bescheide_index")
