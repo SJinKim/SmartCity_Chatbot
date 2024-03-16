@@ -32,11 +32,13 @@ PROMPT: "Ändere mir den Bescheid [specify the part you want to change] [specify
 ```
 
 🏃 Click the download button (`HERUNTERLADEN`) to download the generated and customized legal notice.
-![](https://s9.gifyu.com/images/SUYkx.gif)
+
+![](https://s9.gifyu.com/images/SUYmt.gif)
 
 🏃 You can ask questions about the uploaded case file or the generated legal notice, as well as generated questions if you wish.
 - For the best results, mention the case file or legal notice directly as the specific words in your question: `Sachverhalt` or `Bescheid`.
-![](https://s9.gifyu.com/images/SUYkE.gif)
+  
+![](https://s9.gifyu.com/images/SUY73.gif)
 
 
 ## Disclaimer
