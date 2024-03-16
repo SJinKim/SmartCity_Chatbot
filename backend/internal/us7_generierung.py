@@ -1,5 +1,5 @@
 """
-    This Modul includes the functions to generate a gutachten and a bescheid
+    This Modul includes the functions to generate an expert opinio and a legal notice.
 """
 
 import os
@@ -22,7 +22,7 @@ embeddings = init_embeddings()
 
 
 def write_path_to(key, item):
-    """Saves a key-value pair to a configuration YAML file.
+    """ Saves a key-value pair to a configuration YAML file.
 
     Args:
         key (str): The key to store the value under.
@@ -41,14 +41,13 @@ def write_path_to(key, item):
 
 
 def add_to_path(key: str, item: str) -> tuple:
-    """
-        add value to config file
+    """  Adds value to 'config.yaml'.
     Args:
-        key (str): key of pair to be changed
-        item (str): new value
+        key (str): The key of pair to be changed.
+        item (str): The new value.
 
     Returns:
-        tuple: updated value
+        tuple: The updated value.
     """
     with open("./internal/config.yaml", "r", encoding="utf-8") as f:
         config = yaml.safe_load(f)
@@ -68,13 +67,12 @@ def add_to_path(key: str, item: str) -> tuple:
 
 
 def get_value_from_config(key: str):
-    """
-        gets value from config with passed key
+    """ Gets value from 'config.yaml' with passed key.
     Args:
-        key (str): key
+        key (str): The key.
 
     Returns:
-        str: value
+        str: The value.
     """
     with open("./internal/config.yaml", "r", encoding="utf-8") as f:
         config = yaml.safe_load(f)
@@ -83,11 +81,11 @@ def get_value_from_config(key: str):
 
 
 def str_to_docx(resource: str, output_path: str) -> None:
-    """This function writes the text from a string into a Docx file.
+    """ This function writes a text string to DOCX file.
 
     Args:
         resource (str): The input text as a string.
-        output_path (str): The path where the Docx file will be saved.
+        output_path (str): The path where the DOCX will be saved.
 
     Returns:    None
     """
@@ -98,18 +96,17 @@ def str_to_docx(resource: str, output_path: str) -> None:
 
 # Verfeinerungstemplate für Gutachten- & Bescheidgenerierung
 def erstelle_gutachten(sachverhalt, gutachten_path) -> str:
-    """Generates an expert opinion (Gutachten) as a .docx file,
-    and saves it to the specified path. This function leverages
-    a pre-trained question answering chain and a pre-built indexes
-    of expert opinions ("gutachten_index") to generate a new expert
-    opinion based on a provided case (Sachverhalt) file.
+    """ Generates an expert opinion (Gutachten) as .docx file,
+        and saves it to the specified path. This function leverages
+        an QA-chain ('load_qa_chain') with a pre-built index of expert opinions 
+        ('gutachten_index') to generate a new Gutachten based on a provided case file (Sachverhalt).
 
     Args:
-        sachverhalt (docx, pdf): Case file (Sachverhalt)
-        gutachten_path (str): The path where the expert opinion (Gutachten) will be saved.
+        sachverhalt (docx, pdf): Case file.
+        gutachten_path (str): The path where the expert opinion will be saved.
 
     Returns:
-        str: The generated expert opinion (Gutachten) as a string.
+        str: The generated expert opinion as a string.
     """
     gutachten_query = gutachten_template(sachverhalt=sachverhalt)
 
@@ -127,19 +124,18 @@ def erstelle_gutachten(sachverhalt, gutachten_path) -> str:
 
 
 def erstelle_bescheid(sachverhalt, gutachten_result, bescheid_path) -> str:
-    """Generates an official notice (Bescheid) as a .docx file, and saves it to the
-    specified path. This function leverages a pre-trained question answering chain and
-    a pre-built indexes of official notices ("bescheide_index") to generate a new
-    official notice based on the generated expert opinion (Gutachten) of the provided
-    case (Sachverhalt) file.
+    """ Generates an official notice (Bescheid) as .docx file, and saves it to the
+        specified path. This function leverages an QA-chain ('load_qa_chain') and
+        pre-built indexes of official notices ('bescheide_index') and sources ('data_recursive') to generate a new
+        Bescheid based on the generated Gutachten result and the provided Sachverhalt.
 
     Args:
-        sachverhalt (docx, pdf): Case file (Sachverhalt)
+        sachverhalt (docx, pdf): Case file.
         gutachten_result (str): The result of the `erstelleGutachten` function.
-        bescheid_path (_type_): The path where the official notice (Bescheid) will be saved.
+        bescheid_path (_type_): The path where the official notice will be saved.
 
     Returns:
-        str: The generated official notice (Bescheid) as a string.
+        str: The generated official notice as a string.
     """
     bescheid_query = bescheid_template(
         sachverhalt=sachverhalt, pruefungsergebnis=gutachten_result
@@ -160,14 +156,13 @@ def erstelle_bescheid(sachverhalt, gutachten_result, bescheid_path) -> str:
 
 
 def __generated_docs_to_index(gutachten_doc, bescheid_doc):
-    """
-    Indexes the generated expert opinion (Gutachten) and official
+    """ Indexes the generated expert opinion (Gutachten) and official
     notice (Bescheid) docs by splitting them, adding them and saving them
     in the respective existing VectoreStores (gutachten_index & bescheide_index).
 
     Args:
-        gutachten_doc (_type_): generated gutachten
-        bescheid_doc (_type_): generated bescheid
+        gutachten_doc (_type_): Generated expert opinion.
+        bescheid_doc (_type_): Generated legal notice.
     """
     split_gutachten = split_documents(gutachten_doc)
     split_bescheid = split_documents(bescheid_doc)
@@ -201,17 +196,16 @@ def __generated_docs_to_index(gutachten_doc, bescheid_doc):
     )
 
 def safe_sachverhalt(file_path: str) -> None:
-    """
-        safe the sachverhalt in config.yaml
+    """ Saves the Sachverhalt content in 'config.yaml'.
     Args:
-        file_path (): path of the sachverhalt document
+        file_path (): Path of the Sachverhalt document.
     """
     sachverhalt = load_document(file_path)[0].page_content
     write_path_to(key='sachverhalt', item=sachverhalt)
 
 # Für Fast-API in main.py
 def erstelle_bescheid_background(file_path: str):
-    """Asynchronously generates expert opinion (Gutachten) and official notice (Bescheid)
+    """ Asynchronously generates expert opinion (Gutachten) and official notice (Bescheid)
     documents from a case file (Sachverhalt). Timestamps are used to ensure unique file names.
     The generated documents are split into smaller chunks, and added to the existing
     VectorStores for Gutachten and Bescheide.
