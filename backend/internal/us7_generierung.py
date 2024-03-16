@@ -124,10 +124,9 @@ def erstelle_gutachten(sachverhalt, gutachten_path) -> str:
 
 
 def erstelle_bescheid(sachverhalt, gutachten_result, bescheid_path) -> str:
-    """ Generates an official notice (Bescheid) as .docx file, and saves it to the
-        specified path. This function leverages an QA-chain ('load_qa_chain') and
-        pre-built indexes of official notices ('bescheide_index') and sources ('data_recursive') to generate a new
-        Bescheid based on the generated Gutachten result and the provided Sachverhalt.
+    """ This function leverages an QA-chain and indexes of official notices ('bescheide_index') 
+        and sources ('data_recursive') to generate a new Bescheid based on the generated 
+        Gutachten result and the provided Sachverhalt.
 
     Args:
         sachverhalt (docx, pdf): Case file.
