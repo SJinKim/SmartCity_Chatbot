@@ -63,7 +63,7 @@ def __load_document(file_path):
 
 def __create_text_splitter(documents, max_chunk=2000, min_chunk=400):
     """ Splits documents into smaller chunks using a recursive approach and
-    displays a progress bar.
+        displays a progress bar.
     Args:
         documents: A list of documents to be split.
         max_chunk: The maximum chunk size for the initial split (default: 2000).
