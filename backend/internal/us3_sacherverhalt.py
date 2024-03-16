@@ -128,7 +128,7 @@ def refine_query(prompt):
 
 def qa_chain(query):
     """ Generates a response to a user query using a question-answering (QA) chain
-    and the local saved vectorestore.
+        and the local saved vectorestore.
 
     Args:
         message (str): The user's input message or query/prompt.
