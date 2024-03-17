@@ -37,9 +37,13 @@ PROMPT: "Ändere mir den Bescheid [specify the part you want to change] [specify
 - For the best results, mention the case file or legal notice directly as the specific words in your question: `Sachverhalt` or `Bescheid`.
 
 ### Preview
-![](https://s9.gifyu.com/images/SUYmt.gif)
+![](https://s9.gifyu.com/images/SUYOp.gif)
 
-![](https://s9.gifyu.com/images/SUY73.gif)
+![](https://s9.gifyu.com/images/SUYOL.gif)
+
+![](https://s9.gifyu.com/images/SUYOs.gif)
+
+![](https://s9.gifyu.com/images/SUYOH.gif)
 
 
 ## Disclaimer
@@ -73,10 +77,10 @@ Open WSL to run:
 
 #### 📌 Place Azure OpenAI "API key" and "endpoint" in environment file (.env)
 1. Navigate to project's `backend folder` and open the `.env` file.
-2. Replace only these following placeholders (e.g. "YOUR_AZURE_OPENAI_KEY") with your actual credential values:
+2. Replace only these following placeholders (e.g. "ENTER OPENAI KEY") with your actual credential values:
 ```
-AZURE_OPENAI_KEY="YOUR_AZURE_OPENAI_KEY"
-AZURE_OPENAI_ENDPOINT="YOUR_AZURE_ENDPOINT_URL"
+AZURE_OPENAI_KEY="ENTER OPENAI KEY"
+AZURE_OPENAI_ENDPOINT="ENTER OPENAI ENDPOINT"
 ```
 3. Save the file ✅
 
