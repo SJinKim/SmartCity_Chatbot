@@ -1,4 +1,4 @@
-# Smart-City-Chatbot (LegalBot) 📄➜📚🤖➜🪄📝➜✉️
+# Smart-City-Chatbot (Legal Bot) 📄➜📚🤖➜🪄📝➜✉️
 
 This repository provides a user-friendly AI chatbot assistant to support German legal inquiries. The chatbot generates legal notices (`Bescheide`) based on user-uploaded case files (`Sachverhalte`), offers customization options before finalizing the file, and has potential for further expansion and integration.
 
@@ -171,7 +171,7 @@ AZURE_OPENAI_ENDPOINT="ENTER OPENAI ENDPOINT"
 
 ## Created By (Contact)
 
-[![](https://i.postimg.cc/hhwyhr9L/SCB-frontent-a.png)](https://github.com/vasilevaana)
+[![](https://i.postimg.cc/1t0jfRxT/SCB-frontend-a.png)](https://github.com/vasilevaana)
 [![](https://i.postimg.cc/BjHL0qgW/SCB-frontent-m.png)](https://github.com/comdyax)
 
 [![](https://i.postimg.cc/Btt7qy1Z/SCB-backend-g.png)](https://github.com/Gii-DE)
