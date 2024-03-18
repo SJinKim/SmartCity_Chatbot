@@ -171,7 +171,7 @@ AZURE_OPENAI_ENDPOINT="ENTER OPENAI ENDPOINT"
 
 ## Created By (Contact)
 
-[![](https://i.postimg.cc/1t0jfRxT/SCB-frontend-a.png)](https://github.com/vasilevaana)
+[![](https://i.postimg.cc/WFNprs7V/SCB-frontend-a.png)](https://github.com/vasilevaana)
 [![](https://i.postimg.cc/BjHL0qgW/SCB-frontent-m.png)](https://github.com/comdyax)
 
 [![](https://i.postimg.cc/Btt7qy1Z/SCB-backend-g.png)](https://github.com/Gii-DE)
