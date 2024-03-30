@@ -3,7 +3,7 @@
 This repository provides a user-friendly AI chatbot assistant to support German legal inquiries. The chatbot generates legal notices (`Bescheide`) based on user-uploaded case files (`Sachverhalte`), offers customization options before finalizing the file, and has potential for further expansion and integration.
 
 ## Features 
-![](https://s9.gifyu.com/images/SUY2c.gif)
+![](./assets/SCB_preview_main.gif)
 
 📌 The chatbot is still under development and based on a dataset of German federal laws and the state laws of Baden-Württemberg.
 
@@ -144,7 +144,7 @@ AZURE_OPENAI_ENDPOINT="ENTER OPENAI ENDPOINT"
 
 
 ## Dependencies
-![](./assets/service-arch.png)
+![](./assets/SCB_service-arch.png)
 
 ### Backend
 - **Python** (Linux: `v3.10.12` | Windows: `v3.11.7`) `https://www.python.org/`
