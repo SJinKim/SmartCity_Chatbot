@@ -37,13 +37,13 @@ PROMPT: "Ändere mir den Bescheid [specify the part you want to change] [specify
 - For the best results, mention the case file or legal notice directly as the specific words in your question: `Sachverhalt` or `Bescheid`.
 
 ### Preview
-![](https://s9.gifyu.com/images/SUYOp.gif)
+![](./assets/SCB_preview_tutorial1a.gif)
 
-![](https://s9.gifyu.com/images/SUYOL.gif)
+![](./assets/SCB_preview_tutorial1b.gif)
 
-![](https://s9.gifyu.com/images/SUYOs.gif)
+![](./assets/SCB_preview_tutorial2a.gif)
 
-![](https://s9.gifyu.com/images/SUYOH.gif)
+![](./assets/SCB_preview_tutorial2b.gif)
 
 
 ## Disclaimer
