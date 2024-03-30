@@ -144,7 +144,7 @@ AZURE_OPENAI_ENDPOINT="ENTER OPENAI ENDPOINT"
 
 
 ## Dependencies
-![](./assets/SCB_service_arch.png =640x480)
+![](./assets/SCB_service_arch.png)
 
 ### Backend
 - **Python** (Linux: `v3.10.12` | Windows: `v3.11.7`) `https://www.python.org/`
@@ -171,11 +171,11 @@ AZURE_OPENAI_ENDPOINT="ENTER OPENAI ENDPOINT"
 
 ## Created By (Contact)
 
-[![](https://i.postimg.cc/WFNprs7V/SCB-frontend-a.png)](https://github.com/vasilevaana)
-[![](https://i.postimg.cc/BjHL0qgW/SCB-frontent-m.png)](https://github.com/comdyax)
+[![](./assets/SCB_thumb_front_a.png)](https://github.com/vasilevaana)
+[![](./assets/SCB_thumb_front_m.png)](https://github.com/comdyax)
 
-[![](https://i.postimg.cc/Btt7qy1Z/SCB-backend-g.png)](https://github.com/Gii-DE)
-[![](https://i.postimg.cc/ZCdfNdc1/SCB-backend-j.png)](https://github.com/Emmaliyt)
-[![](https://i.postimg.cc/G4nXxmg9/SCB-backend-sj.png)](https://github.com/SJinKim)
+[![](./assets/SCB_thumb_back_g.png)](https://github.com/Gii-DE)
+[![](./assets/SCB_thumb_back_j.png)](https://github.com/Emmaliyt)
+[![](./assets/SCB_thumb_back_sj.png)](https://github.com/SJinKim)
 
 © 2024 for the "Practical Lab for Bachelors" of the TUDa in cooperation with [[ui!]](https://www.ui.city/). 
