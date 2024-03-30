@@ -144,7 +144,7 @@ AZURE_OPENAI_ENDPOINT="ENTER OPENAI ENDPOINT"
 
 
 ## Dependencies
-![](./assets/SCB_service_arch.png)
+![](./assets/SCB_service_arch.png =640x480)
 
 ### Backend
 - **Python** (Linux: `v3.10.12` | Windows: `v3.11.7`) `https://www.python.org/`
