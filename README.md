@@ -174,7 +174,7 @@ AZURE_OPENAI_ENDPOINT="ENTER OPENAI ENDPOINT"
 [![](./assets/SCB_thumb_front_a.png)](https://github.com/vasilevaana)
 [![](./assets/SCB_thumb_front_m.png)](https://github.com/comdyax)
 
-[![](./assets/SCB_thumb_back_g.png)](https://github.com/Gii-DE)
+[![](./assets/SCB_thumb_back_g_contrib.png)](https://github.com/Gii-DE)
 [![](./assets/SCB_thumb_back_j.png)](https://github.com/Emmaliyt)
 [![](./assets/SCB_thumb_back_sj.png)](https://github.com/SJinKim)
 
