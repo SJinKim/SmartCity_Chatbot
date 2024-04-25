@@ -178,4 +178,4 @@ AZURE_OPENAI_ENDPOINT="ENTER OPENAI ENDPOINT"
 [![](./assets/SCB_thumb_back_j.png)](https://github.com/Emmaliyt)
 [![](./assets/SCB_thumb_back_sj.png)](https://github.com/SJinKim)
 
-© 2024 for the "Practical Lab for Bachelors" of the TUDa in cooperation with [[ui!]](https://www.ui.city/). 
+© 2024 completed "Practical Lab for Bachelors (BP)" of TUDa in cooperation with [[ui!]](https://www.ui.city/). 
